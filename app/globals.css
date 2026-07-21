@@ -399,6 +399,40 @@ main {
   line-height: 0.92;
 }
 
+.research-note {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.7fr) minmax(0, 2fr) minmax(90px, 0.4fr);
+  align-items: end;
+  gap: 28px;
+  margin: 0 0 16px;
+  padding: 24px;
+  scroll-margin-top: 110px;
+  border: 1px solid var(--acid);
+  background: var(--acid);
+  color: var(--ink);
+}
+
+.research-note > span,
+.research-note > strong {
+  font-family: var(--font-mono);
+  font-size: 0.69rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.research-note > p {
+  max-width: 760px;
+  margin: 0;
+  font-size: clamp(1.25rem, 2.25vw, 2.5rem);
+  font-weight: 650;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.research-note > strong {
+  justify-self: end;
+}
+
 .project-grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -857,6 +891,16 @@ footer > span {
 
   .section-heading > p {
     display: none;
+  }
+
+  .research-note {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 20px;
+  }
+
+  .research-note > strong {
+    justify-self: start;
   }
 
   .project-grid {

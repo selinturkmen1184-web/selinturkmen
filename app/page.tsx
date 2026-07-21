@@ -5,10 +5,10 @@ import { useEffect, useState } from "react";
 const projects = [
   {
     index: "01",
-    title: "Nexora Robot Operations",
-    kicker: "Robotik / ROS2 / Gazebo",
+    title: "Tarımsal Otonom Robot Simülasyonu",
+    kicker: "TÜBİTAK / ROS2 / Gazebo",
     description:
-      "Endüstriyel robot operasyonlarını, hücre durumunu ve üretim akışını tek bakışta okunur kılan kontrol arayüzü konsepti.",
+      "Tarımsal saha görevlerini otonomlaştırmak için ROS2 ve Gazebo üzerinde geliştirilen; görev akışı, sensörler ve operasyon arayüzünü birleştiren robotik simülasyon.",
     video: "/projects/nexora.mp4",
     poster: "/projects/nexora.jpg",
     className: "project-card project-card--lead",
@@ -45,10 +45,20 @@ const projects = [
   },
   {
     index: "05",
-    title: "Agricultural Drone Film",
-    kicker: "Film / Drone / Tarım",
+    title: "SMG Neural Net",
+    kicker: "TÜBİTAK / Yapay Zekâ / 3B Simülasyon",
     description:
-      "Akıllı tarım teknolojilerinin ölçeğini ve olasılıklarını sinematik bir anlatıyla görünür kılan tanıtım filmi konsepti.",
+      "300 nöron ve 1.338 bağlantıyı; duyusal girdiler, hipokampus, amigdala, STG ve MTG katmanlarıyla gerçek zamanlı görselleştiren etkileşimli sinir ağı simülasyonu.",
+    video: "/projects/smg-neural-net.mp4",
+    poster: "/projects/smg-neural-net.jpg",
+    className: "project-card project-card--wide",
+  },
+  {
+    index: "06",
+    title: "Tarımsal Drone — Tasarım ve Üretim",
+    kicker: "Özgün Üretim / Drone / Tarım",
+    description:
+      "Tarımsal dronun tasarımı, üretimi, uçuş uygulaması ve tanıtım filminin yaratıcı süreci bütünüyle Selin Türkmen’e aittir.",
     video: "/projects/drone.mp4",
     poster: "/projects/drone.jpg",
     className: "project-card project-card--wide",
@@ -86,6 +96,7 @@ export default function Home() {
         </a>
         <nav aria-label="Ana menü">
           <a href="#isler">Seçili işler</a>
+          <a href="#tubitak">TÜBİTAK</a>
           <a href="#profil">Profil</a>
           <a href="#yetkinlikler">Yetkinlikler</a>
         </nav>
@@ -117,7 +128,7 @@ export default function Home() {
               </div>
               <div>
                 <dt>Araştırma</dt>
-                <dd>Gazebo simülasyonu</dd>
+                <dd>TÜBİTAK / Ar-Ge</dd>
               </div>
               <div>
                 <dt>Pratik</dt>
@@ -131,7 +142,7 @@ export default function Home() {
           </div>
         </div>
 
-        <article className="featured-project" aria-label="Öne çıkan proje: Nexora">
+        <article className="featured-project" aria-label="Öne çıkan proje: Tarımsal Otonom Robot Simülasyonu">
           <div className="featured-meta">
             <span>Öne çıkan sistem / 01</span>
             <span className="availability">Geliştiriliyor</span>
@@ -151,8 +162,8 @@ export default function Home() {
             <span className="scan-line" aria-hidden="true" />
           </div>
           <div className="featured-title-row">
-            <h2>Nexora Robot Operations</h2>
-            <p>Robotik<br />operasyon<br />sistemi</p>
+            <h2>Tarımsal Otonom Robot Simülasyonu</h2>
+            <p>TÜBİTAK<br />ROS2<br />Gazebo</p>
           </div>
         </article>
       </section>
@@ -160,11 +171,17 @@ export default function Home() {
       <section className="work" id="isler" aria-labelledby="work-title">
         <div className="section-heading">
           <div>
-            <p className="section-index">05 seçili proje</p>
+            <p className="section-index">06 seçili proje · 02 TÜBİTAK çalışması</p>
             <h2 id="work-title">Sistemler, hikâyeler, deneyimler.</h2>
           </div>
           <p>2024 — 2026</p>
         </div>
+
+        <aside className="research-note" id="tubitak" aria-label="TÜBİTAK araştırma projeleri">
+          <span>TÜBİTAK / Ar-Ge</span>
+          <p>Otonom tarım robotlarından gerçek zamanlı sinir ağı simülasyonlarına.</p>
+          <strong>02 proje</strong>
+        </aside>
 
         <div className="project-grid">
           {projects.map((project) => (
