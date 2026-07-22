@@ -36,6 +36,7 @@ test("server-renders the finished portfolio and research projects", async () => 
   assert.match(html, /Rota — Kişisel TYT &amp; AYT Çalışma Ajandası/);
   assert.match(html, /Sabancı Gençlik Hareketi — Sertifika/);
   assert.match(html, /02 TÜBİTAK çalışması/);
+  assert.doesNotMatch(html, /öğrenci/i);
   assert.match(html, /class="scroll-progress"/);
   assert.match(html, /data-reveal/);
   assert.match(html, /<meta[^>]+property="og:image"[^>]+og\.png/i);
@@ -55,6 +56,7 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.match(text, /bütünüyle Selin Türkmen’e aittir/);
     assert.match(text, /rota-tyt-ayt\.kullanici209931\.chatgpt\.site/);
     assert.match(text, /Sabancı Gençlik Hareketi — Sertifika/);
+    assert.doesNotMatch(text, /öğrenci/i);
   }
 
   assert.match(appPage, /IntersectionObserver/);
