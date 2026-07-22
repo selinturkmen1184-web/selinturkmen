@@ -33,6 +33,8 @@ test("server-renders the finished portfolio and research projects", async () => 
   assert.match(html, /Tarımsal Otonom Robot Simülasyonu/);
   assert.match(html, /SMG Neural Net/);
   assert.match(html, /Tarımsal Drone — Tasarım ve Üretim/);
+  assert.match(html, /Rota — Kişisel TYT &amp; AYT Çalışma Ajandası/);
+  assert.match(html, /Sabancı Gençlik Hareketi — Sertifika/);
   assert.match(html, /02 TÜBİTAK çalışması/);
   assert.match(html, /class="scroll-progress"/);
   assert.match(html, /data-reveal/);
@@ -51,6 +53,8 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.match(text, /SMG Neural Net/);
     assert.match(text, /TÜBİTAK \/ Yapay Zekâ \/ 3B Simülasyon/);
     assert.match(text, /bütünüyle Selin Türkmen’e aittir/);
+    assert.match(text, /rota-tyt-ayt\.kullanici209931\.chatgpt\.site/);
+    assert.match(text, /Sabancı Gençlik Hareketi — Sertifika/);
   }
 
   assert.match(appPage, /IntersectionObserver/);
