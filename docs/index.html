@@ -30,6 +30,7 @@
   <body>
     <main>
       <div class="grain" aria-hidden="true"></div>
+      <div class="scroll-progress" aria-hidden="true"></div>
 
       <header class="site-header">
         <a class="wordmark" href="#top" aria-label="Selin Türkmen ana sayfa">
@@ -78,7 +79,7 @@
           </div>
         </div>
 
-        <article class="featured-project" aria-label="Öne çıkan proje: Tarımsal Otonom Robot Simülasyonu">
+        <article class="featured-project reveal reveal--right" data-reveal aria-label="Öne çıkan proje: Tarımsal Otonom Robot Simülasyonu">
           <div class="featured-meta">
             <span>Öne çıkan sistem / 01</span>
             <span class="availability">Geliştiriliyor</span>
@@ -105,7 +106,7 @@
       </section>
 
       <section class="work" id="isler" aria-labelledby="work-title">
-        <div class="section-heading">
+        <div class="section-heading reveal" data-reveal>
           <div>
             <p class="section-index">06 seçili proje · 02 TÜBİTAK çalışması</p>
             <h2 id="work-title">Sistemler, hikâyeler, deneyimler.</h2>
@@ -113,14 +114,14 @@
           <p>2024 — 2026</p>
         </div>
 
-        <aside class="research-note" id="tubitak" aria-label="TÜBİTAK araştırma projeleri">
+        <aside class="research-note reveal" data-reveal id="tubitak" aria-label="TÜBİTAK araştırma projeleri">
           <span>TÜBİTAK / Ar-Ge</span>
           <p>Otonom tarım robotlarından gerçek zamanlı sinir ağı simülasyonlarına.</p>
           <strong>02 proje</strong>
         </aside>
 
         <div class="project-grid">
-          <article class="project-card project-card--lead">
+          <article class="project-card project-card--lead reveal" data-reveal>
             <div class="project-media">
               <video autoplay loop muted playsinline preload="metadata" poster="./projects/nexora.jpg" aria-label="Tarımsal Otonom Robot Simülasyonu proje ekran kaydı">
                 <source src="./projects/nexora.mp4" type="video/mp4" />
@@ -135,7 +136,7 @@
             </div>
           </article>
 
-          <article class="project-card project-card--wide">
+          <article class="project-card project-card--wide reveal" data-reveal>
             <div class="project-media">
               <video autoplay loop muted playsinline preload="metadata" poster="./projects/yemekgrow.jpg" aria-label="Yemekgrow Growth Dashboard proje ekran kaydı">
                 <source src="./projects/yemekgrow.mp4" type="video/mp4" />
@@ -150,7 +151,7 @@
             </div>
           </article>
 
-          <article class="project-card project-card--compact">
+          <article class="project-card project-card--compact reveal" data-reveal>
             <div class="project-media">
               <video autoplay loop muted playsinline preload="metadata" poster="./projects/cennet.jpg" aria-label="Cennet Mobile Companion proje ekran kaydı">
                 <source src="./projects/cennet.mp4" type="video/mp4" />
@@ -165,7 +166,7 @@
             </div>
           </article>
 
-          <article class="project-card project-card--compact">
+          <article class="project-card project-card--compact reveal" data-reveal>
             <div class="project-media">
               <video autoplay loop muted playsinline preload="metadata" poster="./projects/platinum.jpg" aria-label="Platinum Auto Service proje ekran kaydı">
                 <source src="./projects/platinum.mp4" type="video/mp4" />
@@ -180,7 +181,7 @@
             </div>
           </article>
 
-          <article class="project-card project-card--wide">
+          <article class="project-card project-card--wide reveal" data-reveal>
             <div class="project-media">
               <video autoplay loop muted playsinline preload="metadata" poster="./projects/smg-neural-net.jpg" aria-label="SMG Neural Net proje ekran kaydı">
                 <source src="./projects/smg-neural-net.mp4" type="video/mp4" />
@@ -195,7 +196,7 @@
             </div>
           </article>
 
-          <article class="project-card project-card--wide">
+          <article class="project-card project-card--wide reveal" data-reveal>
             <div class="project-media">
               <video autoplay loop muted playsinline preload="metadata" poster="./projects/drone.jpg" aria-label="Tarımsal Drone tasarım ve üretim proje kaydı">
                 <source src="./projects/drone.mp4" type="video/mp4" />
@@ -213,7 +214,7 @@
       </section>
 
       <section class="profile" id="profil" aria-labelledby="profile-title">
-        <div class="profile-lead">
+        <div class="profile-lead reveal" data-reveal>
           <p class="section-index">Profil / 02</p>
           <h2 id="profile-title">Kodun mantığıyla,<br />tasarımın sezgisini birleştiriyorum.</h2>
           <p>
@@ -227,7 +228,7 @@
           </a>
         </div>
 
-        <div class="profile-details">
+        <div class="profile-details reveal reveal--right" data-reveal>
           <div class="detail-block">
             <span>01 / Eğitim</span>
             <h3>Altınbaş Üniversitesi</h3>
@@ -249,11 +250,11 @@
       </section>
 
       <section class="skills" id="yetkinlikler" aria-labelledby="skills-title">
-        <div>
+        <div class="reveal" data-reveal>
           <p class="section-index">Araç seti / 03</p>
           <h2 id="skills-title">Merak geniş.<br />Temel sağlam.</h2>
         </div>
-        <ul aria-label="Teknik yetkinlikler">
+        <ul class="reveal reveal--right" data-reveal aria-label="Teknik yetkinlikler">
           <li><span>01</span>Java</li>
           <li><span>02</span>C</li>
           <li><span>03</span>Python</li>
@@ -267,7 +268,7 @@
         </ul>
       </section>
 
-      <footer>
+      <footer class="reveal" data-reveal>
         <p>Yeni fikirlere, stajlara ve iş birliklerine açığım.</p>
         <a href="./selin-turkmen-cv.pdf" download>Özgeçmiş ↘</a>
         <span>İstanbul / TR · 2026</span>

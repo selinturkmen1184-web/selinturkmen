@@ -8,6 +8,7 @@
   --line-strong: rgba(242, 239, 230, 0.42);
   --acid: #d8ff3e;
   --panel: #10110d;
+  --scroll-progress: 0;
   --font-sans: var(--font-geist-sans), "Helvetica Neue", Arial, sans-serif;
   --font-mono: var(--font-geist-mono), "SFMono-Regular", Consolas, monospace;
 }
@@ -75,6 +76,21 @@ main {
   mix-blend-mode: soft-light;
 }
 
+.scroll-progress {
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
+  pointer-events: none;
+  background: var(--acid);
+  box-shadow: 0 0 14px rgba(216, 255, 62, 0.65);
+  transform: scaleX(var(--scroll-progress));
+  transform-origin: left;
+  will-change: transform;
+}
+
 .site-header {
   position: sticky;
   top: 0;
@@ -88,6 +104,15 @@ main {
   border-bottom: 1px solid var(--line-strong);
   background: rgba(10, 10, 8, 0.88);
   backdrop-filter: blur(16px);
+  transition: min-height 260ms ease, background 260ms ease, border-color 260ms ease,
+    box-shadow 260ms ease;
+}
+
+.site-header.is-scrolled {
+  min-height: 68px;
+  border-color: rgba(216, 255, 62, 0.34);
+  background: rgba(10, 10, 8, 0.95);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
 }
 
 .wordmark,
@@ -221,6 +246,34 @@ main {
 
 .hero h1 span {
   display: block;
+}
+
+.js-enhanced .eyebrow,
+.js-enhanced .hero-bottom,
+.js-enhanced .hero h1 > span {
+  opacity: 0;
+}
+
+.js-enhanced .hero h1 > span {
+  transform: translate3d(0, 0.72em, 0) skewY(2.5deg);
+  transform-origin: left bottom;
+}
+
+.js-enhanced.hero-ready .hero h1 > span {
+  animation: hero-rise 980ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.js-enhanced.hero-ready .hero h1 > span:nth-child(2) {
+  animation-delay: 110ms;
+}
+
+.js-enhanced.hero-ready .eyebrow,
+.js-enhanced.hero-ready .hero-bottom {
+  animation: quiet-rise 760ms 280ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.js-enhanced.hero-ready .hero-bottom {
+  animation-delay: 360ms;
 }
 
 .outline-text {
@@ -399,7 +452,28 @@ main {
   line-height: 0.92;
 }
 
+.js-enhanced [data-reveal]:not(.project-card) {
+  opacity: 0;
+  filter: blur(7px);
+  transform: translate3d(0, 46px, 0) scale(0.985);
+  transition: opacity 780ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 780ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 780ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.js-enhanced [data-reveal].reveal--right:not(.project-card) {
+  transform: translate3d(40px, 0, 0) scale(0.985);
+}
+
+.js-enhanced [data-reveal].is-visible:not(.project-card) {
+  opacity: 1;
+  filter: blur(0);
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
 .research-note {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(150px, 0.7fr) minmax(0, 2fr) minmax(90px, 0.4fr);
   align-items: end;
@@ -410,6 +484,20 @@ main {
   border: 1px solid var(--acid);
   background: var(--acid);
   color: var(--ink);
+  overflow: hidden;
+}
+
+.research-note::after {
+  position: absolute;
+  inset: -60% -20%;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, 0.46) 50%, transparent 62%);
+  transform: translateX(-82%);
+}
+
+.research-note.is-visible::after {
+  animation: research-sweep 1.25s 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .research-note > span,
@@ -440,16 +528,59 @@ main {
 }
 
 .project-card {
+  --lift: 0px;
+  --reveal-offset: 0px;
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  --pointer-x: 50%;
+  --pointer-y: 50%;
+  position: relative;
   min-width: 0;
   overflow: hidden;
   border: 1px solid var(--line);
   background: var(--panel);
-  transition: border-color 200ms ease, transform 200ms ease;
+  transform: perspective(1200px) translate3d(0, calc(var(--reveal-offset) + var(--lift)), 0)
+    rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+  transform-style: preserve-3d;
+  transition: border-color 260ms ease, box-shadow 260ms ease,
+    transform 260ms cubic-bezier(0.16, 1, 0.3, 1), opacity 760ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 760ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: transform;
+}
+
+.project-card::before {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background: radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(216, 255, 62, 0.17), transparent 32%);
+  opacity: 0;
+  transition: opacity 260ms ease;
+}
+
+.js-enhanced .project-card[data-reveal] {
+  --reveal-offset: 46px;
+  opacity: 0;
+  filter: blur(6px);
+}
+
+.js-enhanced .project-card[data-reveal].is-visible {
+  --reveal-offset: 0px;
+  opacity: 1;
+  filter: blur(0);
 }
 
 .project-card:hover {
+  --lift: -7px;
   border-color: rgba(216, 255, 62, 0.6);
-  transform: translateY(-4px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.32), 0 0 0 1px rgba(216, 255, 62, 0.12);
+  transition-delay: 0ms;
+}
+
+.project-card:hover::before {
+  opacity: 1;
 }
 
 .project-card--lead {
@@ -660,6 +791,13 @@ main {
   border-bottom: 1px solid var(--line);
   font-size: clamp(1.15rem, 1.7vw, 1.8rem);
   letter-spacing: -0.035em;
+  transition: color 220ms ease, background 220ms ease, transform 220ms ease;
+}
+
+.skills li:hover {
+  background: rgba(216, 255, 62, 0.055);
+  color: var(--acid);
+  transform: translateX(6px);
 }
 
 .skills li:nth-child(odd) {
@@ -714,6 +852,47 @@ footer > span {
 @keyframes pulse {
   0%, 100% { opacity: 0.55; transform: scale(0.8); }
   50% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes hero-rise {
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) skewY(0);
+  }
+}
+
+@keyframes quiet-rise {
+  from { opacity: 0; transform: translate3d(0, 22px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes research-sweep {
+  from { transform: translateX(-82%); }
+  to { transform: translateX(82%); }
+}
+
+.motion-paused *,
+.motion-paused *::before,
+.motion-paused *::after {
+  animation-play-state: paused !important;
+}
+
+.motion-paused .project-card {
+  --lift: 0px;
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+}
+
+.motion-paused [data-reveal] {
+  transition-duration: 0.01ms !important;
+}
+
+.motion-paused .eyebrow,
+.motion-paused .hero-bottom,
+.motion-paused .hero h1 > span {
+  opacity: 1 !important;
+  animation: none !important;
+  transform: none !important;
 }
 
 @media (max-width: 1180px) {
@@ -971,5 +1150,11 @@ footer > span {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .project-card {
+    --lift: 0px;
+    --tilt-x: 0deg;
+    --tilt-y: 0deg;
   }
 }
