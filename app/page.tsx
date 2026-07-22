@@ -243,9 +243,9 @@ export default function Home() {
           </h1>
           <div className="hero-bottom">
             <p className="hero-intro">
-              Yazılım Mühendisliği ve Yönetim Bilişim Sistemleri öğrencisiyim.
-              Robotik, web ve siber güvenlik arasında; teknik olarak sağlam,
-              görsel olarak hatırlanan deneyimler üretiyorum.
+              Yazılım mühendisliği ve yönetim bilişim sistemleri perspektifini;
+              robotik, web ve siber güvenlik projelerinde teknik olarak sağlam,
+              görsel olarak hatırlanan deneyimlere dönüştürüyorum.
             </p>
             <dl className="hero-facts">
               <div>
@@ -404,10 +404,10 @@ export default function Home() {
             Kodun mantığıyla,<br />tasarımın sezgisini birleştiriyorum.
           </h2>
           <p>
-            Çift ana dal eğitimimi; robotik simülasyonlardan yönetim panellerine,
-            mobil deneyimlerden görsel anlatıya uzanan disiplinler arası projelerle
-            besliyorum. İyi bir ürünün yalnızca çalışması değil, kendini açıkça
-            anlatması gerektiğine inanıyorum.
+            Yazılım mühendisliği ve yönetim bilişim sistemleri bilgisini; robotik
+            simülasyonlardan yönetim panellerine, mobil deneyimlerden görsel anlatıya
+            uzanan disiplinler arası projelerde birleştiriyorum. İyi bir ürünün yalnızca
+            çalışması değil, kendini açıkça anlatması gerektiğine inanıyorum.
           </p>
           <a className="cv-link" href="/selin-turkmen-cv.pdf" download>
             CV’yi indir <span aria-hidden="true">↘</span>
@@ -416,7 +416,7 @@ export default function Home() {
 
         <div className="profile-details reveal reveal--right" data-reveal>
           <div className="detail-block">
-            <span>01 / Eğitim</span>
+            <span>01 / Akademik temel</span>
             <h3>Altınbaş Üniversitesi</h3>
             <p>Yazılım Mühendisliği</p>
             <h3>Anadolu Üniversitesi</h3>
