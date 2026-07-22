@@ -61,7 +61,17 @@ const projects = [
       "Tarımsal dronun tasarımı, üretimi, uçuş uygulaması ve tanıtım filminin yaratıcı süreci bütünüyle Selin Türkmen’e aittir.",
     video: "/projects/drone.mp4",
     poster: "/projects/drone.jpg",
-    className: "project-card project-card--wide",
+    className: "project-card project-card--lead",
+  },
+  {
+    index: "07",
+    title: "Rota — Kişisel TYT & AYT Çalışma Ajandası",
+    kicker: "Eğitim Teknolojisi / Planlama / Web",
+    description:
+      "TYT ve AYT hazırlığını hedefler, dersler ve günlük çalışma akışlarıyla tek yerde planlamayı kolaylaştıran kişisel çalışma ajandası.",
+    href: "https://rota-tyt-ayt.kullanici209931.chatgpt.site/",
+    preview: "rota",
+    className: "project-card project-card--rota",
   },
 ];
 
@@ -291,7 +301,7 @@ export default function Home() {
       <section className="work" id="isler" aria-labelledby="work-title">
         <div className="section-heading reveal" data-reveal>
           <div>
-            <p className="section-index">06 seçili proje · 02 TÜBİTAK çalışması</p>
+            <p className="section-index">07 seçili proje · 02 TÜBİTAK çalışması</p>
             <h2 id="work-title">Sistemler, hikâyeler, deneyimler.</h2>
           </div>
           <p>2024 — 2026</p>
@@ -312,19 +322,70 @@ export default function Home() {
           {projects.map((project) => (
             <article className={`${project.className} reveal`} data-reveal key={project.title}>
               <div className="project-media">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="metadata"
-                  poster={project.poster}
-                  aria-label={`${project.title} proje ekran kaydı`}
-                >
-                  <source src={project.video} type="video/mp4" />
-                </video>
+                {project.preview === "rota" ? (
+                  <div
+                    className="rota-preview"
+                    aria-label="Rota kişisel TYT ve AYT çalışma ajandası arayüz önizlemesi"
+                  >
+                    <div className="rota-preview__top">
+                      <strong>ROTA</strong>
+                      <span>Kişisel çalışma alanı</span>
+                    </div>
+                    <div className="rota-preview__body">
+                      <div className="rota-preview__week" aria-hidden="true">
+                        {[
+                          ["PZT", "20"],
+                          ["SAL", "21"],
+                          ["ÇAR", "22"],
+                          ["PER", "23"],
+                          ["CUM", "24"],
+                        ].map(([day, date], index) => (
+                          <span className={index === 2 ? "is-today" : ""} key={day}>
+                            <small>{day}</small>
+                            <b>{date}</b>
+                          </span>
+                        ))}
+                      </div>
+                      <div className="rota-preview__focus">
+                        <span>Bugünün rotası</span>
+                        <strong>TYT Matematik</strong>
+                        <small>90 dakika · 32 soru</small>
+                        <i aria-hidden="true"><span /></i>
+                      </div>
+                      <div className="rota-preview__score">
+                        <span>Haftalık ilerleme</span>
+                        <strong>%74</strong>
+                        <small>Hedefe 3 oturum kaldı</small>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    poster={project.poster}
+                    aria-label={`${project.title} proje ekran kaydı`}
+                  >
+                    <source src={project.video} type="video/mp4" />
+                  </video>
+                )}
                 <span className="project-number">{project.index}</span>
-                <span className="project-view">CANLI ÖNİZLEME</span>
+                {project.href ? (
+                  <a
+                    className="project-view"
+                    href={project.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`${project.title} projesini yeni sekmede aç`}
+                  >
+                    PROJEYİ AÇ ↗
+                  </a>
+                ) : (
+                  <span className="project-view">CANLI ÖNİZLEME</span>
+                )}
               </div>
               <div className="project-copy">
                 <p>{project.kicker}</p>
@@ -366,6 +427,7 @@ export default function Home() {
             <p>Dijital Dönüşüm Dinamikleri</p>
             <p>Siber Güvenliğe Giriş</p>
             <p>İSMEK — JavaScript, 2025</p>
+            <p className="certificate-feature">Sabancı Gençlik Hareketi — Sertifika</p>
           </div>
           <div className="detail-block">
             <span>03 / Diller</span>
