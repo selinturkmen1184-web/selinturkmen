@@ -34,14 +34,17 @@ test("server-renders the finished portfolio and research projects", async () => 
   assert.match(html, /SMG Neural Net/);
   assert.match(html, /Tarımsal Drone — Tasarım ve Üretim/);
   assert.match(html, /02 TÜBİTAK çalışması/);
+  assert.match(html, /class="scroll-progress"/);
+  assert.match(html, /data-reveal/);
   assert.match(html, /<meta[^>]+property="og:image"[^>]+og\.png/i);
   assert.doesNotMatch(html, /codex-preview|starter loading skeleton/i);
 });
 
-test("keeps the GitHub Pages version and project media in sync", async () => {
-  const [appPage, staticPage] = await Promise.all([
+test("keeps the GitHub Pages version, motion system, and project media in sync", async () => {
+  const [appPage, staticPage, staticScript] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../docs/index.html", import.meta.url), "utf8"),
+    readFile(new URL("../docs/site.js", import.meta.url), "utf8"),
   ]);
 
   for (const text of [appPage, staticPage]) {
@@ -49,6 +52,12 @@ test("keeps the GitHub Pages version and project media in sync", async () => {
     assert.match(text, /TÜBİTAK \/ Yapay Zekâ \/ 3B Simülasyon/);
     assert.match(text, /bütünüyle Selin Türkmen’e aittir/);
   }
+
+  assert.match(appPage, /IntersectionObserver/);
+  assert.match(appPage, /--scroll-progress/);
+  assert.match(staticScript, /IntersectionObserver/);
+  assert.match(staticScript, /--tilt-x/);
+  assert.match(staticScript, /motion-paused/);
 
   await Promise.all([
     access(new URL("../public/projects/smg-neural-net.mp4", import.meta.url)),
