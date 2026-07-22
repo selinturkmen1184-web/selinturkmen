@@ -69,25 +69,136 @@ export default function Home() {
   const [motionPaused, setMotionPaused] = useState(false);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      document.querySelectorAll("video").forEach((video) => video.pause());
-      setMotionPaused(true);
+    const root = document.documentElement;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const revealElements = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
+    const projectCards = Array.from(document.querySelectorAll<HTMLElement>(".project-card"));
+    const header = document.querySelector<HTMLElement>(".site-header");
+    const finePointer = window.matchMedia("(pointer: fine)").matches;
+    const tiltFrames = new Map<HTMLElement, number>();
+
+    root.classList.add("js-enhanced");
+    root.classList.toggle("motion-paused", prefersReducedMotion);
+    setMotionPaused(prefersReducedMotion);
+
+    revealElements.forEach((element, index) => {
+      element.style.setProperty("--reveal-delay", `${Math.min((index % 6) * 70, 350)}ms`);
+    });
+
+    let revealObserver: IntersectionObserver | null = null;
+    if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+      revealElements.forEach((element) => element.classList.add("is-visible"));
+    } else {
+      revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              revealObserver?.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.14, rootMargin: "0px 0px -8%" },
+      );
+      revealElements.forEach((element) => revealObserver?.observe(element));
     }
+
+    const resetCard = (card: HTMLElement) => {
+      card.style.setProperty("--tilt-x", "0deg");
+      card.style.setProperty("--tilt-y", "0deg");
+      card.style.setProperty("--pointer-x", "50%");
+      card.style.setProperty("--pointer-y", "50%");
+    };
+
+    const cardHandlers = projectCards.map((card) => {
+      resetCard(card);
+
+      const handlePointerMove = (event: PointerEvent) => {
+        if (root.classList.contains("motion-paused") || !finePointer) {
+          return;
+        }
+
+        const rect = card.getBoundingClientRect();
+        const x = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width));
+        const y = Math.min(1, Math.max(0, (event.clientY - rect.top) / rect.height));
+        const previousFrame = tiltFrames.get(card);
+        if (previousFrame) window.cancelAnimationFrame(previousFrame);
+
+        const frame = window.requestAnimationFrame(() => {
+          card.style.setProperty("--tilt-x", `${(0.5 - y) * 4}deg`);
+          card.style.setProperty("--tilt-y", `${(x - 0.5) * 5}deg`);
+          card.style.setProperty("--pointer-x", `${x * 100}%`);
+          card.style.setProperty("--pointer-y", `${y * 100}%`);
+        });
+        tiltFrames.set(card, frame);
+      };
+
+      const handlePointerLeave = () => resetCard(card);
+      card.addEventListener("pointermove", handlePointerMove);
+      card.addEventListener("pointerleave", handlePointerLeave);
+
+      return { card, handlePointerMove, handlePointerLeave };
+    });
+
+    let scrollFrame = 0;
+    const updateScrollEffects = () => {
+      scrollFrame = 0;
+      const scrollable = Math.max(1, root.scrollHeight - window.innerHeight);
+      root.style.setProperty("--scroll-progress", String(Math.min(1, window.scrollY / scrollable)));
+      header?.classList.toggle("is-scrolled", window.scrollY > 24);
+    };
+    const handleScroll = () => {
+      if (!scrollFrame) scrollFrame = window.requestAnimationFrame(updateScrollEffects);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+    updateScrollEffects();
+    window.requestAnimationFrame(() => root.classList.add("hero-ready"));
+
+    if (prefersReducedMotion) {
+      document.querySelectorAll("video").forEach((video) => video.pause());
+    }
+
+    return () => {
+      revealObserver?.disconnect();
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+      if (scrollFrame) window.cancelAnimationFrame(scrollFrame);
+      tiltFrames.forEach((frame) => window.cancelAnimationFrame(frame));
+      cardHandlers.forEach(({ card, handlePointerMove, handlePointerLeave }) => {
+        card.removeEventListener("pointermove", handlePointerMove);
+        card.removeEventListener("pointerleave", handlePointerLeave);
+      });
+      root.classList.remove("js-enhanced", "hero-ready", "motion-paused");
+      root.style.removeProperty("--scroll-progress");
+    };
   }, []);
 
   const toggleMotion = () => {
+    const nextPaused = !motionPaused;
     const videos = document.querySelectorAll("video");
-    if (motionPaused) {
+    document.documentElement.classList.toggle("motion-paused", nextPaused);
+
+    if (!nextPaused) {
       videos.forEach((video) => void video.play());
     } else {
       videos.forEach((video) => video.pause());
+      document.querySelectorAll<HTMLElement>("[data-reveal]").forEach((element) =>
+        element.classList.add("is-visible"),
+      );
+      document.querySelectorAll<HTMLElement>(".project-card").forEach((card) => {
+        card.style.setProperty("--tilt-x", "0deg");
+        card.style.setProperty("--tilt-y", "0deg");
+      });
     }
-    setMotionPaused((paused) => !paused);
+    setMotionPaused(nextPaused);
   };
 
   return (
     <main>
       <div className="grain" aria-hidden="true" />
+      <div className="scroll-progress" aria-hidden="true" />
 
       <header className="site-header">
         <a className="wordmark" href="#top" aria-label="Selin Türkmen ana sayfa">
@@ -100,7 +211,12 @@ export default function Home() {
           <a href="#profil">Profil</a>
           <a href="#yetkinlikler">Yetkinlikler</a>
         </nav>
-        <button className="motion-toggle" type="button" onClick={toggleMotion}>
+        <button
+          className="motion-toggle"
+          type="button"
+          aria-pressed={motionPaused}
+          onClick={toggleMotion}
+        >
           <span aria-hidden="true">{motionPaused ? "▶" : "Ⅱ"}</span>
           {motionPaused ? "Hareketi başlat" : "Hareketi durdur"}
         </button>
@@ -142,7 +258,11 @@ export default function Home() {
           </div>
         </div>
 
-        <article className="featured-project" aria-label="Öne çıkan proje: Tarımsal Otonom Robot Simülasyonu">
+        <article
+          className="featured-project reveal reveal--right"
+          data-reveal
+          aria-label="Öne çıkan proje: Tarımsal Otonom Robot Simülasyonu"
+        >
           <div className="featured-meta">
             <span>Öne çıkan sistem / 01</span>
             <span className="availability">Geliştiriliyor</span>
@@ -169,7 +289,7 @@ export default function Home() {
       </section>
 
       <section className="work" id="isler" aria-labelledby="work-title">
-        <div className="section-heading">
+        <div className="section-heading reveal" data-reveal>
           <div>
             <p className="section-index">06 seçili proje · 02 TÜBİTAK çalışması</p>
             <h2 id="work-title">Sistemler, hikâyeler, deneyimler.</h2>
@@ -177,7 +297,12 @@ export default function Home() {
           <p>2024 — 2026</p>
         </div>
 
-        <aside className="research-note" id="tubitak" aria-label="TÜBİTAK araştırma projeleri">
+        <aside
+          className="research-note reveal"
+          data-reveal
+          id="tubitak"
+          aria-label="TÜBİTAK araştırma projeleri"
+        >
           <span>TÜBİTAK / Ar-Ge</span>
           <p>Otonom tarım robotlarından gerçek zamanlı sinir ağı simülasyonlarına.</p>
           <strong>02 proje</strong>
@@ -185,7 +310,7 @@ export default function Home() {
 
         <div className="project-grid">
           {projects.map((project) => (
-            <article className={project.className} key={project.title}>
+            <article className={`${project.className} reveal`} data-reveal key={project.title}>
               <div className="project-media">
                 <video
                   autoPlay
@@ -212,7 +337,7 @@ export default function Home() {
       </section>
 
       <section className="profile" id="profil" aria-labelledby="profile-title">
-        <div className="profile-lead">
+        <div className="profile-lead reveal" data-reveal>
           <p className="section-index">Profil / 02</p>
           <h2 id="profile-title">
             Kodun mantığıyla,<br />tasarımın sezgisini birleştiriyorum.
@@ -228,7 +353,7 @@ export default function Home() {
           </a>
         </div>
 
-        <div className="profile-details">
+        <div className="profile-details reveal reveal--right" data-reveal>
           <div className="detail-block">
             <span>01 / Eğitim</span>
             <h3>Altınbaş Üniversitesi</h3>
@@ -250,11 +375,11 @@ export default function Home() {
       </section>
 
       <section className="skills" id="yetkinlikler" aria-labelledby="skills-title">
-        <div>
+        <div className="reveal" data-reveal>
           <p className="section-index">Araç seti / 03</p>
           <h2 id="skills-title">Merak geniş.<br />Temel sağlam.</h2>
         </div>
-        <ul aria-label="Teknik yetkinlikler">
+        <ul className="reveal reveal--right" data-reveal aria-label="Teknik yetkinlikler">
           {[
             "Java",
             "C",
@@ -275,7 +400,7 @@ export default function Home() {
         </ul>
       </section>
 
-      <footer>
+      <footer className="reveal" data-reveal>
         <p>Yeni fikirlere, stajlara ve iş birliklerine açığım.</p>
         <a href="/selin-turkmen-cv.pdf" download>Özgeçmiş ↘</a>
         <span>İstanbul / TR · 2026</span>
