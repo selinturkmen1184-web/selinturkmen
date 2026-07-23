@@ -83,9 +83,13 @@ export default function Home() {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const revealElements = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
     const projectCards = Array.from(document.querySelectorAll<HTMLElement>(".project-card"));
+    const counters = Array.from(document.querySelectorAll<HTMLElement>("[data-count]"));
+    const navLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-nav]"));
+    const navSections = Array.from(document.querySelectorAll<HTMLElement>("[data-nav-section]"));
     const header = document.querySelector<HTMLElement>(".site-header");
     const finePointer = window.matchMedia("(pointer: fine)").matches;
     const tiltFrames = new Map<HTMLElement, number>();
+    const counterFrames = new Map<HTMLElement, number>();
 
     root.classList.add("js-enhanced");
     root.classList.toggle("motion-paused", prefersReducedMotion);
@@ -150,11 +154,90 @@ export default function Home() {
       return { card, handlePointerMove, handlePointerLeave };
     });
 
+    let pointerFrame = 0;
+    const handlePointerMove = (event: PointerEvent) => {
+      if (!finePointer || root.classList.contains("motion-paused")) return;
+      if (pointerFrame) window.cancelAnimationFrame(pointerFrame);
+      pointerFrame = window.requestAnimationFrame(() => {
+        root.style.setProperty("--cursor-x", `${event.clientX}px`);
+        root.style.setProperty("--cursor-y", `${event.clientY}px`);
+        root.style.setProperty("--hero-x", `${(event.clientX / window.innerWidth - 0.5) * 18}px`);
+        root.style.setProperty("--hero-y", `${(event.clientY / window.innerHeight - 0.5) * 18}px`);
+      });
+    };
+    window.addEventListener("pointermove", handlePointerMove, { passive: true });
+
+    const animateCounter = (element: HTMLElement) => {
+      const target = Number(element.dataset.count ?? "0");
+      if (!Number.isFinite(target)) return;
+      const suffix = element.dataset.suffix ?? "";
+      const prefix = element.dataset.prefix ?? "";
+      const pad = Number(element.dataset.pad ?? "0");
+
+      if (prefersReducedMotion) {
+        element.textContent = `${prefix}${String(target).padStart(pad, "0")}${suffix}`;
+        return;
+      }
+
+      const start = performance.now();
+      const duration = 1150;
+      const tick = (now: number) => {
+        const progress = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - progress, 4);
+        const value = Math.round(target * eased);
+        element.textContent = `${prefix}${String(value).padStart(pad, "0")}${suffix}`;
+        if (progress < 1) {
+          counterFrames.set(element, window.requestAnimationFrame(tick));
+        }
+      };
+      counterFrames.set(element, window.requestAnimationFrame(tick));
+    };
+
+    let counterObserver: IntersectionObserver | null = null;
+    if ("IntersectionObserver" in window) {
+      counterObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            animateCounter(entry.target as HTMLElement);
+            counterObserver?.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.55 },
+      );
+      counters.forEach((counter) => counterObserver?.observe(counter));
+    } else {
+      counters.forEach(animateCounter);
+    }
+
+    let sectionObserver: IntersectionObserver | null = null;
+    if ("IntersectionObserver" in window) {
+      sectionObserver = new IntersectionObserver(
+        (entries) => {
+          const current = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          if (!current) return;
+          const id = current.target.id;
+          navLinks.forEach((link) => {
+            const active = link.getAttribute("href") === `#${id}`;
+            link.classList.toggle("is-active", active);
+            if (active) link.setAttribute("aria-current", "location");
+            else link.removeAttribute("aria-current");
+          });
+        },
+        { rootMargin: "-28% 0px -58%", threshold: [0.08, 0.3, 0.6] },
+      );
+      navSections.forEach((section) => sectionObserver?.observe(section));
+    }
+
     let scrollFrame = 0;
     const updateScrollEffects = () => {
       scrollFrame = 0;
       const scrollable = Math.max(1, root.scrollHeight - window.innerHeight);
       root.style.setProperty("--scroll-progress", String(Math.min(1, window.scrollY / scrollable)));
+      root.style.setProperty("--hero-shift", `${Math.min(150, window.scrollY * 0.18)}px`);
+      root.style.setProperty("--hero-title-shift", `${Math.min(26, window.scrollY * 0.04)}px`);
       header?.classList.toggle("is-scrolled", window.scrollY > 24);
     };
     const handleScroll = () => {
@@ -172,16 +255,26 @@ export default function Home() {
 
     return () => {
       revealObserver?.disconnect();
+      counterObserver?.disconnect();
+      sectionObserver?.disconnect();
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
+      window.removeEventListener("pointermove", handlePointerMove);
       if (scrollFrame) window.cancelAnimationFrame(scrollFrame);
+      if (pointerFrame) window.cancelAnimationFrame(pointerFrame);
       tiltFrames.forEach((frame) => window.cancelAnimationFrame(frame));
+      counterFrames.forEach((frame) => window.cancelAnimationFrame(frame));
       cardHandlers.forEach(({ card, handlePointerMove, handlePointerLeave }) => {
         card.removeEventListener("pointermove", handlePointerMove);
         card.removeEventListener("pointerleave", handlePointerLeave);
       });
       root.classList.remove("js-enhanced", "hero-ready", "motion-paused");
       root.style.removeProperty("--scroll-progress");
+      root.style.removeProperty("--hero-title-shift");
+      root.style.removeProperty("--cursor-x");
+      root.style.removeProperty("--cursor-y");
+      root.style.removeProperty("--hero-x");
+      root.style.removeProperty("--hero-y");
     };
   }, []);
 
@@ -209,6 +302,11 @@ export default function Home() {
     <main>
       <div className="grain" aria-hidden="true" />
       <div className="scroll-progress" aria-hidden="true" />
+      <div className="cursor-aura" aria-hidden="true" />
+      <div className="launch-screen" aria-hidden="true">
+        <span>ST</span>
+        <p>Sistemler hazırlanıyor / 2026</p>
+      </div>
 
       <header className="site-header">
         <a className="wordmark" href="#top" aria-label="Selin Türkmen ana sayfa">
@@ -216,10 +314,10 @@ export default function Home() {
           ST / PORTFOLYO 2026
         </a>
         <nav aria-label="Ana menü">
-          <a href="#isler">Seçili işler</a>
-          <a href="#tubitak">TÜBİTAK</a>
-          <a href="#profil">Profil</a>
-          <a href="#yetkinlikler">Yetkinlikler</a>
+          <a href="#isler" data-nav>Seçili işler</a>
+          <a href="#tubitak" data-nav>TÜBİTAK</a>
+          <a href="#profil" data-nav>Profil</a>
+          <a href="#yetkinlikler" data-nav>Yetkinlikler</a>
         </nav>
         <button
           className="motion-toggle"
@@ -232,10 +330,15 @@ export default function Home() {
         </button>
       </header>
 
-      <section className="hero" id="top" aria-labelledby="hero-title">
+      <section className="hero" id="top" aria-labelledby="hero-title" data-nav-section>
+        <div className="hero-orbit" aria-hidden="true">
+          <span />
+          <i />
+        </div>
+        <p className="hero-coordinates" aria-hidden="true">41.0082° N / 28.9784° E</p>
         <div className="hero-copy">
           <p className="eyebrow">
-            <span aria-hidden="true" /> Fikirleri çalışan sistemlere dönüştürüyorum
+            <span aria-hidden="true" /> Robotik × Yapay zekâ × Dijital ürün
           </p>
           <h1 id="hero-title">
             <span>Selin</span>
@@ -247,6 +350,10 @@ export default function Home() {
               robotik, web ve siber güvenlik projelerinde teknik olarak sağlam,
               görsel olarak hatırlanan deneyimlere dönüştürüyorum.
             </p>
+            <div className="hero-actions">
+              <a href="#isler">Projeleri keşfet <span aria-hidden="true">↓</span></a>
+              <a href="/selin-turkmen-cv.pdf" download>Profili indir <span aria-hidden="true">↘</span></a>
+            </div>
             <dl className="hero-facts">
               <div>
                 <dt>Odak</dt>
@@ -289,6 +396,10 @@ export default function Home() {
             >
               <source src="/projects/nexora.mp4" type="video/mp4" />
             </video>
+            <div className="media-hud" aria-hidden="true">
+              <span>SYS / ONLINE</span>
+              <span>ROS2 · GZ-11</span>
+            </div>
             <span className="scan-line" aria-hidden="true" />
           </div>
           <div className="featured-title-row">
@@ -298,7 +409,17 @@ export default function Home() {
         </article>
       </section>
 
-      <section className="work" id="isler" aria-labelledby="work-title">
+      <section className="kinetic-band" aria-label="Uzmanlık alanları">
+        <div>
+          <span>ROBOTİK</span><i>×</i><span>YAPAY ZEKÂ</span><i>×</i>
+          <span>WEB SİSTEMLERİ</span><i>×</i><span>SİBER GÜVENLİK</span><i>×</i>
+          <span>ÜRÜN DENEYİMİ</span><i>×</i><span>ROBOTİK</span><i>×</i>
+          <span>YAPAY ZEKÂ</span><i>×</i><span>WEB SİSTEMLERİ</span><i>×</i>
+          <span>SİBER GÜVENLİK</span><i>×</i><span>ÜRÜN DENEYİMİ</span><i>×</i>
+        </div>
+      </section>
+
+      <section className="work" id="isler" aria-labelledby="work-title" data-nav-section>
         <div className="section-heading reveal" data-reveal>
           <div>
             <p className="section-index">07 seçili proje · 02 TÜBİTAK çalışması</p>
@@ -311,6 +432,7 @@ export default function Home() {
           className="research-note reveal"
           data-reveal
           id="tubitak"
+          data-nav-section
           aria-label="TÜBİTAK araştırma projeleri"
         >
           <span>TÜBİTAK / Ar-Ge</span>
@@ -320,7 +442,12 @@ export default function Home() {
 
         <div className="project-grid">
           {projects.map((project) => (
-            <article className={`${project.className} reveal`} data-reveal key={project.title}>
+            <article
+              className={`${project.className} reveal`}
+              data-reveal
+              data-project={project.index}
+              key={project.title}
+            >
               <div className="project-media">
                 {project.preview === "rota" ? (
                   <div
@@ -391,13 +518,37 @@ export default function Home() {
                 <p>{project.kicker}</p>
                 <h3>{project.title}</h3>
                 <span>{project.description}</span>
+                <div className="project-signal" aria-hidden="true">
+                  <span>CASE / {project.index}</span>
+                  <i />
+                  <span>SELİN TÜRKMEN</span>
+                </div>
               </div>
             </article>
           ))}
         </div>
+
+        <div className="proof-grid reveal" data-reveal aria-label="Portfolyo özeti">
+          <article>
+            <strong data-count="7" data-pad="2">07</strong>
+            <span>Seçili dijital ve fiziksel proje</span>
+          </article>
+          <article>
+            <strong data-count="2" data-pad="2">02</strong>
+            <span>TÜBİTAK araştırma çalışması</span>
+          </article>
+          <article>
+            <strong data-count="300">300</strong>
+            <span>Gerçek zamanlı görselleştirilen nöron</span>
+          </article>
+          <article>
+            <strong data-count="1" data-pad="2">01</strong>
+            <span>Tasarımı ve üretimi bana ait drone</span>
+          </article>
+        </div>
       </section>
 
-      <section className="profile" id="profil" aria-labelledby="profile-title">
+      <section className="profile" id="profil" aria-labelledby="profile-title" data-nav-section>
         <div className="profile-lead reveal" data-reveal>
           <p className="section-index">Profil / 02</p>
           <h2 id="profile-title">
@@ -436,7 +587,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="skills" id="yetkinlikler" aria-labelledby="skills-title">
+      <section className="skills" id="yetkinlikler" aria-labelledby="skills-title" data-nav-section>
         <div className="reveal" data-reveal>
           <p className="section-index">Araç seti / 03</p>
           <h2 id="skills-title">Merak geniş.<br />Temel sağlam.</h2>
@@ -462,8 +613,24 @@ export default function Home() {
         </ul>
       </section>
 
+      <section className="contact-stage reveal" data-reveal aria-labelledby="contact-title">
+        <div className="contact-kicker">
+          <span className="status-dot" aria-hidden="true" />
+          Yeni sistemler için açık
+        </div>
+        <h2 id="contact-title">
+          Bir sonraki fikri<br />
+          <span>birlikte çalıştıralım.</span>
+        </h2>
+        <a href="/selin-turkmen-cv.pdf" download>
+          <span>Profili keşfet</span>
+          <strong aria-hidden="true">↗</strong>
+        </a>
+        <div className="contact-orbit" aria-hidden="true"><i /><i /><i /></div>
+      </section>
+
       <footer className="reveal" data-reveal>
-        <p>Yeni fikirlere, stajlara ve iş birliklerine açığım.</p>
+        <p>Yeni fikirlere, ürün ekiplerine ve iş birliklerine açığım.</p>
         <a href="/selin-turkmen-cv.pdf" download>Özgeçmiş ↘</a>
         <span>İstanbul / TR · 2026</span>
       </footer>
