@@ -3,10 +3,14 @@ const motionButton = document.getElementById("motion-toggle");
 const videos = Array.from(document.querySelectorAll("video"));
 const revealElements = Array.from(document.querySelectorAll("[data-reveal]"));
 const projectCards = Array.from(document.querySelectorAll(".project-card"));
+const counters = Array.from(document.querySelectorAll("[data-count]"));
+const navLinks = Array.from(document.querySelectorAll("[data-nav]"));
+const navSections = Array.from(document.querySelectorAll("[data-nav-section]"));
 const header = document.querySelector(".site-header");
 const finePointer = window.matchMedia("(pointer: fine)").matches;
 let motionPaused = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 let scrollFrame = 0;
+let pointerFrame = 0;
 
 root.classList.add("js-enhanced");
 
@@ -85,10 +89,82 @@ projectCards.forEach((card) => {
   card.addEventListener("pointerleave", () => resetCard(card));
 });
 
+window.addEventListener(
+  "pointermove",
+  (event) => {
+    if (!finePointer || motionPaused) return;
+    if (pointerFrame) window.cancelAnimationFrame(pointerFrame);
+    pointerFrame = window.requestAnimationFrame(() => {
+      root.style.setProperty("--cursor-x", `${event.clientX}px`);
+      root.style.setProperty("--cursor-y", `${event.clientY}px`);
+      root.style.setProperty("--hero-x", `${(event.clientX / window.innerWidth - 0.5) * 18}px`);
+      root.style.setProperty("--hero-y", `${(event.clientY / window.innerHeight - 0.5) * 18}px`);
+    });
+  },
+  { passive: true },
+);
+
+function animateCounter(element) {
+  const target = Number(element.dataset.count || "0");
+  const suffix = element.dataset.suffix || "";
+  const prefix = element.dataset.prefix || "";
+  const pad = Number(element.dataset.pad || "0");
+
+  if (!Number.isFinite(target) || motionPaused) {
+    element.textContent = `${prefix}${String(target).padStart(pad, "0")}${suffix}`;
+    return;
+  }
+
+  const start = performance.now();
+  const duration = 1150;
+  const tick = (now) => {
+    const progress = Math.min(1, (now - start) / duration);
+    const eased = 1 - Math.pow(1 - progress, 4);
+    const value = Math.round(target * eased);
+    element.textContent = `${prefix}${String(value).padStart(pad, "0")}${suffix}`;
+    if (progress < 1) window.requestAnimationFrame(tick);
+  };
+  window.requestAnimationFrame(tick);
+}
+
+if ("IntersectionObserver" in window) {
+  const counterObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        animateCounter(entry.target);
+        counterObserver.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.55 },
+  );
+  counters.forEach((counter) => counterObserver.observe(counter));
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      const current = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!current) return;
+      navLinks.forEach((link) => {
+        const active = link.getAttribute("href") === `#${current.target.id}`;
+        link.classList.toggle("is-active", active);
+        if (active) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      });
+    },
+    { rootMargin: "-28% 0px -58%", threshold: [0.08, 0.3, 0.6] },
+  );
+  navSections.forEach((section) => sectionObserver.observe(section));
+} else {
+  counters.forEach(animateCounter);
+}
+
 function updateScrollEffects() {
   scrollFrame = 0;
   const scrollable = Math.max(1, root.scrollHeight - window.innerHeight);
   root.style.setProperty("--scroll-progress", String(Math.min(1, window.scrollY / scrollable)));
+  root.style.setProperty("--hero-title-shift", `${Math.min(26, window.scrollY * 0.04)}px`);
   header?.classList.toggle("is-scrolled", window.scrollY > 24);
 }
 
