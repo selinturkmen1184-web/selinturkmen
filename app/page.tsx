@@ -87,6 +87,7 @@ export default function Home() {
     const navLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-nav]"));
     const navSections = Array.from(document.querySelectorAll<HTMLElement>("[data-nav-section]"));
     const header = document.querySelector<HTMLElement>(".site-header");
+    const cinematicIntro = document.querySelector<HTMLElement>(".cinematic-intro");
     const finePointer = window.matchMedia("(pointer: fine)").matches;
     const tiltFrames = new Map<HTMLElement, number>();
     const counterFrames = new Map<HTMLElement, number>();
@@ -236,8 +237,27 @@ export default function Home() {
       scrollFrame = 0;
       const scrollable = Math.max(1, root.scrollHeight - window.innerHeight);
       root.style.setProperty("--scroll-progress", String(Math.min(1, window.scrollY / scrollable)));
-      root.style.setProperty("--hero-shift", `${Math.min(150, window.scrollY * 0.18)}px`);
-      root.style.setProperty("--hero-title-shift", `${Math.min(26, window.scrollY * 0.04)}px`);
+
+      if (cinematicIntro) {
+        const introRange = Math.max(1, cinematicIntro.offsetHeight - window.innerHeight);
+        const introProgress = Math.min(1, Math.max(0, window.scrollY / introRange));
+        const portfolioProgress = Math.min(1, Math.max(0, (introProgress - 0.58) / 0.42));
+        const heroScrollStart = Math.max(0, introRange - window.innerHeight * 0.38);
+        const heroScroll = Math.max(0, window.scrollY - heroScrollStart);
+
+        root.style.setProperty("--intro-scale", String(1 + introProgress * 0.13));
+        root.style.setProperty("--intro-opacity", String(1 - introProgress * 0.97));
+        root.style.setProperty("--intro-blur", `${introProgress * 9}px`);
+        root.style.setProperty("--intro-shift", `${introProgress * -42}px`);
+        root.style.setProperty("--intro-copy-shift", `${introProgress * -74}px`);
+        root.style.setProperty("--intro-copy-opacity", String(Math.max(0, 1 - introProgress * 1.7)));
+        root.style.setProperty("--portfolio-opacity", String(portfolioProgress));
+        root.style.setProperty("--portfolio-y", `${(1 - portfolioProgress) * 54}px`);
+        root.style.setProperty("--hero-title-shift", `${Math.min(26, heroScroll * 0.04)}px`);
+      } else {
+        root.style.setProperty("--hero-title-shift", `${Math.min(26, window.scrollY * 0.04)}px`);
+      }
+
       header?.classList.toggle("is-scrolled", window.scrollY > 24);
     };
     const handleScroll = () => {
@@ -271,6 +291,14 @@ export default function Home() {
       root.classList.remove("js-enhanced", "hero-ready", "motion-paused");
       root.style.removeProperty("--scroll-progress");
       root.style.removeProperty("--hero-title-shift");
+      root.style.removeProperty("--intro-scale");
+      root.style.removeProperty("--intro-opacity");
+      root.style.removeProperty("--intro-blur");
+      root.style.removeProperty("--intro-shift");
+      root.style.removeProperty("--intro-copy-shift");
+      root.style.removeProperty("--intro-copy-opacity");
+      root.style.removeProperty("--portfolio-opacity");
+      root.style.removeProperty("--portfolio-y");
       root.style.removeProperty("--cursor-x");
       root.style.removeProperty("--cursor-y");
       root.style.removeProperty("--hero-x");
@@ -308,6 +336,35 @@ export default function Home() {
         <p>Sistemler hazırlanıyor / 2026</p>
       </div>
 
+      <section
+        className="cinematic-intro"
+        id="top"
+        aria-label="Selin Türkmen sinematik portfolyo girişi"
+      >
+        <div className="cinematic-intro__sticky">
+          <img
+            className="cinematic-intro__backdrop"
+            src="/og.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <img
+            className="cinematic-intro__image"
+            src="/og.png"
+            alt="Robotik kol, tarımsal drone ve yapay zekâ ağıyla Selin Türkmen portfolyosu"
+          />
+          <div className="cinematic-intro__veil" aria-hidden="true" />
+          <div className="cinematic-intro__frame" aria-hidden="true">
+            <span>ST / SYSTEM 00</span>
+            <span>SCROLL TO ENTER</span>
+          </div>
+          <div className="cinematic-intro__scroll" aria-hidden="true">
+            <span>Kaydır ve keşfet</span>
+            <i />
+          </div>
+        </div>
+      </section>
+
       <header className="site-header">
         <a className="wordmark" href="#top" aria-label="Selin Türkmen ana sayfa">
           <span className="status-dot" aria-hidden="true" />
@@ -330,7 +387,7 @@ export default function Home() {
         </button>
       </header>
 
-      <section className="hero" id="top" aria-labelledby="hero-title" data-nav-section>
+      <section className="hero" id="portfolio" aria-labelledby="hero-title" data-nav-section>
         <div className="hero-orbit" aria-hidden="true">
           <span />
           <i />
