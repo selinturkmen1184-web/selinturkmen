@@ -81,7 +81,27 @@ const projects = [
       "Karbür freze, matkap, torna ucu ve takım tutucuları; kategori keşfi, ürün filtreleri, sepet ve teknik teklif akışıyla birleştiren endüstriyel e-ticaret deneyimi.",
     href: "https://selinturkmen1184-web.github.io/mikronex-cutting-tools-demo/#catalog",
     preview: "mikronex",
-    className: "project-card project-card--mikronex",
+    className: "project-card project-card--mikronex project-card--full",
+  },
+  {
+    index: "09",
+    title: "ELLS — Otonom Çay Hasat Sistemi",
+    kicker: "Tarım Teknolojileri / Yapay Zekâ / Otonom Sistem",
+    description:
+      "Zorlu arazilerde çay hasadını; yapay zekâ destekli algılama, görev planlama ve saha uyumlu mekanik yaklaşımla daha kontrollü, izlenebilir ve ölçeklenebilir kılan ürün deneyimi.",
+    href: "https://selinturkmen1184-web.github.io/ells_/",
+    preview: "ells",
+    className: "project-card project-card--lead project-card--ells",
+  },
+  {
+    index: "10",
+    title: "Cici Kutular — Etkileşimli Advent World",
+    kicker: "Etkileşimli Web / Oyunlaştırma / Deneyim",
+    description:
+      "24 günlük sürpriz kutularını; üç tema, mini oyunlar, şans çarkı, galeri, anılar, kupalar ve rozetlerle kişiselleştiren oyunlaştırılmış web deneyimi.",
+    href: "https://selinturkmen1184-web.github.io/cickutu/",
+    preview: "cici",
+    className: "project-card project-card--wide project-card--cici",
   },
 ];
 
@@ -414,7 +434,7 @@ export default function Home() {
           <a className="hero-work-bridge" href="#isler" aria-label="Yapılan işlere geç">
             <strong>Yapılan işler</strong>
             <span>
-              <b>08</b> seçili proje
+              <b>10</b> seçili proje
               <i aria-hidden="true">↓</i>
             </span>
           </a>
@@ -496,7 +516,7 @@ export default function Home() {
       <section className="work" id="isler" aria-labelledby="work-title" data-nav-section>
         <div className="section-heading reveal" data-reveal>
           <div>
-            <p className="section-index">08 seçili proje · 02 TÜBİTAK çalışması</p>
+            <p className="section-index">10 seçili proje · 02 TÜBİTAK çalışması</p>
             <h2 id="work-title">Yapılan işler.</h2>
           </div>
           <p>2024 — 2026</p>
@@ -583,6 +603,49 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
+                ) : project.preview === "ells" ? (
+                  <div
+                    className="ells-preview"
+                    aria-label="ELLS otonom çay hasat sistemi arayüz önizlemesi"
+                  >
+                    <div className="ells-preview__top">
+                      <strong>ELLS</strong>
+                      <span>Autonomous Tea Harvest System</span>
+                    </div>
+                    <div className="ells-preview__body">
+                      <p>Tarım teknolojileri için otonom çözüm</p>
+                      <h4>Akıllı hasat.<span>Zorlu araziye hazır.</span></h4>
+                      <div className="ells-preview__metrics" aria-hidden="true">
+                        <span><b>AI</b><small>Destekli algılama</small></span>
+                        <span><b>01</b><small>Otonom görev akışı</small></span>
+                        <span><b>∞</b><small>Tarla uyumu</small></span>
+                      </div>
+                    </div>
+                  </div>
+                ) : project.preview === "cici" ? (
+                  <div
+                    className="cici-preview"
+                    aria-label="Cici Kutular etkileşimli advent deneyimi önizlemesi"
+                  >
+                    <div className="cici-preview__top">
+                      <span>Advent World</span>
+                      <strong>Cici Kutular</strong>
+                    </div>
+                    <div className="cici-preview__themes" aria-hidden="true">
+                      <span>🌙 Spiritüel</span>
+                      <span>🎀 Masal</span>
+                      <span>🚀 Gelişim</span>
+                    </div>
+                    <div className="cici-preview__gifts" aria-hidden="true">
+                      {["01", "07", "12", "18", "21", "24"].map((day) => (
+                        <span key={day}><i /><b>{day}</b></span>
+                      ))}
+                    </div>
+                    <div className="cici-preview__footer">
+                      <span>🎮 Mini oyunlar</span>
+                      <span>🏆 Kupalar &amp; rozetler</span>
+                    </div>
+                  </div>
                 ) : (
                   <video
                     autoPlay
@@ -627,7 +690,7 @@ export default function Home() {
 
         <div className="proof-grid reveal" data-reveal aria-label="Portfolyo özeti">
           <article>
-            <strong data-count="8" data-pad="2">08</strong>
+            <strong data-count="10" data-pad="2">10</strong>
             <span>Seçili dijital ve fiziksel proje</span>
           </article>
           <article>
