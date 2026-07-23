@@ -38,6 +38,9 @@ test("server-renders the finished portfolio and research projects", async () => 
   assert.match(html, /02 TÜBİTAK çalışması/);
   assert.doesNotMatch(html, /öğrenci/i);
   assert.match(html, /class="scroll-progress"/);
+  assert.match(html, /class="cinematic-intro"/);
+  assert.match(html, /Kaydır ve keşfet/);
+  assert.match(html, /src="\/og\.png"/);
   assert.match(html, /class="kinetic-band"/);
   assert.match(html, /class="proof-grid/);
   assert.match(html, /class="contact-stage/);
@@ -61,6 +64,8 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.match(text, /rota-tyt-ayt\.kullanici209931\.chatgpt\.site/);
     assert.match(text, /Sabancı Gençlik Hareketi — Sertifika/);
     assert.doesNotMatch(text, /öğrenci/i);
+    assert.match(text, /cinematic-intro/);
+    assert.match(text, /Kaydır ve keşfet/);
     assert.match(text, /Bir sonraki fikri/);
     assert.match(text, /Yeni fikirlere, ürün ekiplerine ve iş birliklerine açığım/);
   }
@@ -72,6 +77,8 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
   assert.match(staticScript, /--tilt-x/);
   assert.match(staticScript, /animateCounter/);
   assert.match(staticScript, /motion-paused/);
+  assert.match(staticScript, /--intro-scale/);
+  assert.match(staticScript, /--portfolio-opacity/);
 
   await Promise.all([
     access(new URL("../public/projects/smg-neural-net.mp4", import.meta.url)),
