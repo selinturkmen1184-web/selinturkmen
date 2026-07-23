@@ -38,9 +38,13 @@ test("server-renders the finished portfolio and research projects", async () => 
   assert.match(html, /02 TÜBİTAK çalışması/);
   assert.doesNotMatch(html, /öğrenci/i);
   assert.match(html, /class="scroll-progress"/);
+  assert.match(html, /class="kinetic-band"/);
+  assert.match(html, /class="proof-grid/);
+  assert.match(html, /class="contact-stage/);
   assert.match(html, /data-reveal/);
+  assert.match(html, /data-count="300"/);
   assert.match(html, /<meta[^>]+property="og:image"[^>]+og\.png/i);
-  assert.doesNotMatch(html, /codex-preview|starter loading skeleton/i);
+  assert.doesNotMatch(html, /codex-preview|starter loading skeleton|stajlara/i);
 });
 
 test("keeps the GitHub Pages version, motion system, and project media in sync", async () => {
@@ -57,12 +61,16 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.match(text, /rota-tyt-ayt\.kullanici209931\.chatgpt\.site/);
     assert.match(text, /Sabancı Gençlik Hareketi — Sertifika/);
     assert.doesNotMatch(text, /öğrenci/i);
+    assert.match(text, /Bir sonraki fikri/);
+    assert.match(text, /Yeni fikirlere, ürün ekiplerine ve iş birliklerine açığım/);
   }
 
   assert.match(appPage, /IntersectionObserver/);
   assert.match(appPage, /--scroll-progress/);
+  assert.match(appPage, /--cursor-x/);
   assert.match(staticScript, /IntersectionObserver/);
   assert.match(staticScript, /--tilt-x/);
+  assert.match(staticScript, /animateCounter/);
   assert.match(staticScript, /motion-paused/);
 
   await Promise.all([
