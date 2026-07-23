@@ -35,6 +35,9 @@ test("server-renders the finished portfolio and research projects", async () => 
   assert.match(html, /Tarımsal Drone — Tasarım ve Üretim/);
   assert.match(html, /Rota — Kişisel TYT &amp; AYT Çalışma Ajandası/);
   assert.match(html, /Sabancı Gençlik Hareketi — Sertifika/);
+  assert.match(html, /Mikronex Cutting Tools — B2B E-Katalog/);
+  assert.match(html, /mikronex-cutting-tools-demo\/#catalog/);
+  assert.match(html, /data-count="8"/);
   assert.match(html, /02 TÜBİTAK çalışması/);
   assert.doesNotMatch(html, /öğrenci/i);
   assert.match(html, /class="scroll-progress"/);
@@ -53,10 +56,11 @@ test("server-renders the finished portfolio and research projects", async () => 
 });
 
 test("keeps the GitHub Pages version, motion system, and project media in sync", async () => {
-  const [appPage, staticPage, staticScript] = await Promise.all([
+  const [appPage, staticPage, staticScript, staticStyles] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../docs/index.html", import.meta.url), "utf8"),
     readFile(new URL("../docs/site.js", import.meta.url), "utf8"),
+    readFile(new URL("../docs/site.css", import.meta.url), "utf8"),
   ]);
 
   for (const text of [appPage, staticPage]) {
@@ -65,6 +69,9 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.match(text, /bütünüyle Selin Türkmen’e aittir/);
     assert.match(text, /rota-tyt-ayt\.kullanici209931\.chatgpt\.site/);
     assert.match(text, /Sabancı Gençlik Hareketi — Sertifika/);
+    assert.match(text, /Mikronex Cutting Tools — B2B E-Katalog/);
+    assert.match(text, /mikronex-cutting-tools-demo\/#catalog/);
+    assert.match(text, /08 seçili proje/);
     assert.doesNotMatch(text, /öğrenci/i);
     assert.match(text, /cinematic-intro/);
     assert.match(text, /Kaydır ve keşfet/);
@@ -83,6 +90,11 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
   assert.match(staticScript, /motion-paused/);
   assert.match(staticScript, /--intro-scale/);
   assert.match(staticScript, /--portfolio-opacity/);
+  assert.match(
+    staticStyles,
+    /\.cinematic-intro\s*\{[^}]*pointer-events:\s*none;[^}]*background:\s*transparent;/s,
+  );
+  assert.match(staticStyles, /\.mikronex-preview\s*\{/);
 
   await Promise.all([
     access(new URL("../public/projects/smg-neural-net.mp4", import.meta.url)),
