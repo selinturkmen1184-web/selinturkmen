@@ -44,6 +44,7 @@ test("server-renders the finished portfolio and research projects", async () => 
   assert.match(html, /data-count="10"/);
   assert.match(html, /02 TÜBİTAK çalışması/);
   assert.doesNotMatch(html, /öğrenci/i);
+  assert.doesNotMatch(html, /Altınbaş Üniversitesi/i);
   assert.match(html, /class="scroll-progress"/);
   assert.match(html, /class="cinematic-intro"/);
   assert.match(html, /Kaydır ve keşfet/);
@@ -81,6 +82,7 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.match(text, /selinturkmen1184-web\.github\.io\/cickutu\//);
     assert.match(text, /10 seçili proje/);
     assert.doesNotMatch(text, /öğrenci/i);
+    assert.doesNotMatch(text, /Altınbaş Üniversitesi/i);
     assert.match(text, /cinematic-intro/);
     assert.match(text, /Kaydır ve keşfet/);
     assert.match(text, /hero-work-bridge/);
