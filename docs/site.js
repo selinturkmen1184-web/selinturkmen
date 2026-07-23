@@ -7,6 +7,7 @@ const counters = Array.from(document.querySelectorAll("[data-count]"));
 const navLinks = Array.from(document.querySelectorAll("[data-nav]"));
 const navSections = Array.from(document.querySelectorAll("[data-nav-section]"));
 const header = document.querySelector(".site-header");
+const cinematicIntro = document.querySelector(".cinematic-intro");
 const finePointer = window.matchMedia("(pointer: fine)").matches;
 let motionPaused = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 let scrollFrame = 0;
@@ -164,7 +165,27 @@ function updateScrollEffects() {
   scrollFrame = 0;
   const scrollable = Math.max(1, root.scrollHeight - window.innerHeight);
   root.style.setProperty("--scroll-progress", String(Math.min(1, window.scrollY / scrollable)));
-  root.style.setProperty("--hero-title-shift", `${Math.min(26, window.scrollY * 0.04)}px`);
+
+  if (cinematicIntro) {
+    const introRange = Math.max(1, cinematicIntro.offsetHeight - window.innerHeight);
+    const introProgress = Math.min(1, Math.max(0, window.scrollY / introRange));
+    const portfolioProgress = Math.min(1, Math.max(0, (introProgress - 0.58) / 0.42));
+    const heroScrollStart = Math.max(0, introRange - window.innerHeight * 0.38);
+    const heroScroll = Math.max(0, window.scrollY - heroScrollStart);
+
+    root.style.setProperty("--intro-scale", String(1 + introProgress * 0.13));
+    root.style.setProperty("--intro-opacity", String(1 - introProgress * 0.97));
+    root.style.setProperty("--intro-blur", `${introProgress * 9}px`);
+    root.style.setProperty("--intro-shift", `${introProgress * -42}px`);
+    root.style.setProperty("--intro-copy-shift", `${introProgress * -74}px`);
+    root.style.setProperty("--intro-copy-opacity", String(Math.max(0, 1 - introProgress * 1.7)));
+    root.style.setProperty("--portfolio-opacity", String(portfolioProgress));
+    root.style.setProperty("--portfolio-y", `${(1 - portfolioProgress) * 54}px`);
+    root.style.setProperty("--hero-title-shift", `${Math.min(26, heroScroll * 0.04)}px`);
+  } else {
+    root.style.setProperty("--hero-title-shift", `${Math.min(26, window.scrollY * 0.04)}px`);
+  }
+
   header?.classList.toggle("is-scrolled", window.scrollY > 24);
 }
 
