@@ -728,7 +728,6 @@ export default function Home() {
         <div className="profile-details reveal reveal--right" data-reveal>
           <div className="detail-block">
             <span>01 / Akademik temel</span>
-            <h3>Altınbaş Üniversitesi</h3>
             <p>Yazılım Mühendisliği</p>
             <h3>Anadolu Üniversitesi</h3>
             <p>Yönetim Bilişim Sistemleri — ÇAP</p>
