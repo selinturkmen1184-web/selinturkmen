@@ -95,10 +95,10 @@ const projects = [
   },
   {
     index: "10",
-    title: "Cici Kutular — Etkileşimli Advent World",
-    kicker: "Etkileşimli Web / Oyunlaştırma / Deneyim",
+    title: "Advent World — Etkileşimli Sürpriz Takvimi",
+    kicker: "Etkileşimli Web / Oyunlaştırma / Kişiselleştirme",
     description:
-      "24 günlük sürpriz kutularını; üç tema, mini oyunlar, şans çarkı, galeri, anılar, kupalar ve rozetlerle kişiselleştiren oyunlaştırılmış web deneyimi.",
+      "24 gün ve 24 sürprizi; Spiritüel, Masal ve Gelişim temaları, mini oyunlar, kupalar, rozetler, galeri ve kişisel anılarla birleştiren etkileşimli advent deneyimi.",
     href: "https://selinturkmen1184-web.github.io/cickutu/",
     preview: "cici",
     className: "project-card project-card--wide project-card--cici",
@@ -624,27 +624,18 @@ export default function Home() {
                   </div>
                 ) : project.preview === "cici" ? (
                   <div
-                    className="cici-preview"
-                    aria-label="Cici Kutular etkileşimli advent deneyimi önizlemesi"
+                    className="cici-live-preview"
+                    aria-label="Advent World canlı proje önizlemesi"
                   >
-                    <div className="cici-preview__top">
-                      <span>Advent World</span>
-                      <strong>Cici Kutular</strong>
-                    </div>
-                    <div className="cici-preview__themes" aria-hidden="true">
-                      <span>🌙 Spiritüel</span>
-                      <span>🎀 Masal</span>
-                      <span>🚀 Gelişim</span>
-                    </div>
-                    <div className="cici-preview__gifts" aria-hidden="true">
-                      {["01", "07", "12", "18", "21", "24"].map((day) => (
-                        <span key={day}><i /><b>{day}</b></span>
-                      ))}
-                    </div>
-                    <div className="cici-preview__footer">
-                      <span>🎮 Mini oyunlar</span>
-                      <span>🏆 Kupalar &amp; rozetler</span>
-                    </div>
+                    <iframe
+                      src="https://selinturkmen1184-web.github.io/cickutu/"
+                      title="Advent World — Etkileşimli Sürpriz Takvimi canlı önizlemesi"
+                      loading="lazy"
+                      tabIndex={-1}
+                    />
+                    <span className="cici-live-preview__badge" aria-hidden="true">
+                      Gerçek proje / canlı arayüz
+                    </span>
                   </div>
                 ) : (
                   <video
