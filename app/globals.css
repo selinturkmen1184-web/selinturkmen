@@ -679,6 +679,10 @@ main {
   grid-column: span 12;
 }
 
+.project-card--mikronex {
+  grid-column: span 12;
+}
+
 .project-card:last-child {
   grid-column: span 12;
 }
@@ -861,6 +865,137 @@ main {
 
 .rota-preview__score > strong {
   color: var(--acid);
+}
+
+.mikronex-preview {
+  position: relative;
+  height: 100%;
+  padding: 30px 34px;
+  overflow: hidden;
+  color: #f3efe5;
+  background:
+    radial-gradient(circle at 78% 24%, rgba(198, 156, 67, 0.15), transparent 24%),
+    linear-gradient(125deg, #10100f 0%, #191816 58%, #0b0b0a 100%);
+}
+
+.mikronex-preview::before {
+  position: absolute;
+  top: -32%;
+  right: -7%;
+  width: 38%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(198, 156, 67, 0.28);
+  border-radius: 50%;
+  content: "";
+  box-shadow: 0 0 0 38px rgba(198, 156, 67, 0.025), 0 0 0 76px rgba(198, 156, 67, 0.015);
+  transition: transform 650ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover .mikronex-preview::before {
+  transform: scale(1.1) rotate(8deg);
+}
+
+.mikronex-preview__top {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 17px;
+  border-bottom: 1px solid rgba(198, 156, 67, 0.46);
+}
+
+.mikronex-preview__top > span {
+  display: grid;
+  width: 38px;
+  aspect-ratio: 1;
+  place-items: center;
+  color: #12110f;
+  background: #c69c43;
+  font-weight: 850;
+}
+
+.mikronex-preview__top strong {
+  letter-spacing: 0.13em;
+}
+
+.mikronex-preview__top small {
+  justify-self: end;
+  color: #9d988e;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.13em;
+}
+
+.mikronex-preview__body {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(300px, 1.05fr);
+  align-items: end;
+  gap: 40px;
+  height: calc(100% - 56px);
+  padding-top: 22px;
+}
+
+.mikronex-preview__body > p {
+  grid-column: 1;
+  align-self: start;
+  margin: 0;
+  color: #c69c43;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.mikronex-preview__body h4 {
+  grid-column: 1;
+  align-self: end;
+  margin: 0;
+  font-size: clamp(2.15rem, 4.4vw, 5.4rem);
+  letter-spacing: -0.075em;
+  line-height: 0.8;
+  text-transform: uppercase;
+}
+
+.mikronex-preview__body h4 span {
+  display: block;
+  color: #c69c43;
+}
+
+.mikronex-preview__catalog {
+  display: grid;
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: stretch;
+  border-top: 1px solid rgba(243, 239, 229, 0.2);
+}
+
+.mikronex-preview__catalog > span {
+  display: grid;
+  grid-template-columns: minmax(110px, 0.8fr) minmax(150px, 1.5fr) auto;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid rgba(243, 239, 229, 0.16);
+  font-size: 0.68rem;
+}
+
+.mikronex-preview__catalog b {
+  color: #c69c43;
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+
+.mikronex-preview__catalog i {
+  color: #b7b2a8;
+  font-style: normal;
+}
+
+.mikronex-preview__catalog strong {
+  white-space: nowrap;
 }
 
 .project-number,
@@ -1230,6 +1365,7 @@ footer > span {
   .project-card--wide,
   .project-card--compact,
   .project-card--rota,
+  .project-card--mikronex,
   .project-card:last-child {
     grid-column: span 12;
   }
@@ -1394,6 +1530,47 @@ footer > span {
   }
 
   .rota-preview__score {
+    display: none;
+  }
+
+  .mikronex-preview {
+    padding: 22px;
+  }
+
+  .mikronex-preview__top small {
+    display: none;
+  }
+
+  .mikronex-preview__body {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    height: calc(100% - 52px);
+    padding-top: 17px;
+  }
+
+  .mikronex-preview__body > p,
+  .mikronex-preview__body h4 {
+    grid-column: 1;
+  }
+
+  .mikronex-preview__body h4 {
+    align-self: start;
+    font-size: clamp(1.9rem, 10vw, 3.2rem);
+  }
+
+  .mikronex-preview__catalog {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 116px;
+  }
+
+  .mikronex-preview__catalog > span {
+    grid-template-columns: minmax(88px, 0.75fr) 1fr auto;
+    gap: 7px;
+    font-size: 0.52rem;
+  }
+
+  .mikronex-preview__catalog > span:last-child {
     display: none;
   }
 
@@ -2223,7 +2400,8 @@ footer {
   z-index: 7;
   height: 100svh;
   isolation: isolate;
-  background: #050604;
+  pointer-events: none;
+  background: transparent;
 }
 
 .js-enhanced .cinematic-intro {
@@ -2402,6 +2580,12 @@ footer {
 
   .js-enhanced .cinematic-intro + .site-header {
     margin-top: -120svh;
+    opacity: 1;
+  }
+
+  .js-enhanced .hero {
+    opacity: 1;
+    transform: none;
   }
 }
 

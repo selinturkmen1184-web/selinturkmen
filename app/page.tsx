@@ -73,6 +73,16 @@ const projects = [
     preview: "rota",
     className: "project-card project-card--rota",
   },
+  {
+    index: "08",
+    title: "Mikronex Cutting Tools — B2B E-Katalog",
+    kicker: "B2B E-Ticaret / Ürün Kataloğu / Web",
+    description:
+      "Karbür freze, matkap, torna ucu ve takım tutucuları; kategori keşfi, ürün filtreleri, sepet ve teknik teklif akışıyla birleştiren endüstriyel e-ticaret deneyimi.",
+    href: "https://selinturkmen1184-web.github.io/mikronex-cutting-tools-demo/#catalog",
+    preview: "mikronex",
+    className: "project-card project-card--mikronex",
+  },
 ];
 
 export default function Home() {
@@ -404,7 +414,7 @@ export default function Home() {
           <a className="hero-work-bridge" href="#isler" aria-label="Yapılan işlere geç">
             <strong>Yapılan işler</strong>
             <span>
-              <b>07</b> seçili proje
+              <b>08</b> seçili proje
               <i aria-hidden="true">↓</i>
             </span>
           </a>
@@ -486,7 +496,7 @@ export default function Home() {
       <section className="work" id="isler" aria-labelledby="work-title" data-nav-section>
         <div className="section-heading reveal" data-reveal>
           <div>
-            <p className="section-index">07 seçili proje · 02 TÜBİTAK çalışması</p>
+            <p className="section-index">08 seçili proje · 02 TÜBİTAK çalışması</p>
             <h2 id="work-title">Yapılan işler.</h2>
           </div>
           <p>2024 — 2026</p>
@@ -550,6 +560,29 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
+                ) : project.preview === "mikronex" ? (
+                  <div
+                    className="mikronex-preview"
+                    aria-label="Mikronex Cutting Tools B2B e-katalog arayüz önizlemesi"
+                  >
+                    <div className="mikronex-preview__top">
+                      <span aria-hidden="true">M</span>
+                      <strong>MIKRONEX</strong>
+                      <small>CUTTING TOOLS / B2B</small>
+                    </div>
+                    <div className="mikronex-preview__body">
+                      <p>Kesici takımlarda yeni nesil performans</p>
+                      <h4>
+                        Hassas işleme.
+                        <span>Yüksek performans.</span>
+                      </h4>
+                      <div className="mikronex-preview__catalog" aria-hidden="true">
+                        <span><b>MX-F4-080</b><i>4 Ağızlı Karbür Freze</i><strong>1.290 ₺</strong></span>
+                        <span><b>MX-D5-085</b><i>5D Karbür Matkap</i><strong>1.890 ₺</strong></span>
+                        <span><b>MX-CNMG-1204</b><i>Çelik Tornalama Ucu</i><strong>590 ₺</strong></span>
+                      </div>
+                    </div>
+                  </div>
                 ) : (
                   <video
                     autoPlay
@@ -594,7 +627,7 @@ export default function Home() {
 
         <div className="proof-grid reveal" data-reveal aria-label="Portfolyo özeti">
           <article>
-            <strong data-count="7" data-pad="2">07</strong>
+            <strong data-count="8" data-pad="2">08</strong>
             <span>Seçili dijital ve fiziksel proje</span>
           </article>
           <article>
