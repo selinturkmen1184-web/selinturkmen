@@ -41,6 +41,8 @@ test("server-renders the finished portfolio and research projects", async () => 
   assert.match(html, /class="cinematic-intro"/);
   assert.match(html, /Kaydır ve keşfet/);
   assert.match(html, /src="\/og\.png"/);
+  assert.match(html, /class="hero-work-bridge"/);
+  assert.match(html, /<h2 id="work-title">Yapılan işler\.<\/h2>/);
   assert.match(html, /class="kinetic-band"/);
   assert.match(html, /class="proof-grid/);
   assert.match(html, /class="contact-stage/);
@@ -66,6 +68,8 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.doesNotMatch(text, /öğrenci/i);
     assert.match(text, /cinematic-intro/);
     assert.match(text, /Kaydır ve keşfet/);
+    assert.match(text, /hero-work-bridge/);
+    assert.match(text, /Yapılan işler\./);
     assert.match(text, /Bir sonraki fikri/);
     assert.match(text, /Yeni fikirlere, ürün ekiplerine ve iş birliklerine açığım/);
   }
