@@ -37,7 +37,11 @@ test("server-renders the finished portfolio and research projects", async () => 
   assert.match(html, /Sabancı Gençlik Hareketi — Sertifika/);
   assert.match(html, /Mikronex Cutting Tools — B2B E-Katalog/);
   assert.match(html, /mikronex-cutting-tools-demo\/#catalog/);
-  assert.match(html, /data-count="8"/);
+  assert.match(html, /ELLS — Otonom Çay Hasat Sistemi/);
+  assert.match(html, /selinturkmen1184-web\.github\.io\/ells_\//);
+  assert.match(html, /Cici Kutular — Etkileşimli Advent World/);
+  assert.match(html, /selinturkmen1184-web\.github\.io\/cickutu\//);
+  assert.match(html, /data-count="10"/);
   assert.match(html, /02 TÜBİTAK çalışması/);
   assert.doesNotMatch(html, /öğrenci/i);
   assert.match(html, /class="scroll-progress"/);
@@ -71,7 +75,11 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.match(text, /Sabancı Gençlik Hareketi — Sertifika/);
     assert.match(text, /Mikronex Cutting Tools — B2B E-Katalog/);
     assert.match(text, /mikronex-cutting-tools-demo\/#catalog/);
-    assert.match(text, /08 seçili proje/);
+    assert.match(text, /ELLS — Otonom Çay Hasat Sistemi/);
+    assert.match(text, /selinturkmen1184-web\.github\.io\/ells_\//);
+    assert.match(text, /Cici Kutular — Etkileşimli Advent World/);
+    assert.match(text, /selinturkmen1184-web\.github\.io\/cickutu\//);
+    assert.match(text, /10 seçili proje/);
     assert.doesNotMatch(text, /öğrenci/i);
     assert.match(text, /cinematic-intro/);
     assert.match(text, /Kaydır ve keşfet/);
@@ -95,6 +103,8 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     /\.cinematic-intro\s*\{[^}]*pointer-events:\s*none;[^}]*background:\s*transparent;/s,
   );
   assert.match(staticStyles, /\.mikronex-preview\s*\{/);
+  assert.match(staticStyles, /\.ells-preview\s*\{/);
+  assert.match(staticStyles, /\.cici-preview\s*\{/);
 
   await Promise.all([
     access(new URL("../public/projects/smg-neural-net.mp4", import.meta.url)),
