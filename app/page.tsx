@@ -401,6 +401,13 @@ export default function Home() {
             <span>Selin</span>
             <span className="outline-text">Türkmen</span>
           </h1>
+          <a className="hero-work-bridge" href="#isler" aria-label="Yapılan işlere geç">
+            <strong>Yapılan işler</strong>
+            <span>
+              <b>07</b> seçili proje
+              <i aria-hidden="true">↓</i>
+            </span>
+          </a>
           <div className="hero-bottom">
             <p className="hero-intro">
               Yazılım mühendisliği ve yönetim bilişim sistemleri perspektifini;
@@ -480,7 +487,7 @@ export default function Home() {
         <div className="section-heading reveal" data-reveal>
           <div>
             <p className="section-index">07 seçili proje · 02 TÜBİTAK çalışması</p>
-            <h2 id="work-title">Sistemler, hikâyeler, deneyimler.</h2>
+            <h2 id="work-title">Yapılan işler.</h2>
           </div>
           <p>2024 — 2026</p>
         </div>
