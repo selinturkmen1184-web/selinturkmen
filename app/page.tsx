@@ -66,9 +66,9 @@ const projects = [
   {
     index: "07",
     title: "Rota — Kişisel TYT & AYT Çalışma Ajandası",
-    kicker: "Eğitim Teknolojisi / Planlama / Web",
+    kicker: "Eğitim Teknolojisi / Kişisel Planlama / Web",
     description:
-      "TYT ve AYT hazırlığını hedefler, dersler ve günlük çalışma akışlarıyla tek yerde planlamayı kolaylaştıran kişisel çalışma ajandası.",
+      "Konuları, kaynakları, günlük çalışmaları ve saatleri kişiye özel tek bir ajandada birleştiren; ChatGPT ile giriş ve hesap bazlı veri ayrımı sunan TYT & AYT çalışma uygulaması.",
     href: "https://rota-tyt-ayt.kullanici209931.chatgpt.site/",
     preview: "rota",
     className: "project-card project-card--rota",
@@ -566,40 +566,18 @@ export default function Home() {
               <div className="project-media">
                 {project.preview === "rota" ? (
                   <div
-                    className="rota-preview"
-                    aria-label="Rota kişisel TYT ve AYT çalışma ajandası arayüz önizlemesi"
+                    className="rota-live-preview"
+                    aria-label="Rota kişisel TYT ve AYT çalışma ajandası canlı proje önizlemesi"
                   >
-                    <div className="rota-preview__top">
-                      <strong>ROTA</strong>
-                      <span>Kişisel çalışma alanı</span>
-                    </div>
-                    <div className="rota-preview__body">
-                      <div className="rota-preview__week" aria-hidden="true">
-                        {[
-                          ["PZT", "20"],
-                          ["SAL", "21"],
-                          ["ÇAR", "22"],
-                          ["PER", "23"],
-                          ["CUM", "24"],
-                        ].map(([day, date], index) => (
-                          <span className={index === 2 ? "is-today" : ""} key={day}>
-                            <small>{day}</small>
-                            <b>{date}</b>
-                          </span>
-                        ))}
-                      </div>
-                      <div className="rota-preview__focus">
-                        <span>Bugünün rotası</span>
-                        <strong>TYT Matematik</strong>
-                        <small>90 dakika · 32 soru</small>
-                        <i aria-hidden="true"><span /></i>
-                      </div>
-                      <div className="rota-preview__score">
-                        <span>Haftalık ilerleme</span>
-                        <strong>%74</strong>
-                        <small>Hedefe 3 oturum kaldı</small>
-                      </div>
-                    </div>
+                    <iframe
+                      src="https://rota-tyt-ayt.kullanici209931.chatgpt.site/"
+                      title="Rota — Kişisel TYT & AYT Çalışma Ajandası canlı önizlemesi"
+                      loading="lazy"
+                      tabIndex={-1}
+                    />
+                    <span className="rota-live-preview__badge" aria-hidden="true">
+                      Gerçek proje / canlı arayüz
+                    </span>
                   </div>
                 ) : project.preview === "mikronex" ? (
                   <div
