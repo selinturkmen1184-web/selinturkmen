@@ -103,6 +103,16 @@ const projects = [
     preview: "cici",
     className: "project-card project-card--wide project-card--cici",
   },
+  {
+    index: "11",
+    title: "CİHAN: Tahtın Çağı — Oyun Vizyonu",
+    kicker: "Oyun Tasarımı / Ürün Stratejisi / Tarihî 4X",
+    description:
+      "Mobil-first tarihî 4X strateji oyunu için; yaşayan şehir, sadakat ve entrika, ticaret cephesi, ittifak savaşları ve aşamalı üretim yaklaşımını birleştiren özgün oyun vizyonu.",
+    href: "https://selinturkmen1184-web.github.io/cihan-tahtin-cagi/",
+    preview: "cihan",
+    className: "project-card project-card--full project-card--cihan",
+  },
 ];
 
 export default function Home() {
@@ -516,7 +526,7 @@ export default function Home() {
       <section className="work" id="isler" aria-labelledby="work-title" data-nav-section>
         <div className="section-heading reveal" data-reveal>
           <div>
-            <p className="section-index">10 seçili proje · 02 TÜBİTAK çalışması</p>
+            <p className="section-index">11 seçili proje · 02 TÜBİTAK çalışması</p>
             <h2 id="work-title">Yapılan işler.</h2>
           </div>
           <p>2024 — 2026</p>
@@ -637,6 +647,21 @@ export default function Home() {
                       Gerçek proje / canlı arayüz
                     </span>
                   </div>
+                ) : project.preview === "cihan" ? (
+                  <div
+                    className="cihan-live-preview"
+                    aria-label="CİHAN Tahtın Çağı canlı proje önizlemesi"
+                  >
+                    <iframe
+                      src="https://selinturkmen1184-web.github.io/cihan-tahtin-cagi/"
+                      title="CİHAN: Tahtın Çağı — Oyun Vizyonu canlı önizlemesi"
+                      loading="lazy"
+                      tabIndex={-1}
+                    />
+                    <span className="cihan-live-preview__badge" aria-hidden="true">
+                      Gerçek proje / canlı arayüz
+                    </span>
+                  </div>
                 ) : (
                   <video
                     autoPlay
@@ -681,7 +706,7 @@ export default function Home() {
 
         <div className="proof-grid reveal" data-reveal aria-label="Portfolyo özeti">
           <article>
-            <strong data-count="10" data-pad="2">10</strong>
+            <strong data-count="11" data-pad="2">11</strong>
             <span>Seçili dijital ve fiziksel proje</span>
           </article>
           <article>
