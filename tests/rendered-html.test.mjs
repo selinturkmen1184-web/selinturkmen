@@ -41,8 +41,9 @@ test("server-renders the finished portfolio and research projects", async () => 
   assert.match(html, /selinturkmen1184-web\.github\.io\/ells_\//);
   assert.match(html, /Advent World — Etkileşimli Sürpriz Takvimi/);
   assert.match(html, /selinturkmen1184-web\.github\.io\/cickutu\//);
-  assert.match(html, /CİHAN: Tahtın Çağı — Oyun Vizyonu/);
+  assert.match(html, /CİHAN: Tahtın Çağı — Oynanabilir 4X Demo/);
   assert.match(html, /selinturkmen1184-web\.github\.io\/cihan-tahtin-cagi\//);
+  assert.match(html, /cihan-tahtin-cagi\/demo\/\?v=a0c9eba/);
   assert.match(html, /data-count="11"/);
   assert.match(html, /02 TÜBİTAK çalışması/);
   assert.doesNotMatch(html, /öğrenci/i);
@@ -82,8 +83,9 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.match(text, /selinturkmen1184-web\.github\.io\/ells_\//);
     assert.match(text, /Advent World — Etkileşimli Sürpriz Takvimi/);
     assert.match(text, /selinturkmen1184-web\.github\.io\/cickutu\//);
-    assert.match(text, /CİHAN: Tahtın Çağı — Oyun Vizyonu/);
+    assert.match(text, /CİHAN: Tahtın Çağı — Oynanabilir 4X Demo/);
     assert.match(text, /selinturkmen1184-web\.github\.io\/cihan-tahtin-cagi\//);
+    assert.match(text, /cihan-tahtin-cagi\/demo\/\?v=a0c9eba/);
     assert.match(text, /11 seçili proje/);
     assert.doesNotMatch(text, /öğrenci/i);
     assert.doesNotMatch(text, /Altınbaş Üniversitesi/i);
@@ -112,6 +114,7 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
   assert.match(staticStyles, /\.ells-preview\s*\{/);
   assert.match(staticStyles, /\.cici-live-preview\s*\{/);
   assert.match(staticStyles, /\.cihan-live-preview\s*\{/);
+  assert.match(staticStyles, /\.project-demo\s*\{/);
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/cickutu\//);
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/cihan-tahtin-cagi\//);
 
