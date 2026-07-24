@@ -44,7 +44,9 @@ test("server-renders the finished portfolio and research projects", async () => 
   assert.match(html, /CİHAN: Tahtın Çağı — Oynanabilir 4X Demo/);
   assert.match(html, /selinturkmen1184-web\.github\.io\/cihan-tahtin-cagi\//);
   assert.match(html, /cihan-tahtin-cagi\/demo\/\?v=a0c9eba/);
-  assert.match(html, /data-count="11"/);
+  assert.match(html, /Bayemeyc — Mobil Commerce Deneyimi/);
+  assert.match(html, /bayemeyc-app-demo\.kullanici209931\.chatgpt\.site/);
+  assert.match(html, /data-count="12"/);
   assert.match(html, /02 TÜBİTAK çalışması/);
   assert.doesNotMatch(html, /öğrenci/i);
   assert.doesNotMatch(html, /Altınbaş Üniversitesi/i);
@@ -86,7 +88,9 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.match(text, /CİHAN: Tahtın Çağı — Oynanabilir 4X Demo/);
     assert.match(text, /selinturkmen1184-web\.github\.io\/cihan-tahtin-cagi\//);
     assert.match(text, /cihan-tahtin-cagi\/demo\/\?v=a0c9eba/);
-    assert.match(text, /11 seçili proje/);
+    assert.match(text, /Bayemeyc — Mobil Commerce Deneyimi/);
+    assert.match(text, /bayemeyc-app-demo\.kullanici209931\.chatgpt\.site/);
+    assert.match(text, /12 seçili proje/);
     assert.doesNotMatch(text, /öğrenci/i);
     assert.doesNotMatch(text, /Altınbaş Üniversitesi/i);
     assert.match(text, /cinematic-intro/);
@@ -114,9 +118,11 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
   assert.match(staticStyles, /\.ells-preview\s*\{/);
   assert.match(staticStyles, /\.cici-live-preview\s*\{/);
   assert.match(staticStyles, /\.cihan-live-preview\s*\{/);
+  assert.match(staticStyles, /\.bayemeyc-live-preview\s*\{/);
   assert.match(staticStyles, /\.project-demo\s*\{/);
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/cickutu\//);
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/cihan-tahtin-cagi\//);
+  assert.match(staticPage, /<iframe[\s\S]+bayemeyc-app-demo\.kullanici209931\.chatgpt\.site/);
 
   await Promise.all([
     access(new URL("../public/projects/smg-neural-net.mp4", import.meta.url)),
