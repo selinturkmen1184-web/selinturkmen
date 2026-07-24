@@ -105,11 +105,12 @@ const projects = [
   },
   {
     index: "11",
-    title: "CİHAN: Tahtın Çağı — Oyun Vizyonu",
-    kicker: "Oyun Tasarımı / Ürün Stratejisi / Tarihî 4X",
+    title: "CİHAN: Tahtın Çağı — Oynanabilir 4X Demo",
+    kicker: "Oynanabilir Demo / Oyun Tasarımı / Tarihî 4X",
     description:
-      "Mobil-first tarihî 4X strateji oyunu için; yaşayan şehir, sadakat ve entrika, ticaret cephesi, ittifak savaşları ve aşamalı üretim yaklaşımını birleştiren özgün oyun vizyonu.",
+      "Mobil-first tarihî 4X vizyonunu; başkent yönetimi, beş kararlı sınır kalesi kuşatması, gerçek zamanlı savaş, kaynaklar, kahramanlar ve ittifak ekranlarıyla tarayıcıda oynanabilir bir demoya dönüştüren deneyim.",
     href: "https://selinturkmen1184-web.github.io/cihan-tahtin-cagi/",
+    demoHref: "https://selinturkmen1184-web.github.io/cihan-tahtin-cagi/demo/?v=a0c9eba",
     preview: "cihan",
     className: "project-card project-card--full project-card--cihan",
   },
@@ -653,8 +654,8 @@ export default function Home() {
                     aria-label="CİHAN Tahtın Çağı canlı proje önizlemesi"
                   >
                     <iframe
-                      src="https://selinturkmen1184-web.github.io/cihan-tahtin-cagi/"
-                      title="CİHAN: Tahtın Çağı — Oyun Vizyonu canlı önizlemesi"
+                      src="https://selinturkmen1184-web.github.io/cihan-tahtin-cagi/demo/?v=a0c9eba"
+                      title="CİHAN: Sınır Kalesi — Oynanabilir Demo canlı önizlemesi"
                       loading="lazy"
                       tabIndex={-1}
                     />
@@ -689,6 +690,17 @@ export default function Home() {
                 ) : (
                   <span className="project-view">CANLI ÖNİZLEME</span>
                 )}
+                {project.demoHref ? (
+                  <a
+                    className="project-demo"
+                    href={project.demoHref}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`${project.title} demosunu yeni sekmede oyna`}
+                  >
+                    DEMOYU OYNA ↗
+                  </a>
+                ) : null}
               </div>
               <div className="project-copy">
                 <p>{project.kicker}</p>

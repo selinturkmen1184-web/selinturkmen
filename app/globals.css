@@ -1238,7 +1238,8 @@ main {
 }
 
 .project-number,
-.project-view {
+.project-view,
+.project-demo {
   position: absolute;
   z-index: 2;
   top: 15px;
@@ -1255,6 +1256,17 @@ main {
 .project-view {
   right: 15px;
   color: var(--paper);
+}
+
+.project-demo {
+  right: 15px;
+  top: 54px;
+  color: #17120b;
+  background: #e1b868;
+}
+
+.project-demo:hover {
+  background: var(--acid);
 }
 
 a.project-view {
