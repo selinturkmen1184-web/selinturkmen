@@ -41,7 +41,9 @@ test("server-renders the finished portfolio and research projects", async () => 
   assert.match(html, /selinturkmen1184-web\.github\.io\/ells_\//);
   assert.match(html, /Advent World — Etkileşimli Sürpriz Takvimi/);
   assert.match(html, /selinturkmen1184-web\.github\.io\/cickutu\//);
-  assert.match(html, /data-count="10"/);
+  assert.match(html, /CİHAN: Tahtın Çağı — Oyun Vizyonu/);
+  assert.match(html, /selinturkmen1184-web\.github\.io\/cihan-tahtin-cagi\//);
+  assert.match(html, /data-count="11"/);
   assert.match(html, /02 TÜBİTAK çalışması/);
   assert.doesNotMatch(html, /öğrenci/i);
   assert.doesNotMatch(html, /Altınbaş Üniversitesi/i);
@@ -80,7 +82,9 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.match(text, /selinturkmen1184-web\.github\.io\/ells_\//);
     assert.match(text, /Advent World — Etkileşimli Sürpriz Takvimi/);
     assert.match(text, /selinturkmen1184-web\.github\.io\/cickutu\//);
-    assert.match(text, /10 seçili proje/);
+    assert.match(text, /CİHAN: Tahtın Çağı — Oyun Vizyonu/);
+    assert.match(text, /selinturkmen1184-web\.github\.io\/cihan-tahtin-cagi\//);
+    assert.match(text, /11 seçili proje/);
     assert.doesNotMatch(text, /öğrenci/i);
     assert.doesNotMatch(text, /Altınbaş Üniversitesi/i);
     assert.match(text, /cinematic-intro/);
@@ -107,7 +111,9 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
   assert.match(staticStyles, /\.mikronex-preview\s*\{/);
   assert.match(staticStyles, /\.ells-preview\s*\{/);
   assert.match(staticStyles, /\.cici-live-preview\s*\{/);
+  assert.match(staticStyles, /\.cihan-live-preview\s*\{/);
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/cickutu\//);
+  assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/cihan-tahtin-cagi\//);
 
   await Promise.all([
     access(new URL("../public/projects/smg-neural-net.mp4", import.meta.url)),
