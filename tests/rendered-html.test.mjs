@@ -99,8 +99,12 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.match(text, /Yapılan işler\./);
     assert.match(text, /Bir sonraki fikri/);
     assert.match(text, /Yeni fikirlere, ürün ekiplerine ve iş birliklerine açığım/);
+    assert.match(text, /rota-live-preview/);
+    assert.doesNotMatch(text, /Haftalık ilerleme|Hedefe 3 oturum kaldı|%74/);
   }
 
+  assert.match(staticPage, /<iframe[\s\S]+rota-tyt-ayt\.kullanici209931\.chatgpt\.site/);
+  assert.match(staticStyles, /\.rota-live-preview\s*\{/);
   assert.match(appPage, /IntersectionObserver/);
   assert.match(appPage, /--scroll-progress/);
   assert.match(appPage, /--cursor-x/);
