@@ -114,6 +114,16 @@ const projects = [
     preview: "cihan",
     className: "project-card project-card--full project-card--cihan",
   },
+  {
+    index: "12",
+    title: "Bayemeyc — Mobil Commerce Deneyimi",
+    kicker: "Mobil Ticaret / E-Ticaret / Ürün Deneyimi",
+    description:
+      "Yeni sezon koleksiyonlarını; kategori keşfi, favoriler, hızlı sepete ekleme, kampanyalar, kişiselleştirilmiş seçkiler, Shop the Look ve üyelik avantajlarıyla birleştiren etkileşimli mobil alışveriş deneyimi.",
+    href: "https://bayemeyc-app-demo.kullanici209931.chatgpt.site/",
+    preview: "bayemeyc",
+    className: "project-card project-card--full project-card--bayemeyc",
+  },
 ];
 
 export default function Home() {
@@ -527,7 +537,7 @@ export default function Home() {
       <section className="work" id="isler" aria-labelledby="work-title" data-nav-section>
         <div className="section-heading reveal" data-reveal>
           <div>
-            <p className="section-index">11 seçili proje · 02 TÜBİTAK çalışması</p>
+            <p className="section-index">12 seçili proje · 02 TÜBİTAK çalışması</p>
             <h2 id="work-title">Yapılan işler.</h2>
           </div>
           <p>2024 — 2026</p>
@@ -663,6 +673,21 @@ export default function Home() {
                       Gerçek proje / canlı arayüz
                     </span>
                   </div>
+                ) : project.preview === "bayemeyc" ? (
+                  <div
+                    className="bayemeyc-live-preview"
+                    aria-label="Bayemeyc mobil uygulama canlı proje önizlemesi"
+                  >
+                    <iframe
+                      src="https://bayemeyc-app-demo.kullanici209931.chatgpt.site/"
+                      title="Bayemeyc Mobil Uygulama Demosu canlı önizlemesi"
+                      loading="lazy"
+                      tabIndex={-1}
+                    />
+                    <span className="bayemeyc-live-preview__badge" aria-hidden="true">
+                      Gerçek proje / canlı arayüz
+                    </span>
+                  </div>
                 ) : (
                   <video
                     autoPlay
@@ -718,7 +743,7 @@ export default function Home() {
 
         <div className="proof-grid reveal" data-reveal aria-label="Portfolyo özeti">
           <article>
-            <strong data-count="11" data-pad="2">11</strong>
+            <strong data-count="12" data-pad="2">12</strong>
             <span>Seçili dijital ve fiziksel proje</span>
           </article>
           <article>

@@ -1237,6 +1237,54 @@ main {
   backdrop-filter: blur(8px);
 }
 
+.bayemeyc-live-preview {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  background: #ece8e1;
+}
+
+.bayemeyc-live-preview::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 58%, rgba(20, 16, 13, 0.25) 100%);
+}
+
+.bayemeyc-live-preview iframe {
+  width: 135%;
+  height: 135%;
+  border: 0;
+  pointer-events: none;
+  transform: scale(0.741);
+  transform-origin: top left;
+  transition: transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover .bayemeyc-live-preview iframe {
+  transform: scale(0.76);
+}
+
+.bayemeyc-live-preview__badge {
+  position: absolute;
+  z-index: 1;
+  right: 16px;
+  bottom: 15px;
+  padding: 7px 9px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(22, 17, 14, 0.72);
+  box-shadow: 0 8px 20px rgba(22, 17, 14, 0.22);
+  font-family: var(--font-mono);
+  font-size: 0.45rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
 .project-number,
 .project-view,
 .project-demo {
@@ -1864,6 +1912,16 @@ footer > span {
   }
 
   .project-card:hover .cihan-live-preview iframe {
+    transform: scale(0.62);
+  }
+
+  .bayemeyc-live-preview iframe {
+    width: 165%;
+    height: 165%;
+    transform: scale(0.607);
+  }
+
+  .project-card:hover .bayemeyc-live-preview iframe {
     transform: scale(0.62);
   }
 
