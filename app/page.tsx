@@ -604,22 +604,18 @@ export default function Home() {
                   </div>
                 ) : project.preview === "ells" ? (
                   <div
-                    className="ells-preview"
-                    aria-label="ELLS otonom çay hasat sistemi arayüz önizlemesi"
+                    className="ells-live-preview"
+                    aria-label="ELLS otonom çay hasat sistemi canlı proje önizlemesi"
                   >
-                    <div className="ells-preview__top">
-                      <strong>ELLS</strong>
-                      <span>Autonomous Tea Harvest System</span>
-                    </div>
-                    <div className="ells-preview__body">
-                      <p>Tarım teknolojileri için otonom çözüm</p>
-                      <h4>Akıllı hasat.<span>Zorlu araziye hazır.</span></h4>
-                      <div className="ells-preview__metrics" aria-hidden="true">
-                        <span><b>AI</b><small>Destekli algılama</small></span>
-                        <span><b>01</b><small>Otonom görev akışı</small></span>
-                        <span><b>∞</b><small>Tarla uyumu</small></span>
-                      </div>
-                    </div>
+                    <iframe
+                      src="https://selinturkmen1184-web.github.io/ells_/"
+                      title="ELLS — Otonom Çay Hasat Sistemi canlı önizlemesi"
+                      loading="lazy"
+                      tabIndex={-1}
+                    />
+                    <span className="ells-live-preview__badge" aria-hidden="true">
+                      Gerçek proje / canlı arayüz
+                    </span>
                   </div>
                 ) : project.preview === "cici" ? (
                   <div
