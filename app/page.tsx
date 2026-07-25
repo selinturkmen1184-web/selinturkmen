@@ -760,11 +760,15 @@ export default function Home() {
             <p>Yönetim Bilişim Sistemleri — ÇAP</p>
           </div>
           <div className="detail-block">
-            <span>02 / Sertifikalar</span>
+            <span>02 / Programlar &amp; Sertifikalar</span>
             <p>Dijital Dönüşüm Dinamikleri</p>
             <p>Siber Güvenliğe Giriş</p>
             <p>İSMEK — JavaScript, 2025</p>
-            <p className="certificate-feature">Sabancı Gençlik Hareketi — Sertifika</p>
+            <div className="certificate-stack" aria-label="Öne çıkan program ve sertifikalar">
+              <p className="certificate-feature">Sabancı Gençlik Hareketi — Sertifika</p>
+              <p className="certificate-feature">T3 Vakfı — Prototipleme Eğitimi</p>
+              <p className="certificate-feature">T3 Vakfı — Görüntü İşlemeye Giriş Atölyesi</p>
+            </div>
           </div>
           <div className="detail-block">
             <span>03 / Diller</span>
