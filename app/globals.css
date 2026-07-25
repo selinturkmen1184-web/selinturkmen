@@ -1244,9 +1244,15 @@ a.project-view:hover {
   line-height: 1.5;
 }
 
+.certificate-stack {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+}
+
 .detail-block .certificate-feature {
   position: relative;
-  margin-top: 18px;
+  margin: 0;
   padding: 13px 16px 13px 42px;
   border: 1px solid rgba(216, 255, 62, 0.24);
   color: var(--paper);
