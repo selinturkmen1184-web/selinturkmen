@@ -48,7 +48,11 @@ test("server-renders the finished portfolio and research projects", async () => 
   assert.match(html, /cihan-tahtin-cagi\/demo\/\?v=a0c9eba/);
   assert.match(html, /Bayemeyc — Mobil Commerce Deneyimi/);
   assert.match(html, /bayemeyc-app-demo\.kullanici209931\.chatgpt\.site/);
-  assert.match(html, /data-count="12"/);
+  assert.match(html, /Marinef — Marine Systems/);
+  assert.match(html, /selinturkmen1184-web\.github\.io\/#marine/);
+  assert.match(html, /Orkide Peyzaj — Kurumsal Hizmet Deneyimi/);
+  assert.match(html, /selinturkmen1184-web\.github\.io\/orkide-peyzaj\//);
+  assert.match(html, /data-count="14"/);
   assert.match(html, /02 TÜBİTAK çalışması/);
   assert.doesNotMatch(html, /öğrenci/i);
   assert.doesNotMatch(html, /Altınbaş Üniversitesi/i);
@@ -94,7 +98,12 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.match(text, /cihan-tahtin-cagi\/demo\/\?v=a0c9eba/);
     assert.match(text, /Bayemeyc — Mobil Commerce Deneyimi/);
     assert.match(text, /bayemeyc-app-demo\.kullanici209931\.chatgpt\.site/);
-    assert.match(text, /12 seçili proje/);
+    assert.match(text, /Marinef — Marine Systems/);
+    assert.match(text, /selinturkmen1184-web\.github\.io\/#marine/);
+    assert.match(text, /Orkide Peyzaj — Kurumsal Hizmet Deneyimi/);
+    assert.match(text, /selinturkmen1184-web\.github\.io\/orkide-peyzaj\//);
+    assert.match(text, /14 seçili proje/);
+    assert.doesNotMatch(text, /10 seçili proje/);
     assert.doesNotMatch(text, /öğrenci/i);
     assert.doesNotMatch(text, /Altınbaş Üniversitesi/i);
     assert.match(text, /cinematic-intro/);
@@ -129,11 +138,14 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
   assert.match(staticStyles, /\.cici-live-preview\s*\{/);
   assert.match(staticStyles, /\.cihan-live-preview\s*\{/);
   assert.match(staticStyles, /\.bayemeyc-live-preview\s*\{/);
+  assert.match(staticStyles, /\.external-live-preview\s*\{/);
   assert.match(staticStyles, /\.project-demo\s*\{/);
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/cickutu\//);
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/ells_\//);
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/cihan-tahtin-cagi\//);
   assert.match(staticPage, /<iframe[\s\S]+bayemeyc-app-demo\.kullanici209931\.chatgpt\.site/);
+  assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/#marine/);
+  assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/orkide-peyzaj\//);
 
   await Promise.all([
     access(new URL("../public/projects/smg-neural-net.mp4", import.meta.url)),
