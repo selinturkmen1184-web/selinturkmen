@@ -101,6 +101,8 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.match(text, /Yeni fikirlere, ürün ekiplerine ve iş birliklerine açığım/);
     assert.match(text, /rota-live-preview/);
     assert.doesNotMatch(text, /Haftalık ilerleme|Hedefe 3 oturum kaldı|%74/);
+    assert.match(text, /ells-live-preview/);
+    assert.doesNotMatch(text, /Akıllı hasat|Zorlu araziye hazır|∞/);
   }
 
   assert.match(staticPage, /<iframe[\s\S]+rota-tyt-ayt\.kullanici209931\.chatgpt\.site/);
@@ -119,12 +121,13 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     /\.cinematic-intro\s*\{[^}]*pointer-events:\s*none;[^}]*background:\s*transparent;/s,
   );
   assert.match(staticStyles, /\.mikronex-preview\s*\{/);
-  assert.match(staticStyles, /\.ells-preview\s*\{/);
+  assert.match(staticStyles, /\.ells-live-preview\s*\{/);
   assert.match(staticStyles, /\.cici-live-preview\s*\{/);
   assert.match(staticStyles, /\.cihan-live-preview\s*\{/);
   assert.match(staticStyles, /\.bayemeyc-live-preview\s*\{/);
   assert.match(staticStyles, /\.project-demo\s*\{/);
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/cickutu\//);
+  assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/ells_\//);
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/cihan-tahtin-cagi\//);
   assert.match(staticPage, /<iframe[\s\S]+bayemeyc-app-demo\.kullanici209931\.chatgpt\.site/);
 
