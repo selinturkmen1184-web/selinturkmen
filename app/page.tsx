@@ -124,6 +124,26 @@ const projects = [
     preview: "bayemeyc",
     className: "project-card project-card--full project-card--bayemeyc",
   },
+  {
+    index: "13",
+    title: "Marinef — Marine Systems",
+    kicker: "Denizcilik / Hidrolik Sistemler / Kurumsal Web",
+    description:
+      "Modern yatlar için tekne mimarisine uyum sağlayan; geri çekilebilir pasarella, hidrolik dış pasarella ve özel kapı sistemlerini keşiften devreye almaya uzanan akışla sunan kurumsal ürün deneyimi.",
+    href: "https://selinturkmen1184-web.github.io/#marine",
+    preview: "marine",
+    className: "project-card project-card--lead project-card--marine",
+  },
+  {
+    index: "14",
+    title: "Orkide Peyzaj — Kurumsal Hizmet Deneyimi",
+    kicker: "Peyzaj / Hizmet Tasarımı / Dönüşüm Odaklı Web",
+    description:
+      "Peyzaj planlama, uygulama, otomatik sulama ve bakımı; ücretsiz keşif, hizmet süreci, bölge bilgileri ve WhatsApp teklif akışıyla tek sayfada birleştiren kurumsal web deneyimi.",
+    href: "https://selinturkmen1184-web.github.io/orkide-peyzaj/",
+    preview: "orkide",
+    className: "project-card project-card--wide project-card--orkide",
+  },
 ];
 
 export default function Home() {
@@ -455,7 +475,7 @@ export default function Home() {
           <a className="hero-work-bridge" href="#isler" aria-label="Yapılan işlere geç">
             <strong>Yapılan işler</strong>
             <span>
-              <b>10</b> seçili proje
+              <b>14</b> seçili proje
               <i aria-hidden="true">↓</i>
             </span>
           </a>
@@ -537,7 +557,7 @@ export default function Home() {
       <section className="work" id="isler" aria-labelledby="work-title" data-nav-section>
         <div className="section-heading reveal" data-reveal>
           <div>
-            <p className="section-index">12 seçili proje · 02 TÜBİTAK çalışması</p>
+            <p className="section-index">14 seçili proje · 02 TÜBİTAK çalışması</p>
             <h2 id="work-title">Yapılan işler.</h2>
           </div>
           <p>2024 — 2026</p>
@@ -662,6 +682,21 @@ export default function Home() {
                       Gerçek proje / canlı arayüz
                     </span>
                   </div>
+                ) : project.preview === "marine" || project.preview === "orkide" ? (
+                  <div
+                    className={`external-live-preview external-live-preview--${project.preview}`}
+                    aria-label={`${project.title} canlı proje önizlemesi`}
+                  >
+                    <iframe
+                      src={project.href}
+                      title={`${project.title} canlı önizlemesi`}
+                      loading="lazy"
+                      tabIndex={-1}
+                    />
+                    <span className="external-live-preview__badge" aria-hidden="true">
+                      Gerçek proje / canlı arayüz
+                    </span>
+                  </div>
                 ) : (
                   <video
                     autoPlay
@@ -717,7 +752,7 @@ export default function Home() {
 
         <div className="proof-grid reveal" data-reveal aria-label="Portfolyo özeti">
           <article>
-            <strong data-count="12" data-pad="2">12</strong>
+            <strong data-count="14" data-pad="2">14</strong>
             <span>Seçili dijital ve fiziksel proje</span>
           </article>
           <article>
