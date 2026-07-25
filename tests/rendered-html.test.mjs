@@ -58,6 +58,9 @@ test("server-renders the finished portfolio and research projects", async () => 
   assert.doesNotMatch(html, /Altınbaş Üniversitesi/i);
   assert.match(html, /class="scroll-progress"/);
   assert.match(html, /class="cinematic-intro"/);
+  assert.match(html, /class="intro-drone-flight"/);
+  assert.match(html, /class="intro-code-field"/);
+  assert.match(html, /ROS2::NAV_ACTIVE/);
   assert.match(html, /Kaydır ve keşfet/);
   assert.match(html, /src="\/og\.png"/);
   assert.match(html, /class="hero-work-bridge"/);
@@ -108,6 +111,9 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.doesNotMatch(text, /öğrenci/i);
     assert.doesNotMatch(text, /Altınbaş Üniversitesi/i);
     assert.match(text, /cinematic-intro/);
+    assert.match(text, /intro-drone-flight/);
+    assert.match(text, /intro-code-field/);
+    assert.match(text, /CV::DETECT\(FRAME\)/);
     assert.match(text, /Kaydır ve keşfet/);
     assert.match(text, /hero-work-bridge/);
     assert.match(text, /Yapılan işler\./);
@@ -134,6 +140,9 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     staticStyles,
     /\.cinematic-intro\s*\{[^}]*pointer-events:\s*none;[^}]*background:\s*transparent;/s,
   );
+  assert.match(staticStyles, /@keyframes intro-drone-flight/);
+  assert.match(staticStyles, /@keyframes intro-code-fall/);
+  assert.match(staticStyles, /\.intro-drone__scan\s*\{/);
   assert.match(staticStyles, /\.mikronex-preview\s*\{/);
   assert.match(staticStyles, /\.ells-live-preview\s*\{/);
   assert.match(staticStyles, /\.cici-live-preview\s*\{/);
