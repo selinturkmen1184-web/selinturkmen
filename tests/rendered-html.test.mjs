@@ -35,6 +35,8 @@ test("server-renders the finished portfolio and research projects", async () => 
   assert.match(html, /Tarımsal Drone — Tasarım ve Üretim/);
   assert.match(html, /Rota — Kişisel TYT &amp; AYT Çalışma Ajandası/);
   assert.match(html, /Sabancı Gençlik Hareketi — Sertifika/);
+  assert.match(html, /T3 Vakfı — Prototipleme Eğitimi/);
+  assert.match(html, /T3 Vakfı — Görüntü İşlemeye Giriş Atölyesi/);
   assert.match(html, /Mikronex Cutting Tools — B2B E-Katalog/);
   assert.match(html, /mikronex-cutting-tools-demo\/#catalog/);
   assert.match(html, /ELLS — Otonom Çay Hasat Sistemi/);
@@ -79,6 +81,8 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.match(text, /bütünüyle Selin Türkmen’e aittir/);
     assert.match(text, /rota-tyt-ayt\.kullanici209931\.chatgpt\.site/);
     assert.match(text, /Sabancı Gençlik Hareketi — Sertifika/);
+    assert.match(text, /T3 Vakfı — Prototipleme Eğitimi/);
+    assert.match(text, /T3 Vakfı — Görüntü İşlemeye Giriş Atölyesi/);
     assert.match(text, /Mikronex Cutting Tools — B2B E-Katalog/);
     assert.match(text, /mikronex-cutting-tools-demo\/#catalog/);
     assert.match(text, /ELLS — Otonom Çay Hasat Sistemi/);
