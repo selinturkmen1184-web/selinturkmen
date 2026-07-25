@@ -130,7 +130,7 @@ const projects = [
     kicker: "Denizcilik / Hidrolik Sistemler / Kurumsal Web",
     description:
       "Modern yatlar için tekne mimarisine uyum sağlayan; geri çekilebilir pasarella, hidrolik dış pasarella ve özel kapı sistemlerini keşiften devreye almaya uzanan akışla sunan kurumsal ürün deneyimi.",
-    href: "https://selinturkmen1184-web.github.io/#marine",
+    href: "https://selinturkmen1184-web.github.io/",
     preview: "marine",
     className: "project-card project-card--lead project-card--marine",
   },
