@@ -49,7 +49,7 @@ test("server-renders the finished portfolio and research projects", async () => 
   assert.match(html, /Bayemeyc — Mobil Commerce Deneyimi/);
   assert.match(html, /bayemeyc-app-demo\.kullanici209931\.chatgpt\.site/);
   assert.match(html, /Marinef — Marine Systems/);
-  assert.match(html, /selinturkmen1184-web\.github\.io\/#marine/);
+  assert.match(html, /href="https:\/\/selinturkmen1184-web\.github\.io\/"/);
   assert.match(html, /Orkide Peyzaj — Kurumsal Hizmet Deneyimi/);
   assert.match(html, /selinturkmen1184-web\.github\.io\/orkide-peyzaj\//);
   assert.match(html, /data-count="14"/);
@@ -99,7 +99,8 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.match(text, /Bayemeyc — Mobil Commerce Deneyimi/);
     assert.match(text, /bayemeyc-app-demo\.kullanici209931\.chatgpt\.site/);
     assert.match(text, /Marinef — Marine Systems/);
-    assert.match(text, /selinturkmen1184-web\.github\.io\/#marine/);
+    assert.match(text, /https:\/\/selinturkmen1184-web\.github\.io\/"/);
+    assert.doesNotMatch(text, /github\.io\/#marine/);
     assert.match(text, /Orkide Peyzaj — Kurumsal Hizmet Deneyimi/);
     assert.match(text, /selinturkmen1184-web\.github\.io\/orkide-peyzaj\//);
     assert.match(text, /14 seçili proje/);
@@ -144,7 +145,10 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/ells_\//);
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/cihan-tahtin-cagi\//);
   assert.match(staticPage, /<iframe[\s\S]+bayemeyc-app-demo\.kullanici209931\.chatgpt\.site/);
-  assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/#marine/);
+  assert.match(
+    staticPage,
+    /external-live-preview--marine[\s\S]+src="https:\/\/selinturkmen1184-web\.github\.io\/"/,
+  );
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/orkide-peyzaj\//);
 
   await Promise.all([
