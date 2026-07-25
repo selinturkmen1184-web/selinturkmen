@@ -425,6 +425,51 @@ export default function Home() {
             alt="Robotik kol, tarımsal drone ve yapay zekâ ağıyla Selin Türkmen portfolyosu"
           />
           <div className="cinematic-intro__veil" aria-hidden="true" />
+          <div className="intro-code-field" aria-hidden="true">
+            <div className="intro-code-stream intro-code-stream--one">
+              <span>ROS2::NAV_ACTIVE</span>
+              <span>PYTHON / AUTONOMY</span>
+              <span>0101 1100 0011</span>
+              <span>SYS::ROUTE_LOCKED</span>
+            </div>
+            <div className="intro-code-stream intro-code-stream--two">
+              <span>CV::DETECT(FRAME)</span>
+              <span>OPENCV / TARGET_07</span>
+              <span>CONFIDENCE 98.4%</span>
+              <span>VISION::ONLINE</span>
+            </div>
+            <div className="intro-code-stream intro-code-stream--three">
+              <span>ALT 41.0082 / SPD 14</span>
+              <span>AI::INFERENCE_OK</span>
+              <span>1010 0110 1101</span>
+              <span>TELEMETRY::SYNC</span>
+            </div>
+            <div className="intro-code-stream intro-code-stream--four">
+              <span>PATH::RECALCULATE</span>
+              <span>LATENCY 08MS</span>
+              <span>MOTOR[4] / READY</span>
+              <span>MISSION::ACTIVE</span>
+            </div>
+          </div>
+          <div className="intro-drone-stage" aria-hidden="true">
+            <div className="intro-drone-flight">
+              <div className="intro-drone">
+                <span className="intro-drone__arm intro-drone__arm--left" />
+                <span className="intro-drone__arm intro-drone__arm--right" />
+                <span className="intro-drone__rotor intro-drone__rotor--one" />
+                <span className="intro-drone__rotor intro-drone__rotor--two" />
+                <span className="intro-drone__rotor intro-drone__rotor--three" />
+                <span className="intro-drone__rotor intro-drone__rotor--four" />
+                <span className="intro-drone__body"><i /></span>
+                <span className="intro-drone__scan" />
+              </div>
+              <div className="intro-drone__telemetry">
+                <span>DRN / 01</span>
+                <i />
+                <b>AUTO TRACK</b>
+              </div>
+            </div>
+          </div>
           <div className="cinematic-intro__frame" aria-hidden="true">
             <span>ST / SYSTEM 00</span>
             <span>SCROLL TO ENTER</span>
