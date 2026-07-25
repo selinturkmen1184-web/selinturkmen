@@ -1088,6 +1088,61 @@ main {
   backdrop-filter: blur(8px);
 }
 
+.external-live-preview {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.external-live-preview--marine {
+  background: #071a27;
+}
+
+.external-live-preview--orkide {
+  background: #e6eadb;
+}
+
+.external-live-preview::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 54%, rgba(5, 17, 19, 0.27) 100%);
+}
+
+.external-live-preview iframe {
+  width: 150%;
+  height: 150%;
+  border: 0;
+  pointer-events: none;
+  transform: scale(0.667);
+  transform-origin: top left;
+  transition: transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover .external-live-preview iframe {
+  transform: scale(0.69);
+}
+
+.external-live-preview__badge {
+  position: absolute;
+  z-index: 1;
+  right: 16px;
+  bottom: 15px;
+  padding: 7px 9px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(7, 24, 28, 0.74);
+  box-shadow: 0 8px 20px rgba(7, 24, 28, 0.24);
+  font-family: var(--font-mono);
+  font-size: 0.45rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
 .project-number,
 .project-view,
 .project-demo {
@@ -1710,6 +1765,16 @@ footer > span {
 
   .project-card:hover .bayemeyc-live-preview iframe {
     transform: scale(0.62);
+  }
+
+  .external-live-preview iframe {
+    width: 170%;
+    height: 170%;
+    transform: scale(0.589);
+  }
+
+  .project-card:hover .external-live-preview iframe {
+    transform: scale(0.605);
   }
 
   .project-copy {
