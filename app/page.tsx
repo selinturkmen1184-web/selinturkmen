@@ -854,6 +854,48 @@ export default function Home() {
         <div className="contact-orbit" aria-hidden="true"><i /><i /><i /></div>
       </section>
 
+      <section
+        className="office-stage reveal"
+        id="ofis"
+        data-reveal
+        aria-labelledby="office-title"
+      >
+        <div className="office-copy">
+          <p className="office-index">
+            <span className="status-dot" aria-hidden="true" />
+            İstanbul / Ofis 01
+          </p>
+          <h2 id="office-title">Ofisimiz<span>.</span></h2>
+          <address>
+            Süleyman Hastanesi Yanı, Kanuni Sultan Atakent Mah.<br />
+            Turgut Özal Bulvarı, Halkalı Caddesi No:48/A<br />
+            Küçükçekmece / İstanbul
+          </address>
+          <a
+            className="office-route"
+            href="https://www.google.com/maps/search/?api=1&query=S%C3%BCleyman%20Hastanesi%20Yan%C4%B1%2C%20Kanuni%20Sultan%20Atakent%20Mah.%20Turgut%20%C3%96zal%20Bulvar%C4%B1%2C%20Halkal%C4%B1%20Caddesi%20No%3A48%2FA%2C%20K%C3%BC%C3%A7%C3%BCk%C3%A7ekmece%2F%C4%B0stanbul"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span>Yol tarifi al</span>
+            <strong aria-hidden="true">↗</strong>
+          </a>
+        </div>
+        <div className="office-map">
+          <div className="office-map__label" aria-hidden="true">
+            <span>Küçükçekmece / İstanbul</span>
+            <span>Canlı harita</span>
+          </div>
+          <iframe
+            title="Selin Türkmen ofis konumu"
+            src="https://www.google.com/maps?q=S%C3%BCleyman%20Hastanesi%20Yan%C4%B1%2C%20Kanuni%20Sultan%20Atakent%20Mah.%20Turgut%20%C3%96zal%20Bulvar%C4%B1%2C%20Halkal%C4%B1%20Caddesi%20No%3A48%2FA%2C%20K%C3%BC%C3%A7%C3%BCk%C3%A7ekmece%2F%C4%B0stanbul&output=embed"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+          />
+        </div>
+      </section>
+
       <footer className="reveal" data-reveal>
         <p>Yeni fikirlere, ürün ekiplerine ve iş birliklerine açığım.</p>
         <a href="/selin-turkmen-cv.pdf" download>Özgeçmiş ↘</a>

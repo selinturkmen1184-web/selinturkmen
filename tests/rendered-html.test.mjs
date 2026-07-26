@@ -65,6 +65,10 @@ test("server-renders the finished portfolio and research projects", async () => 
   assert.match(html, /class="kinetic-band"/);
   assert.match(html, /class="proof-grid/);
   assert.match(html, /class="contact-stage/);
+  assert.match(html, /class="office-stage/);
+  assert.match(html, /<h2 id="office-title">Ofisimiz<span>\.<\/span><\/h2>/);
+  assert.match(html, /Halkalı Caddesi No:48\/A/);
+  assert.match(html, /google\.com\/maps/);
   assert.match(html, /data-reveal/);
   assert.match(html, /data-count="300"/);
   assert.match(html, /<meta[^>]+property="og:image"[^>]+og\.png/i);
@@ -112,6 +116,11 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.match(text, /hero-work-bridge/);
     assert.match(text, /Yapılan işler\./);
     assert.match(text, /Bir sonraki fikri/);
+    assert.match(text, /office-stage/);
+    assert.match(text, /Ofisimiz/);
+    assert.match(text, /Süleyman Hastanesi Yanı/);
+    assert.match(text, /Halkalı Caddesi No:48\/A/);
+    assert.match(text, /Yol tarifi al/);
     assert.match(text, /Yeni fikirlere, ürün ekiplerine ve iş birliklerine açığım/);
     assert.match(text, /rota-live-preview/);
     assert.doesNotMatch(text, /Haftalık ilerleme|Hedefe 3 oturum kaldı|%74/);
@@ -141,6 +150,8 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
   assert.match(staticStyles, /\.bayemeyc-live-preview\s*\{/);
   assert.match(staticStyles, /\.external-live-preview\s*\{/);
   assert.match(staticStyles, /\.project-demo\s*\{/);
+  assert.match(staticStyles, /\.office-map iframe\s*\{/);
+  assert.match(staticPage, /<iframe[\s\S]+google\.com\/maps\?q=/);
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/cickutu\//);
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/ells_\//);
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/cihan-tahtin-cagi\//);
