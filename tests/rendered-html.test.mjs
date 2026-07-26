@@ -72,6 +72,10 @@ test("server-renders the finished portfolio and research projects", async () => 
   assert.match(html, /<h2 id="office-title">Ofisimiz<span>\.<\/span><\/h2>/);
   assert.match(html, /Halkalı Caddesi No:48\/A/);
   assert.match(html, /google\.com\/maps/);
+  assert.match(html, /class="callback-stage/);
+  assert.match(html, /Mesaj bırakın/);
+  assert.match(html, /formsubmit\.co\/selinturkmeny@icloud\.com/);
+  assert.match(html, /name="_replyto"/);
   assert.match(html, /data-reveal/);
   assert.match(html, /data-count="300"/);
   assert.match(html, /<meta[^>]+property="og:image"[^>]+og\.png/i);
@@ -128,6 +132,12 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.match(text, /Süleyman Hastanesi Yanı/);
     assert.match(text, /Halkalı Caddesi No:48\/A/);
     assert.match(text, /Yol tarifi al/);
+    assert.match(text, /callback-stage/);
+    assert.match(text, /Mesaj bırakın/);
+    assert.match(text, /Size dönelim/);
+    assert.match(text, /formsubmit\.co\/selinturkmeny@icloud\.com/);
+    assert.match(text, /name="_honey"/);
+    assert.doesNotMatch(text, /name="_captcha"[\s\S]{0,80}value="false"/);
     assert.match(text, /Yeni fikirlere, ürün ekiplerine ve iş birliklerine açığım/);
     assert.match(text, /rota-live-preview/);
     assert.doesNotMatch(text, /Haftalık ilerleme|Hedefe 3 oturum kaldı|%74/);
@@ -159,6 +169,8 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
   assert.match(staticStyles, /\.project-demo\s*\{/);
   assert.match(staticStyles, /\.message-button\s*\{/);
   assert.match(staticStyles, /\.office-map iframe\s*\{/);
+  assert.match(staticStyles, /\.callback-form\s*\{/);
+  assert.match(staticStyles, /\.callback-success:target\s*\{/);
   assert.match(staticPage, /<iframe[\s\S]+google\.com\/maps\?q=/);
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/cickutu\//);
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/ells_\//);

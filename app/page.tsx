@@ -906,6 +906,99 @@ export default function Home() {
         </div>
       </section>
 
+      <section
+        className="callback-stage reveal"
+        id="mesaj"
+        data-reveal
+        aria-labelledby="callback-title"
+      >
+        <div className="callback-copy">
+          <p className="callback-index">
+            <span className="status-dot" aria-hidden="true" />
+            İletişim / Mesaj 01
+          </p>
+          <h2 id="callback-title">
+            Mesaj bırakın.<br />
+            <span>Size dönelim.</span>
+          </h2>
+          <p>
+            Projenizi, fikrinizi veya birlikte çalışma talebinizi kısaca paylaşın.
+            Uygun olduğum ilk anda e-posta ile dönüş yapayım.
+          </p>
+        </div>
+        <form
+          className="callback-form"
+          action="https://formsubmit.co/selinturkmeny@icloud.com"
+          method="POST"
+          acceptCharset="UTF-8"
+        >
+          <input type="hidden" name="_subject" value="Portfolyo sitesinden yeni mesaj" />
+          <input type="hidden" name="_template" value="table" />
+          <input
+            type="hidden"
+            name="_next"
+            value="https://selinturkmen1184-web.github.io/selinturkmen/#mesaj-gonderildi"
+          />
+          <input
+            className="form-honey"
+            type="text"
+            name="_honey"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+          />
+          <label>
+            <span>Adınız</span>
+            <input
+              type="text"
+              name="Ad Soyad"
+              autoComplete="name"
+              placeholder="Adınızı yazın"
+              required
+            />
+          </label>
+          <label>
+            <span>E-posta</span>
+            <input
+              type="email"
+              name="_replyto"
+              autoComplete="email"
+              placeholder="ornek@eposta.com"
+              required
+            />
+          </label>
+          <label>
+            <span>Telefon <small>İsteğe bağlı</small></span>
+            <input
+              type="tel"
+              name="Telefon"
+              autoComplete="tel"
+              placeholder="+90 5xx xxx xx xx"
+            />
+          </label>
+          <label className="callback-form__message">
+            <span>Mesajınız</span>
+            <textarea
+              name="Mesaj"
+              rows={6}
+              placeholder="Nasıl yardımcı olabilirim?"
+              required
+            />
+          </label>
+          <div className="callback-form__footer">
+            <p>Bilgileriniz yalnızca size geri dönüş yapmak için kullanılır.</p>
+            <button type="submit">
+              <span>Mesajı gönder</span>
+              <strong aria-hidden="true">↗</strong>
+            </button>
+          </div>
+          <p className="callback-success" id="mesaj-gonderildi" tabIndex={-1}>
+            <span aria-hidden="true">✓</span>
+            Mesajınız iletildi. En kısa sürede size dönüş yapacağız.
+          </p>
+        </form>
+      </section>
+
       <footer className="reveal" data-reveal>
         <p>Yeni fikirlere, ürün ekiplerine ve iş birliklerine açığım.</p>
         <a href="/selin-turkmen-cv.pdf" download>Özgeçmiş ↘</a>
