@@ -52,7 +52,9 @@ test("server-renders the finished portfolio and research projects", async () => 
   assert.match(html, /href="https:\/\/selinturkmen1184-web\.github\.io\/"/);
   assert.match(html, /Orkide Peyzaj — Kurumsal Hizmet Deneyimi/);
   assert.match(html, /selinturkmen1184-web\.github\.io\/orkide-peyzaj\//);
-  assert.match(html, /data-count="14"/);
+  assert.match(html, /Platinum Oto Galeri — Premium Otomotiv Deneyimi/);
+  assert.match(html, /selinturkmen1184-web\.github\.io\/platinum-oto-galeri\//);
+  assert.match(html, /data-count="15"/);
   assert.match(html, /02 TÜBİTAK çalışması/);
   assert.doesNotMatch(html, /öğrenci/i);
   assert.doesNotMatch(html, /Altınbaş Üniversitesi/i);
@@ -114,7 +116,10 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.doesNotMatch(text, /github\.io\/#marine/);
     assert.match(text, /Orkide Peyzaj — Kurumsal Hizmet Deneyimi/);
     assert.match(text, /selinturkmen1184-web\.github\.io\/orkide-peyzaj\//);
-    assert.match(text, /14 seçili proje/);
+    assert.match(text, /Platinum Oto Galeri — Premium Otomotiv Deneyimi/);
+    assert.match(text, /selinturkmen1184-web\.github\.io\/platinum-oto-galeri\//);
+    assert.match(text, /15 seçili proje/);
+    assert.doesNotMatch(text, /14 seçili proje/);
     assert.doesNotMatch(text, /10 seçili proje/);
     assert.doesNotMatch(text, /öğrenci/i);
     assert.doesNotMatch(text, /Altınbaş Üniversitesi/i);
@@ -166,6 +171,7 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
   assert.match(staticStyles, /\.cihan-live-preview\s*\{/);
   assert.match(staticStyles, /\.bayemeyc-live-preview\s*\{/);
   assert.match(staticStyles, /\.external-live-preview\s*\{/);
+  assert.match(staticStyles, /\.external-live-preview--platinum\s*\{/);
   assert.match(staticStyles, /\.project-demo\s*\{/);
   assert.match(staticStyles, /\.message-button\s*\{/);
   assert.match(staticStyles, /\.office-map iframe\s*\{/);
@@ -181,6 +187,7 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     /external-live-preview--marine[\s\S]+src="https:\/\/selinturkmen1184-web\.github\.io\/"/,
   );
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/orkide-peyzaj\//);
+  assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/platinum-oto-galeri\//);
 
   await Promise.all([
     access(new URL("../public/projects/smg-neural-net.mp4", import.meta.url)),

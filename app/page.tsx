@@ -144,6 +144,16 @@ const projects = [
     preview: "orkide",
     className: "project-card project-card--wide project-card--orkide",
   },
+  {
+    index: "15",
+    title: "Platinum Oto Galeri — Premium Otomotiv Deneyimi",
+    kicker: "Otomotiv / Dijital Galeri / Kurumsal Web",
+    description:
+      "Seçkin otomobil koleksiyonunu; güncel araç vitrini, marka ve yakıt filtreleri, finansman, konsinye satış, kişisel danışmanlık ve Instagram iletişim akışıyla birleştiren premium dijital galeri deneyimi.",
+    href: "https://selinturkmen1184-web.github.io/platinum-oto-galeri/",
+    preview: "platinum",
+    className: "project-card project-card--full project-card--platinum",
+  },
 ];
 
 export default function Home() {
@@ -485,7 +495,7 @@ export default function Home() {
           <a className="hero-work-bridge" href="#isler" aria-label="Yapılan işlere geç">
             <strong>Yapılan işler</strong>
             <span>
-              <b>14</b> seçili proje
+              <b>15</b> seçili proje
               <i aria-hidden="true">↓</i>
             </span>
           </a>
@@ -567,7 +577,7 @@ export default function Home() {
       <section className="work" id="isler" aria-labelledby="work-title" data-nav-section>
         <div className="section-heading reveal" data-reveal>
           <div>
-            <p className="section-index">14 seçili proje · 02 TÜBİTAK çalışması</p>
+            <p className="section-index">15 seçili proje · 02 TÜBİTAK çalışması</p>
             <h2 id="work-title">Yapılan işler.</h2>
           </div>
           <p>2024 — 2026</p>
@@ -692,7 +702,9 @@ export default function Home() {
                       Gerçek proje / canlı arayüz
                     </span>
                   </div>
-                ) : project.preview === "marine" || project.preview === "orkide" ? (
+                ) : project.preview === "marine" ||
+                  project.preview === "orkide" ||
+                  project.preview === "platinum" ? (
                   <div
                     className={`external-live-preview external-live-preview--${project.preview}`}
                     aria-label={`${project.title} canlı proje önizlemesi`}
@@ -762,7 +774,7 @@ export default function Home() {
 
         <div className="proof-grid reveal" data-reveal aria-label="Portfolyo özeti">
           <article>
-            <strong data-count="14" data-pad="2">14</strong>
+            <strong data-count="15" data-pad="2">15</strong>
             <span>Seçili dijital ve fiziksel proje</span>
           </article>
           <article>

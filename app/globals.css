@@ -1138,6 +1138,14 @@ main {
   background: #e6eadb;
 }
 
+.external-live-preview--platinum {
+  background: #0a0a0b;
+}
+
+.external-live-preview--platinum::after {
+  background: linear-gradient(180deg, transparent 48%, rgba(7, 7, 8, 0.5) 100%);
+}
+
 .external-live-preview::after {
   position: absolute;
   inset: 0;
