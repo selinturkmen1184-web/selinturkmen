@@ -117,7 +117,8 @@ main {
 
 .wordmark,
 .site-header nav,
-.motion-toggle {
+.motion-toggle,
+.message-button {
   font-family: var(--font-mono);
   font-size: 0.7rem;
   font-weight: 600;
@@ -176,8 +177,43 @@ main {
   transform-origin: left;
 }
 
-.motion-toggle {
+.header-actions {
   justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.message-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 13px;
+  border: 1px solid rgba(216, 255, 62, 0.58);
+  background: rgba(216, 255, 62, 0.05);
+  color: var(--acid);
+  white-space: nowrap;
+  transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.message-button:hover {
+  background: var(--acid);
+  color: var(--ink);
+  box-shadow: 0 0 20px rgba(216, 255, 62, 0.24);
+  transform: translateY(-1px);
+}
+
+.message-button span {
+  font-size: 0.82rem;
+  transition: transform 180ms ease;
+}
+
+.message-button:hover span {
+  transform: translate(2px, -2px);
+}
+
+.motion-toggle {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -1586,12 +1622,32 @@ footer > span {
 
   .wordmark,
   .motion-toggle,
+  .message-button,
   .site-header nav {
     font-size: 0.58rem;
   }
 
+  .header-actions {
+    gap: 8px;
+  }
+
+  .message-button {
+    gap: 6px;
+    padding: 7px 9px;
+  }
+
   .motion-toggle {
+    width: 32px;
+    height: 32px;
+    justify-content: center;
     gap: 5px;
+    padding: 0;
+    border: 1px solid var(--line-strong);
+    font-size: 0;
+  }
+
+  .motion-toggle span {
+    font-size: 0.58rem;
   }
 
   .site-header nav {

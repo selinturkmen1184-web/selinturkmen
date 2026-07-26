@@ -442,20 +442,30 @@ export default function Home() {
           ST / PORTFOLYO 2026
         </a>
         <nav aria-label="Ana menü">
-          <a href="#isler" data-nav>Seçili işler</a>
+          <a href="#isler" data-nav>Çalışmalarım</a>
           <a href="#tubitak" data-nav>TÜBİTAK</a>
           <a href="#profil" data-nav>Profil</a>
           <a href="#yetkinlikler" data-nav>Yetkinlikler</a>
         </nav>
-        <button
-          className="motion-toggle"
-          type="button"
-          aria-pressed={motionPaused}
-          onClick={toggleMotion}
-        >
-          <span aria-hidden="true">{motionPaused ? "▶" : "Ⅱ"}</span>
-          {motionPaused ? "Hareketi başlat" : "Hareketi durdur"}
-        </button>
+        <div className="header-actions">
+          <a
+            className="message-button"
+            href="mailto:selinturkmeny@icloud.com?subject=Portfolyo%20%C3%BCzerinden%20ileti%C5%9Fim"
+            aria-label="Selin Türkmen'e e-posta ile mesaj gönder"
+          >
+            Mesaj gönder
+            <span aria-hidden="true">↗</span>
+          </a>
+          <button
+            className="motion-toggle"
+            type="button"
+            aria-pressed={motionPaused}
+            onClick={toggleMotion}
+          >
+            <span aria-hidden="true">{motionPaused ? "▶" : "Ⅱ"}</span>
+            {motionPaused ? "Hareketi başlat" : "Hareketi durdur"}
+          </button>
+        </div>
       </header>
 
       <section className="hero" id="portfolio" aria-labelledby="hero-title" data-nav-section>

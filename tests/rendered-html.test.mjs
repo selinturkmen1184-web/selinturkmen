@@ -58,6 +58,9 @@ test("server-renders the finished portfolio and research projects", async () => 
   assert.doesNotMatch(html, /Altınbaş Üniversitesi/i);
   assert.match(html, /class="scroll-progress"/);
   assert.match(html, /class="cinematic-intro"/);
+  assert.match(html, />Çalışmalarım<\/a>/);
+  assert.match(html, /class="message-button"/);
+  assert.match(html, /mailto:selinturkmeny@icloud\.com/);
   assert.match(html, /Kaydır ve keşfet/);
   assert.match(html, /src="\/og\.png"/);
   assert.match(html, /class="hero-work-bridge"/);
@@ -112,6 +115,10 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.doesNotMatch(text, /öğrenci/i);
     assert.doesNotMatch(text, /Altınbaş Üniversitesi/i);
     assert.match(text, /cinematic-intro/);
+    assert.match(text, /Çalışmalarım/);
+    assert.match(text, /message-button/);
+    assert.match(text, /mailto:selinturkmeny@icloud\.com/);
+    assert.match(text, /Mesaj gönder/);
     assert.match(text, /Kaydır ve keşfet/);
     assert.match(text, /hero-work-bridge/);
     assert.match(text, /Yapılan işler\./);
@@ -150,6 +157,7 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
   assert.match(staticStyles, /\.bayemeyc-live-preview\s*\{/);
   assert.match(staticStyles, /\.external-live-preview\s*\{/);
   assert.match(staticStyles, /\.project-demo\s*\{/);
+  assert.match(staticStyles, /\.message-button\s*\{/);
   assert.match(staticStyles, /\.office-map iframe\s*\{/);
   assert.match(staticPage, /<iframe[\s\S]+google\.com\/maps\?q=/);
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/cickutu\//);
