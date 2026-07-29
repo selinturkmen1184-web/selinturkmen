@@ -209,6 +209,7 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/orkide-peyzaj\//);
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/platinum-oto-galeri\//);
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/estelena-guzellik-merkezi\//);
+  assert.match(staticPage, /site\.css\?v=mobile-20260729/);
 
   await Promise.all([
     access(new URL("../public/projects/smg-neural-net.mp4", import.meta.url)),
