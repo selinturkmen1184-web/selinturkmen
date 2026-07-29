@@ -179,6 +179,19 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
   assert.match(staticStyles, /\.external-live-preview\s*\{/);
   assert.match(staticStyles, /\.external-live-preview--platinum\s*\{/);
   assert.match(staticStyles, /\.external-live-preview--estelena\s*\{/);
+  assert.match(staticStyles, /@media \(max-width: 700px\)/);
+  assert.match(
+    staticStyles,
+    /\.js-enhanced \.cinematic-intro\s*\{[^}]*height:\s*100svh;[^}]*min-height:\s*560px;/s,
+  );
+  assert.match(
+    staticStyles,
+    /\.external-live-preview iframe\s*\{[^}]*width:\s*100%;[^}]*height:\s*100%;[^}]*transform:\s*none;/s,
+  );
+  assert.match(
+    staticStyles,
+    /\.callback-form input,[\s\S]*?\.callback-form textarea\s*\{[^}]*font-size:\s*16px;/,
+  );
   assert.match(staticStyles, /\.project-demo\s*\{/);
   assert.match(staticStyles, /\.message-button\s*\{/);
   assert.match(staticStyles, /\.office-map iframe\s*\{/);
