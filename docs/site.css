@@ -1944,6 +1944,13 @@ footer > span {
   animation: launch-exit 900ms 980ms cubic-bezier(0.76, 0, 0.24, 1) forwards;
 }
 
+.launch-screen.is-dismissed,
+.js-enhanced.motion-paused .launch-screen {
+  display: none !important;
+  visibility: hidden !important;
+  animation: none !important;
+}
+
 .launch-screen::after {
   position: absolute;
   inset: 0;
@@ -3141,8 +3148,10 @@ footer {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .launch-screen {
-    display: none;
+  .js-enhanced .launch-screen {
+    display: none !important;
+    visibility: hidden !important;
+    animation: none !important;
   }
 
   .cursor-aura {

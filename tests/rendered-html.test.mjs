@@ -209,7 +209,15 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/orkide-peyzaj\//);
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/platinum-oto-galeri\//);
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/estelena-guzellik-merkezi\//);
-  assert.match(staticPage, /site\.css\?v=mobile-20260729/);
+  assert.match(staticPage, /site\.css\?v=greenfix-20260730/);
+  assert.match(staticPage, /site\.js\?v=greenfix-20260730/);
+  assert.match(staticScript, /setTimeout\(dismissLaunchScreen,\s*2200\)/);
+  assert.match(staticScript, /launchScreen\?\.classList\.add\("is-dismissed"\)/);
+  assert.match(staticStyles, /\.js-enhanced\.motion-paused \.launch-screen/);
+  assert.match(
+    staticStyles,
+    /@media \(prefers-reduced-motion: reduce\)[\s\S]*?\.js-enhanced \.launch-screen\s*\{[\s\S]*?display:\s*none !important;/,
+  );
 
   await Promise.all([
     access(new URL("../public/projects/smg-neural-net.mp4", import.meta.url)),

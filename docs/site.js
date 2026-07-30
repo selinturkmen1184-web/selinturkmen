@@ -8,12 +8,17 @@ const navLinks = Array.from(document.querySelectorAll("[data-nav]"));
 const navSections = Array.from(document.querySelectorAll("[data-nav-section]"));
 const header = document.querySelector(".site-header");
 const cinematicIntro = document.querySelector(".cinematic-intro");
+const launchScreen = document.querySelector(".launch-screen");
 const finePointer = window.matchMedia("(pointer: fine)").matches;
 let motionPaused = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 let scrollFrame = 0;
 let pointerFrame = 0;
 
 root.classList.add("js-enhanced");
+
+const dismissLaunchScreen = () => launchScreen?.classList.add("is-dismissed");
+if (motionPaused) dismissLaunchScreen();
+window.setTimeout(dismissLaunchScreen, 2200);
 
 function resetCard(card) {
   card.style.setProperty("--tilt-x", "0deg");

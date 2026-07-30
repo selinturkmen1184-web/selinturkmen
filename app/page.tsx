@@ -179,6 +179,7 @@ export default function Home() {
     const navSections = Array.from(document.querySelectorAll<HTMLElement>("[data-nav-section]"));
     const header = document.querySelector<HTMLElement>(".site-header");
     const cinematicIntro = document.querySelector<HTMLElement>(".cinematic-intro");
+    const launchScreen = document.querySelector<HTMLElement>(".launch-screen");
     const finePointer = window.matchMedia("(pointer: fine)").matches;
     const tiltFrames = new Map<HTMLElement, number>();
     const counterFrames = new Map<HTMLElement, number>();
@@ -186,6 +187,10 @@ export default function Home() {
     root.classList.add("js-enhanced");
     root.classList.toggle("motion-paused", prefersReducedMotion);
     setMotionPaused(prefersReducedMotion);
+
+    const dismissLaunchScreen = () => launchScreen?.classList.add("is-dismissed");
+    if (prefersReducedMotion) dismissLaunchScreen();
+    const launchDismissTimer = window.setTimeout(dismissLaunchScreen, 2200);
 
     revealElements.forEach((element, index) => {
       element.style.setProperty("--reveal-delay", `${Math.min((index % 6) * 70, 350)}ms`);
@@ -368,6 +373,7 @@ export default function Home() {
       revealObserver?.disconnect();
       counterObserver?.disconnect();
       sectionObserver?.disconnect();
+      window.clearTimeout(launchDismissTimer);
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
       window.removeEventListener("pointermove", handlePointerMove);
