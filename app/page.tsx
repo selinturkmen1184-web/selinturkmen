@@ -139,8 +139,8 @@ const projects = [
     title: "Orkide Peyzaj — Kurumsal Hizmet Deneyimi",
     kicker: "Peyzaj / Hizmet Tasarımı / Dönüşüm Odaklı Web",
     description:
-      "Peyzaj planlama, uygulama, otomatik sulama ve bakımı; ücretsiz keşif, hizmet süreci, bölge bilgileri ve WhatsApp teklif akışıyla tek sayfada birleştiren kurumsal web deneyimi.",
-    href: "https://selinturkmen1184-web.github.io/orkide-peyzaj/",
+      "Ege ve Akdeniz genelindeki peyzaj planlama, bahçe düzenleme, otomatik sulama, budama, rulo çim ve periyodik bakım hizmetlerini bir araya getiren kurumsal web deneyimi.",
+    href: "https://orkidepeyzaj.com.tr/?v=2.2.8",
     preview: "orkide",
     className: "project-card project-card--wide project-card--orkide",
   },
@@ -163,6 +163,65 @@ const projects = [
     href: "https://selinturkmen1184-web.github.io/estelena-guzellik-merkezi/",
     preview: "estelena",
     className: "project-card project-card--full project-card--estelena",
+  },
+  {
+    index: "17",
+    title: "Eda Foto Baskı — Kişiye Özel Baskı Mağazası",
+    kicker: "E-Ticaret / Fotoğraf Baskı / Kişiselleştirme",
+    description:
+      "Buzdolabı magnetleri, 10 × 15 fotoğraf baskıları ve albümlü paketleri; telefondan fotoğraf yükleme, kargo takibi ve güvenli sipariş akışıyla birleştiren kişiselleştirilmiş e-ticaret deneyimi.",
+    href: "https://www.edafotobaski.com/?logo_kontrol=1601",
+    preview: "eda",
+    className: "project-card project-card--full project-card--eda",
+  },
+  {
+    index: "18",
+    title: "GLOWROAD — High Visibility Advantage",
+    kicker: "Yol Güvenliği / Endüstriyel Ürünler / Kurumsal Web",
+    description:
+      "Yol çizgi uygulamaları için yüksek performanslı cam kürecikleri ve görünürlük çözümlerini; ürünler, kataloglar, sertifikalar ve çok dilli içerikle sunan kurumsal platform.",
+    href: "http://glowroad.com.tr/?v=202608011440",
+    preview: "glowroad",
+    previewTitle: "GLOWROAD",
+    previewTagline: "HIGH VISIBILITY ADVANTAGE",
+    previewDomain: "glowroad.com.tr",
+    className: "project-card project-card--lead project-card--glowroad",
+  },
+  {
+    index: "19",
+    title: "SIGNALIX — Trafik Güvenliğinde Net Yön",
+    kicker: "Trafik Sistemleri / Yönlendirme / Kurumsal Web",
+    description:
+      "Trafik levhaları, yönlendirme sistemleri, taşıyıcı konstrüksiyonlar ve yol güvenliği çözümlerini güçlü bir kurumsal ürün anlatısında birleştiren dijital deneyim.",
+    href: "http://signalix.tr/?v=202608011348",
+    preview: "signalix",
+    previewTitle: "SIGNALIX",
+    previewTagline: "TRAFİK GÜVENLİĞİNDE NET YÖN",
+    previewDomain: "signalix.tr",
+    className: "project-card project-card--wide project-card--signalix",
+  },
+  {
+    index: "20",
+    title: "STELLGARD — Çelik Yol Güvenliği Sistemleri",
+    kicker: "Çelik Sistemler / Otokorkuluk / Kurumsal Web",
+    description:
+      "Çelik otokorkuluk, köprü bariyeri ve yol güvenliği sistemlerini dayanım, mühendislik ve ürün odağında sunan endüstriyel kurumsal web deneyimi.",
+    href: "http://stellgard.com.tr/?v=202608010730",
+    preview: "stellgard",
+    previewTitle: "STELLGARD",
+    previewTagline: "SOLID STEEL, SMARTER ROADS",
+    previewDomain: "stellgard.com.tr",
+    className: "project-card project-card--wide project-card--stellgard",
+  },
+  {
+    index: "21",
+    title: "LineTech — High Performance Markings",
+    kicker: "Yol Teknolojileri / Ürün Kataloğu / Kurumsal Web",
+    description:
+      "Yol çizgi boyaları, uygulama ekipmanları, yol tabelaları, bariyer ve trafik güvenliği çözümlerini katalog, sertifika ve iletişim akışlarıyla buluşturan kurumsal platform.",
+    href: "https://www.line-tech.com.tr/?v=202607312210",
+    preview: "linetech",
+    className: "project-card project-card--lead project-card--linetech",
   },
 ];
 
@@ -511,7 +570,7 @@ export default function Home() {
           <a className="hero-work-bridge" href="#isler" aria-label="Yapılan işlere geç">
             <strong>Yapılan işler</strong>
             <span>
-              <b>16</b> seçili proje
+              <b>21</b> seçili proje
               <i aria-hidden="true">↓</i>
             </span>
           </a>
@@ -593,7 +652,7 @@ export default function Home() {
       <section className="work" id="isler" aria-labelledby="work-title" data-nav-section>
         <div className="section-heading reveal" data-reveal>
           <div>
-            <p className="section-index">16 seçili proje · 02 TÜBİTAK çalışması</p>
+            <p className="section-index">21 seçili proje · 02 TÜBİTAK çalışması</p>
             <h2 id="work-title">Yapılan işler.</h2>
           </div>
           <p>2024 — 2026</p>
@@ -721,7 +780,9 @@ export default function Home() {
                 ) : project.preview === "marine" ||
                   project.preview === "orkide" ||
                   project.preview === "platinum" ||
-                  project.preview === "estelena" ? (
+                  project.preview === "estelena" ||
+                  project.preview === "eda" ||
+                  project.preview === "linetech" ? (
                   <div
                     className={`external-live-preview external-live-preview--${project.preview}`}
                     aria-label={`${project.title} canlı proje önizlemesi`}
@@ -735,6 +796,18 @@ export default function Home() {
                     <span className="external-live-preview__badge" aria-hidden="true">
                       Gerçek proje / canlı arayüz
                     </span>
+                  </div>
+                ) : project.preview === "glowroad" ||
+                  project.preview === "signalix" ||
+                  project.preview === "stellgard" ? (
+                  <div
+                    className={`external-link-preview external-link-preview--${project.preview}`}
+                    aria-label={`${project.title} resmi site bağlantısı`}
+                  >
+                    <span className="external-link-preview__eyebrow">Gerçek proje / resmi site</span>
+                    <strong>{project.previewTitle}</strong>
+                    <p>{project.previewTagline}</p>
+                    <span className="external-link-preview__domain">{project.previewDomain} ↗</span>
                   </div>
                 ) : (
                   <video
@@ -791,7 +864,7 @@ export default function Home() {
 
         <div className="proof-grid reveal" data-reveal aria-label="Portfolyo özeti">
           <article>
-            <strong data-count="16" data-pad="2">16</strong>
+            <strong data-count="21" data-pad="2">21</strong>
             <span>Seçili dijital ve fiziksel proje</span>
           </article>
           <article>

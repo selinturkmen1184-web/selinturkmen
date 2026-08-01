@@ -51,12 +51,22 @@ test("server-renders the finished portfolio and research projects", async () => 
   assert.match(html, /Marinef — Marine Systems/);
   assert.match(html, /href="https:\/\/selinturkmen1184-web\.github\.io\/"/);
   assert.match(html, /Orkide Peyzaj — Kurumsal Hizmet Deneyimi/);
-  assert.match(html, /selinturkmen1184-web\.github\.io\/orkide-peyzaj\//);
+  assert.match(html, /orkidepeyzaj\.com\.tr\/\?v=2\.2\.8/);
   assert.match(html, /Platinum Oto Galeri — Premium Otomotiv Deneyimi/);
   assert.match(html, /selinturkmen1184-web\.github\.io\/platinum-oto-galeri\//);
   assert.match(html, /Estelena Güzellik Merkezi — Randevu &amp; Bakım Deneyimi/);
   assert.match(html, /selinturkmen1184-web\.github\.io\/estelena-guzellik-merkezi\//);
-  assert.match(html, /data-count="16"/);
+  assert.match(html, /Eda Foto Baskı — Kişiye Özel Baskı Mağazası/);
+  assert.match(html, /edafotobaski\.com\/\?logo_kontrol=1601/);
+  assert.match(html, /GLOWROAD — High Visibility Advantage/);
+  assert.match(html, /glowroad\.com\.tr\/\?v=202608011440/);
+  assert.match(html, /SIGNALIX — Trafik Güvenliğinde Net Yön/);
+  assert.match(html, /signalix\.tr\/\?v=202608011348/);
+  assert.match(html, /STELLGARD — Çelik Yol Güvenliği Sistemleri/);
+  assert.match(html, /stellgard\.com\.tr\/\?v=202608010730/);
+  assert.match(html, /LineTech — High Performance Markings/);
+  assert.match(html, /line-tech\.com\.tr\/\?v=202607312210/);
+  assert.match(html, /data-count="21"/);
   assert.match(html, /02 TÜBİTAK çalışması/);
   assert.doesNotMatch(html, /öğrenci/i);
   assert.doesNotMatch(html, /Altınbaş Üniversitesi/i);
@@ -117,13 +127,24 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.match(text, /https:\/\/selinturkmen1184-web\.github\.io\/"/);
     assert.doesNotMatch(text, /github\.io\/#marine/);
     assert.match(text, /Orkide Peyzaj — Kurumsal Hizmet Deneyimi/);
-    assert.match(text, /selinturkmen1184-web\.github\.io\/orkide-peyzaj\//);
+    assert.match(text, /orkidepeyzaj\.com\.tr\/\?v=2\.2\.8/);
     assert.match(text, /Platinum Oto Galeri — Premium Otomotiv Deneyimi/);
     assert.match(text, /selinturkmen1184-web\.github\.io\/platinum-oto-galeri\//);
     assert.match(text, /Estelena Güzellik Merkezi — Randevu (?:&|&amp;) Bakım Deneyimi/);
     assert.match(text, /selinturkmen1184-web\.github\.io\/estelena-guzellik-merkezi\//);
-    assert.match(text, /16 seçili proje/);
-    assert.match(text, /<b>16<\/b> seçili proje/);
+    assert.match(text, /Eda Foto Baskı — Kişiye Özel Baskı Mağazası/);
+    assert.match(text, /edafotobaski\.com\/\?logo_kontrol=1601/);
+    assert.match(text, /GLOWROAD — High Visibility Advantage/);
+    assert.match(text, /glowroad\.com\.tr\/\?v=202608011440/);
+    assert.match(text, /SIGNALIX — Trafik Güvenliğinde Net Yön/);
+    assert.match(text, /signalix\.tr\/\?v=202608011348/);
+    assert.match(text, /STELLGARD — Çelik Yol Güvenliği Sistemleri/);
+    assert.match(text, /stellgard\.com\.tr\/\?v=202608010730/);
+    assert.match(text, /LineTech — High Performance Markings/);
+    assert.match(text, /line-tech\.com\.tr\/\?v=202607312210/);
+    assert.match(text, /21 seçili proje/);
+    assert.match(text, /<b>21<\/b> seçili proje/);
+    assert.doesNotMatch(text, /16 seçili proje/);
     assert.doesNotMatch(text, /15 seçili proje/);
     assert.doesNotMatch(text, /14 seçili proje/);
     assert.doesNotMatch(text, /10 seçili proje/);
@@ -179,6 +200,9 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
   assert.match(staticStyles, /\.external-live-preview\s*\{/);
   assert.match(staticStyles, /\.external-live-preview--platinum\s*\{/);
   assert.match(staticStyles, /\.external-live-preview--estelena\s*\{/);
+  assert.match(staticStyles, /\.external-live-preview--eda\s*\{/);
+  assert.match(staticStyles, /\.external-live-preview--linetech\s*\{/);
+  assert.match(staticStyles, /\.external-link-preview\s*\{/);
   assert.match(staticStyles, /@media \(max-width: 700px\)/);
   assert.match(
     staticStyles,
@@ -206,10 +230,16 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     staticPage,
     /external-live-preview--marine[\s\S]+src="https:\/\/selinturkmen1184-web\.github\.io\/"/,
   );
-  assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/orkide-peyzaj\//);
+  assert.match(staticPage, /<iframe[\s\S]+orkidepeyzaj\.com\.tr\/\?v=2\.2\.8/);
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/platinum-oto-galeri\//);
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/estelena-guzellik-merkezi\//);
-  assert.match(staticPage, /site\.css\?v=greenfix-20260730/);
+  assert.match(staticPage, /<iframe[\s\S]+edafotobaski\.com\/\?logo_kontrol=1601/);
+  assert.match(staticPage, /<iframe[\s\S]+line-tech\.com\.tr\/\?v=202607312210/);
+  assert.match(staticPage, /external-link-preview--glowroad/);
+  assert.match(staticPage, /external-link-preview--signalix/);
+  assert.match(staticPage, /external-link-preview--stellgard/);
+  assert.doesNotMatch(staticPage, /<iframe[^>]+src="http:\/\/(?:glowroad|signalix|stellgard)/);
+  assert.match(staticPage, /site\.css\?v=projects-20260801/);
   assert.match(staticPage, /site\.js\?v=greenfix-20260730/);
   assert.match(staticScript, /setTimeout\(dismissLaunchScreen,\s*2200\)/);
   assert.match(staticScript, /launchScreen\?\.classList\.add\("is-dismissed"\)/);
