@@ -66,7 +66,9 @@ test("server-renders the finished portfolio and research projects", async () => 
   assert.match(html, /stellgard\.com\.tr\/\?v=202608010730/);
   assert.match(html, /LineTech — High Performance Markings/);
   assert.match(html, /line-tech\.com\.tr\/\?v=202607312210/);
-  assert.match(html, /data-count="21"/);
+  assert.match(html, /Pati Studio — B2B Çorap Kataloğu/);
+  assert.match(html, /pati-studio-demo\/\?v=0cc6531#top/);
+  assert.match(html, /data-count="22"/);
   assert.match(html, /02 TÜBİTAK çalışması/);
   assert.doesNotMatch(html, /öğrenci/i);
   assert.doesNotMatch(html, /Altınbaş Üniversitesi/i);
@@ -142,8 +144,11 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.match(text, /stellgard\.com\.tr\/\?v=202608010730/);
     assert.match(text, /LineTech — High Performance Markings/);
     assert.match(text, /line-tech\.com\.tr\/\?v=202607312210/);
-    assert.match(text, /21 seçili proje/);
-    assert.match(text, /<b>21<\/b> seçili proje/);
+    assert.match(text, /Pati Studio — B2B Çorap Kataloğu/);
+    assert.match(text, /pati-studio-demo\/\?v=0cc6531#top/);
+    assert.match(text, /22 seçili proje/);
+    assert.match(text, /<b>22<\/b> seçili proje/);
+    assert.doesNotMatch(text, /21 seçili proje/);
     assert.doesNotMatch(text, /16 seçili proje/);
     assert.doesNotMatch(text, /15 seçili proje/);
     assert.doesNotMatch(text, /14 seçili proje/);
@@ -202,6 +207,7 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
   assert.match(staticStyles, /\.external-live-preview--estelena\s*\{/);
   assert.match(staticStyles, /\.external-live-preview--eda\s*\{/);
   assert.match(staticStyles, /\.external-live-preview--linetech\s*\{/);
+  assert.match(staticStyles, /\.external-live-preview--pati\s*\{/);
   assert.match(staticStyles, /\.external-link-preview\s*\{/);
   assert.match(staticStyles, /@media \(max-width: 700px\)/);
   assert.match(
@@ -235,11 +241,12 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
   assert.match(staticPage, /<iframe[\s\S]+selinturkmen1184-web\.github\.io\/estelena-guzellik-merkezi\//);
   assert.match(staticPage, /<iframe[\s\S]+edafotobaski\.com\/\?logo_kontrol=1601/);
   assert.match(staticPage, /<iframe[\s\S]+line-tech\.com\.tr\/\?v=202607312210/);
+  assert.match(staticPage, /<iframe[\s\S]+pati-studio-demo\/\?v=0cc6531#top/);
   assert.match(staticPage, /external-link-preview--glowroad/);
   assert.match(staticPage, /external-link-preview--signalix/);
   assert.match(staticPage, /external-link-preview--stellgard/);
   assert.doesNotMatch(staticPage, /<iframe[^>]+src="http:\/\/(?:glowroad|signalix|stellgard)/);
-  assert.match(staticPage, /site\.css\?v=projects-20260801/);
+  assert.match(staticPage, /site\.css\?v=pati-20260802/);
   assert.match(staticPage, /site\.js\?v=greenfix-20260730/);
   assert.match(staticScript, /setTimeout\(dismissLaunchScreen,\s*2200\)/);
   assert.match(staticScript, /launchScreen\?\.classList\.add\("is-dismissed"\)/);
