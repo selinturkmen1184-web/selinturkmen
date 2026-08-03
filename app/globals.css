@@ -1158,6 +1158,10 @@ main {
   background: #142b42;
 }
 
+.external-live-preview--ibrahimdamar {
+  background: #f7f2e8;
+}
+
 .external-live-preview--platinum::after {
   background: linear-gradient(180deg, transparent 48%, rgba(7, 7, 8, 0.5) 100%);
 }
