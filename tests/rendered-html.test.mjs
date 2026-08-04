@@ -181,6 +181,9 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.match(text, /name="_honey"/);
     assert.doesNotMatch(text, /name="_captcha"[\s\S]{0,80}value="false"/);
     assert.match(text, /Yeni fikirlere, ürün ekiplerine ve iş birliklerine açığım/);
+    assert.match(text, /İngilizce eğitim desteği · Almanca B1/);
+    assert.match(text, /selin-turkmen-cv\.pdf\?v=english-b1-20260804/);
+    assert.match(text, /Selin_Turkmen_Cocuklara_Ingilizce_Egitim_CV\.pdf/);
     assert.match(text, /rota-live-preview/);
     assert.doesNotMatch(text, /Haftalık ilerleme|Hedefe 3 oturum kaldı|%74/);
     assert.match(text, /ells-live-preview/);

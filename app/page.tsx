@@ -602,7 +602,7 @@ export default function Home() {
             </p>
             <div className="hero-actions">
               <a href="#isler">Projeleri keşfet <span aria-hidden="true">↓</span></a>
-              <a href="/selin-turkmen-cv.pdf" download>Profili indir <span aria-hidden="true">↘</span></a>
+              <a href="/selin-turkmen-cv.pdf?v=english-b1-20260804" download="Selin_Turkmen_Cocuklara_Ingilizce_Egitim_CV.pdf">Profili indir <span aria-hidden="true">↘</span></a>
             </div>
             <dl className="hero-facts">
               <div>
@@ -916,7 +916,7 @@ export default function Home() {
             uzanan disiplinler arası projelerde birleştiriyorum. İyi bir ürünün yalnızca
             çalışması değil, kendini açıkça anlatması gerektiğine inanıyorum.
           </p>
-          <a className="cv-link" href="/selin-turkmen-cv.pdf" download>
+          <a className="cv-link" href="/selin-turkmen-cv.pdf?v=english-b1-20260804" download="Selin_Turkmen_Cocuklara_Ingilizce_Egitim_CV.pdf">
             CV’yi indir <span aria-hidden="true">↘</span>
           </a>
         </div>
@@ -941,7 +941,7 @@ export default function Home() {
           </div>
           <div className="detail-block">
             <span>03 / Diller</span>
-            <p>Türkçe · İngilizce · Almanca</p>
+            <p>Türkçe · İngilizce eğitim desteği · Almanca B1</p>
           </div>
         </div>
       </section>
@@ -981,7 +981,7 @@ export default function Home() {
           Bir sonraki fikri<br />
           <span>birlikte çalıştıralım.</span>
         </h2>
-        <a href="/selin-turkmen-cv.pdf" download>
+        <a href="/selin-turkmen-cv.pdf?v=english-b1-20260804" download="Selin_Turkmen_Cocuklara_Ingilizce_Egitim_CV.pdf">
           <span>Profili keşfet</span>
           <strong aria-hidden="true">↗</strong>
         </a>
@@ -1125,7 +1125,7 @@ export default function Home() {
 
       <footer className="reveal" data-reveal>
         <p>Yeni fikirlere, ürün ekiplerine ve iş birliklerine açığım.</p>
-        <a href="/selin-turkmen-cv.pdf" download>Özgeçmiş ↘</a>
+        <a href="/selin-turkmen-cv.pdf?v=english-b1-20260804" download="Selin_Turkmen_Cocuklara_Ingilizce_Egitim_CV.pdf">Özgeçmiş ↘</a>
         <span>İstanbul / TR · 2026</span>
       </footer>
     </main>
