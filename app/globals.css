@@ -1166,6 +1166,10 @@ main {
   background: #071b2b;
 }
 
+.external-live-preview--drawnmotion {
+  background: #08090b;
+}
+
 .external-live-preview--platinum::after {
   background: linear-gradient(180deg, transparent 48%, rgba(7, 7, 8, 0.5) 100%);
 }
