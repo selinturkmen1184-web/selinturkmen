@@ -1182,6 +1182,10 @@ main {
   background: #e8f3f2;
 }
 
+.external-live-preview--ilbeyli {
+  background: #0c1128;
+}
+
 .external-live-preview--platinum::after {
   background: linear-gradient(180deg, transparent 48%, rgba(7, 7, 8, 0.5) 100%);
 }
