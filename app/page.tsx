@@ -273,6 +273,39 @@ const projects = [
     preview: "aka",
     className: "project-card project-card--full project-card--aka",
   },
+  {
+    index: "27",
+    title: "Akademi360 — Kişisel Sınav Koçluğu",
+    kicker: "Eğitim Teknolojisi / Koçluk / İlerleme Takibi",
+    description:
+      "YKS ve LGS hazırlığını; kişisel hedefler, haftalık çalışma ritmi, görev ve deneme takibi, koç notları ve iki rollü yönetim paneliyle görünür bir sisteme dönüştüren dijital koçluk deneyimi.",
+    href: "https://selinturkmen1184-web.github.io/akademi360-kocluk/#giris",
+    preview: "akademi360",
+    className: "project-card project-card--full project-card--akademi360",
+  },
+  {
+    index: "28",
+    title: "Col Tur — Antalya Tur ve Rezervasyon Deneyimi",
+    kicker: "Turizm / Akıllı Arama / Rezervasyon",
+    description:
+      "Antalya çıkışlı şehir, tekne, doğa ve kültür rotalarını; kategori filtreleri, tarih ve kişi bazlı arama, açık fiyatlandırma, müsaitlik teyidi ve rezervasyon desteğiyle buluşturan tur platformu.",
+    href: "https://coltur.com.tr/",
+    preview: "coltur",
+    previewTitle: "COL TUR",
+    previewTagline: "ANTALYA’YI YEREL GİBİ KEŞFET",
+    previewDomain: "coltur.com.tr",
+    className: "project-card project-card--full project-card--coltur",
+  },
+  {
+    index: "29",
+    title: "MARİNEF — Hiperbarik Sağlık Sistemleri",
+    kicker: "Sağlık Teknolojileri / Endüstriyel Ürün / Kurumsal Web",
+    description:
+      "Hiperbarik oksijen tedavi kabinleri, wellness sistemleri, kriyoterapi ve hipoksi çözümlerini; ürün teknikleri, uluslararası standartlar, sertifikalar, servis ve proje kabiliyetleriyle sunan kurumsal platform.",
+    href: "https://marinef.com.tr/?v=final-20260806",
+    preview: "marinefmedical",
+    className: "project-card project-card--full project-card--marinefmedical",
+  },
 ];
 
 export default function Home() {
@@ -620,7 +653,7 @@ export default function Home() {
           <a className="hero-work-bridge" href="#isler" aria-label="Yapılan işlere geç">
             <strong>Yapılan işler</strong>
             <span>
-              <b>26</b> seçili proje
+              <b>29</b> seçili proje
               <i aria-hidden="true">↓</i>
             </span>
           </a>
@@ -702,7 +735,7 @@ export default function Home() {
       <section className="work" id="isler" aria-labelledby="work-title" data-nav-section>
         <div className="section-heading reveal" data-reveal>
           <div>
-            <p className="section-index">26 seçili proje · 02 TÜBİTAK çalışması</p>
+            <p className="section-index">29 seçili proje · 02 TÜBİTAK çalışması</p>
             <h2 id="work-title">Yapılan işler.</h2>
           </div>
           <p>2024 — 2026</p>
@@ -837,7 +870,9 @@ export default function Home() {
                   project.preview === "ibrahimdamar" ||
                   project.preview === "tas101" ||
                   project.preview === "drawnmotion" ||
-                  project.preview === "aka" ? (
+                  project.preview === "aka" ||
+                  project.preview === "akademi360" ||
+                  project.preview === "marinefmedical" ? (
                   <div
                     className={`external-live-preview external-live-preview--${project.preview}`}
                     aria-label={`${project.title} canlı proje önizlemesi`}
@@ -854,7 +889,8 @@ export default function Home() {
                   </div>
                 ) : project.preview === "glowroad" ||
                   project.preview === "signalix" ||
-                  project.preview === "stellgard" ? (
+                  project.preview === "stellgard" ||
+                  project.preview === "coltur" ? (
                   <div
                     className={`external-link-preview external-link-preview--${project.preview}`}
                     aria-label={`${project.title} resmi site bağlantısı`}
@@ -919,7 +955,7 @@ export default function Home() {
 
         <div className="proof-grid reveal" data-reveal aria-label="Portfolyo özeti">
           <article>
-            <strong data-count="26" data-pad="2">26</strong>
+            <strong data-count="29" data-pad="2">29</strong>
             <span>Seçili dijital ve fiziksel proje</span>
           </article>
           <article>

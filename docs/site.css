@@ -1174,6 +1174,14 @@ main {
   background: #f2f0eb;
 }
 
+.external-live-preview--akademi360 {
+  background: #08131f;
+}
+
+.external-live-preview--marinefmedical {
+  background: #e8f3f2;
+}
+
 .external-live-preview--platinum::after {
   background: linear-gradient(180deg, transparent 48%, rgba(7, 7, 8, 0.5) 100%);
 }
@@ -1271,6 +1279,10 @@ main {
 
 .external-link-preview--stellgard {
   --brand-accent: #d7e0e5;
+}
+
+.external-link-preview--coltur {
+  --brand-accent: #75d5c6;
 }
 
 .external-link-preview__eyebrow,
