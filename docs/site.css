@@ -1190,6 +1190,10 @@ main {
   background: #eee7dc;
 }
 
+.external-live-preview--karam {
+  background: #1d1713;
+}
+
 .external-live-preview--platinum::after {
   background: linear-gradient(180deg, transparent 48%, rgba(7, 7, 8, 0.5) 100%);
 }
