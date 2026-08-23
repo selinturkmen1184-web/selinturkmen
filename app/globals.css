@@ -1198,6 +1198,10 @@ main {
   background: #0b1d29;
 }
 
+.external-live-preview--ilteris {
+  background: #07100f;
+}
+
 .external-live-preview--platinum::after {
   background: linear-gradient(180deg, transparent 48%, rgba(7, 7, 8, 0.5) 100%);
 }
