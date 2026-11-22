@@ -255,7 +255,12 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.doesNotMatch(text, /Akıllı hasat|Zorlu araziye hazır|∞/);
   }
 
+  assert.match(staticStyles, /height: clamp\(292px, 78vw, 344px\)/);
+  assert.match(staticStyles, /object-position: center top/);
+  assert.match(staticStyles, /\.cinematic-intro__image[\s\S]*?opacity: 1 !important/);
+
   assert.match(staticPage, /<iframe[\s\S]+rota-tyt-ayt\.kullanici209931\.chatgpt\.site/);
+  assert.match(staticPage, /site\.css\?v=mobile-intro-20261122/);
   assert.match(staticStyles, /\.rota-live-preview\s*\{/);
   assert.match(appPage, /IntersectionObserver/);
   assert.match(appPage, /--scroll-progress/);
@@ -301,7 +306,7 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
   assert.match(staticStyles, /@media \(max-width: 700px\)/);
   assert.match(
     staticStyles,
-    /\.js-enhanced \.cinematic-intro\s*\{[^}]*height:\s*100svh;[^}]*min-height:\s*560px;/s,
+    /\.cinematic-intro,\s*\.js-enhanced \.cinematic-intro\s*\{[^}]*height:\s*clamp\(292px, 78vw, 344px\);[^}]*min-height:\s*0;/s,
   );
   assert.match(
     staticStyles,
@@ -340,7 +345,6 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
   assert.doesNotMatch(staticPage, /<iframe[^>]+src="http:\/\/(?:glowroad|signalix|stellgard)/);
   assert.match(staticPage, /class="sanayix-case-preview"/);
   assert.match(staticPage, /class="ownership-case-preview ownership-case-preview--growify"/);
-  assert.match(staticPage, /site\.css\?v=ownership-20261122/);
   assert.match(staticPage, /site\.js\?v=greenfix-20260730/);
   assert.match(staticScript, /setTimeout\(dismissLaunchScreen,\s*2200\)/);
   assert.match(staticScript, /launchScreen\?\.classList\.add\("is-dismissed"\)/);
