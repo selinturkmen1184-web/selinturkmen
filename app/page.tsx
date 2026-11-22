@@ -382,7 +382,7 @@ const projects = [
     kicker: "Mobil Ürün / React Native / Sosyal Medya",
     description:
       "Müşteri, usta ve satıcı deneyimlerini; araç yönetimi, yakıt takibi, parça pazarı, forum, yakındaki ustalar, harita ve bildirimlerle birleştiren mobil uygulamanın uçtan uca ürün geliştirmesi, mağaza süreçleri ve sosyal medya yönetimi.",
-    href: "https://apps.apple.com/de/app/sanayix/id6782700844",
+    href: "https://apps.apple.com/tr/app/sanayix/id6782700844",
     preview: "sanayix",
     className: "project-card project-card--full project-card--sanayix",
   },

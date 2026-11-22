@@ -181,7 +181,7 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.match(text, /Karam Event Hall — Sosyal Medya (?:&|&amp;) Reklam Yönetimi/);
     assert.match(text, /instagram\.com\/karameventhall\//);
     assert.match(text, /SanayiX — Mobil Uygulama (?:&|&amp;) Sosyal Medya Yönetimi/);
-    assert.match(text, /apps\.apple\.com\/de\/app\/sanayix\/id6782700844/);
+    assert.match(text, /apps\.apple\.com\/tr\/app\/sanayix\/id6782700844/);
     assert.match(text, /TÜM UYGULAMA \+ SOSYAL MEDYA \/ SELİN/);
     assert.match(text, /37 seçili proje/);
     assert.match(text, /<b>37<\/b> seçili proje/);
