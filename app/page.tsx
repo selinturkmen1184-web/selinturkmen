@@ -2,7 +2,31 @@
 
 import { useEffect, useState } from "react";
 
-const projects = [
+type Project = {
+  index: string;
+  title: string;
+  kicker: string;
+  description: string;
+  className: string;
+  video?: string;
+  poster?: string;
+  href?: string;
+  preview?: string;
+  demoHref?: string;
+  previewTitle?: string;
+  previewTagline?: string;
+  previewDomain?: string;
+  portfolioBrand?: string;
+  portfolioMark?: string;
+  portfolioEyebrow?: string;
+  portfolioLine?: string;
+  portfolioHighlight?: string;
+  portfolioTags?: string[];
+  portfolioFooterLeft?: string;
+  portfolioFooterRight?: string;
+};
+
+const projects: Project[] = [
   {
     index: "01",
     title: "Tarımsal Otonom Robot Simülasyonu",
@@ -386,6 +410,168 @@ const projects = [
     preview: "sanayix",
     className: "project-card project-card--full project-card--sanayix",
   },
+  {
+    index: "38",
+    title: "Growify — Web Sitesi & Sosyal Medya Yönetimi",
+    kicker: "Dijital Ajans / WordPress / Sosyal Medya",
+    description:
+      "Web sitesinin bilgi mimarisi, arayüz tasarımı, WordPress uygulaması, hizmet, iletişim, blog ve SSS yapıları ile sosyal medya yönetiminin tamamı Selin Türkmen’e aittir.",
+    href: "https://www.growify.com.tr/growifydigital/",
+    preview: "owned-growify",
+    portfolioBrand: "GROWIFY",
+    portfolioMark: "GR",
+    portfolioEyebrow: "DİJİTAL BÜYÜME EKOSİSTEMİ",
+    portfolioLine: "Büyümeyi görünür,",
+    portfolioHighlight: "markayı hatırlanır kıl.",
+    portfolioTags: ["WEB TASARIMI", "WORDPRESS", "SEO", "SOSYAL MEDYA"],
+    portfolioFooterLeft: "SİTE TASARIMI & GELİŞTİRME",
+    portfolioFooterRight: "SOSYAL MEDYA YÖNETİMİ",
+    className: "project-card project-card--full project-card--owned-growify",
+  },
+  {
+    index: "39",
+    title: "Influify — Web Sitesi & Sosyal Medya Yönetimi",
+    kicker: "UGC / Influencer Marketing / Dijital Marka",
+    description:
+      "UGC ve influencer marketing odağındaki web sitesinin arayüzü, video vitrini, hizmetler, SSS, iletişim ve e-posta akışları ile sosyal medya yönetiminin tamamı Selin Türkmen’e aittir.",
+    href: "https://www.influify.com.tr/",
+    preview: "owned-influify",
+    portfolioBrand: "INFLUIFY",
+    portfolioMark: "IN",
+    portfolioEyebrow: "UGC & INFLUENCER MARKETING",
+    portfolioLine: "Gerçek içerik,",
+    portfolioHighlight: "ölçülebilir etki.",
+    portfolioTags: ["UGC", "VİDEO VİTRİNİ", "İÇERİK", "SOSYAL MEDYA"],
+    portfolioFooterLeft: "SİTE TASARIMI & GELİŞTİRME",
+    portfolioFooterRight: "SOSYAL MEDYA YÖNETİMİ",
+    className: "project-card project-card--full project-card--owned-influify",
+  },
+  {
+    index: "40",
+    title: "Tatil360 — Web Platformu & Sosyal Medya Yönetimi",
+    kicker: "Turizm / Rezervasyon / Sosyal Medya",
+    description:
+      "Villa, bungalov ve yat keşfini arama, rezervasyon, içerik, iletişim ve güven akışlarıyla birleştiren web platformunun tüm tasarım ve geliştirme süreci ile sosyal medya yönetimi Selin Türkmen’e aittir.",
+    href: "https://tatil360.com/",
+    preview: "owned-tatil360",
+    portfolioBrand: "TATİL360",
+    portfolioMark: "T³",
+    portfolioEyebrow: "VİLLA · BUNGALOV · YAT",
+    portfolioLine: "Keşiften rezervasyona,",
+    portfolioHighlight: "tek tatil deneyimi.",
+    portfolioTags: ["TURİZM", "REZERVASYON", "İÇERİK", "SOSYAL MEDYA"],
+    portfolioFooterLeft: "WEB PLATFORMU",
+    portfolioFooterRight: "SOSYAL MEDYA YÖNETİMİ",
+    className: "project-card project-card--full project-card--owned-tatil360",
+  },
+  {
+    index: "41",
+    title: "AKA-demi — Eğitim Platformu & Sosyal Medya Yönetimi",
+    kicker: "Eğitim / İçerik Mimarisi / Sosyal Medya",
+    description:
+      "Eğitim kataloğu, yapay zekâ programları, eğitmen profilleri ve başvuru akışlarını birleştiren web sitesinin tüm geliştirme ve içerik düzeni ile sosyal medya yönetimi Selin Türkmen’e aittir.",
+    href: "https://www.aka-demi.com/",
+    preview: "owned-akademi",
+    portfolioBrand: "AKA-DEMİ",
+    portfolioMark: "A+",
+    portfolioEyebrow: "EĞİTİM & YAPAY ZEKÂ PROGRAMLARI",
+    portfolioLine: "Bilgiyi düzenle,",
+    portfolioHighlight: "geleceği erişilebilir kıl.",
+    portfolioTags: ["EĞİTİM", "YAPAY ZEKÂ", "WORDPRESS", "SOSYAL MEDYA"],
+    portfolioFooterLeft: "SİTE & İÇERİK MİMARİSİ",
+    portfolioFooterRight: "SOSYAL MEDYA YÖNETİMİ",
+    className: "project-card project-card--full project-card--owned-akademi",
+  },
+  {
+    index: "42",
+    title: "YDK Kargo — Web Sitesi & Sosyal Medya Yönetimi",
+    kicker: "Lojistik / Dönüşüm Odaklı Web / Sosyal Medya",
+    description:
+      "Uluslararası hava kargo hizmetlerini teklif, takip, ülke sayfaları, güvenlik ve SEO akışlarıyla sunan web sitesinin tüm geliştirme süreci ile sosyal medya yönetimi Selin Türkmen’e aittir.",
+    href: "https://yurtdisiucakkargo.com/",
+    preview: "owned-ydk",
+    portfolioBrand: "YDK KARGO",
+    portfolioMark: "YK",
+    portfolioEyebrow: "İSTANBUL'DAN DÜNYAYA",
+    portfolioLine: "180 ülkeye,",
+    portfolioHighlight: "tek dijital rota.",
+    portfolioTags: ["LOJİSTİK", "SEO", "TEKLİF AKIŞI", "SOSYAL MEDYA"],
+    portfolioFooterLeft: "WEB TASARIMI & GELİŞTİRME",
+    portfolioFooterRight: "SOSYAL MEDYA YÖNETİMİ",
+    className: "project-card project-card--full project-card--owned-ydk",
+  },
+  {
+    index: "43",
+    title: "Hızlı Kargo — Web Sitesi & Sosyal Medya Yönetimi",
+    kicker: "Kargo / Güvenlik & SEO / Sosyal Medya",
+    description:
+      "Yurt içi ve yurt dışı kargo hizmetlerini teklif, takip ve iletişim akışlarıyla sunan web sitesinin geliştirme, güvenlik ve SEO çalışmaları ile sosyal medya yönetimi Selin Türkmen’e aittir.",
+    href: "https://hizlikargo.net/",
+    preview: "owned-hizlikargo",
+    portfolioBrand: "HIZLI KARGO",
+    portfolioMark: "HK",
+    portfolioEyebrow: "81 İL · 230 ÜLKE",
+    portfolioLine: "Hızlı gönderi,",
+    portfolioHighlight: "güvenli dijital altyapı.",
+    portfolioTags: ["KARGO", "GÜVENLİK", "SEO", "SOSYAL MEDYA"],
+    portfolioFooterLeft: "WEB & TEKNİK İYİLEŞTİRME",
+    portfolioFooterRight: "SOSYAL MEDYA YÖNETİMİ",
+    className: "project-card project-card--full project-card--owned-hizlikargo",
+  },
+  {
+    index: "44",
+    title: "Gül Beauty Salon — Sosyal Medya Yönetimi",
+    kicker: "Güzellik / Instagram / İçerik Yönetimi",
+    description:
+      "Instagram hesabının içerik planı, kampanya gönderileri, görsel dili, paylaşım düzeni ve yayınlama sürecini kapsayan sosyal medya yönetiminin tamamı Selin Türkmen’e aittir.",
+    href: "https://www.instagram.com/gulbeauty_salon95/",
+    preview: "owned-gulbeauty",
+    portfolioBrand: "GÜL BEAUTY",
+    portfolioMark: "GB",
+    portfolioEyebrow: "BEAUTY CONTENT & CAMPAIGNS",
+    portfolioLine: "Güzelliği anlat,",
+    portfolioHighlight: "etkileşimi büyüt.",
+    portfolioTags: ["INSTAGRAM", "KAMPANYA", "GÖRSEL DİL", "YAYIN"],
+    portfolioFooterLeft: "İÇERİK & KAMPANYA",
+    portfolioFooterRight: "SOSYAL MEDYA YÖNETİMİ",
+    className: "project-card project-card--full project-card--owned-gulbeauty",
+  },
+  {
+    index: "45",
+    title: "PalmLog — Web Sitesi & Sosyal Medya Yönetimi",
+    kicker: "Global Lojistik / Çok Dilli Web / Sosyal Medya",
+    description:
+      "Yedi dilde hizmet sayfaları, kurumsal içerik, talep formu, iletişim, marka simgesi ve SEO yapısını kapsayan web sitesinin tamamı ile sosyal medya yönetimi Selin Türkmen’e aittir.",
+    href: "https://palmlog.com/",
+    preview: "owned-palmlog",
+    portfolioBrand: "PALMLOG",
+    portfolioMark: "PL",
+    portfolioEyebrow: "GLOBAL LOGISTICS & TRADE",
+    portfolioLine: "Dünyayı bağlayan,",
+    portfolioHighlight: "çok dilli deneyim.",
+    portfolioTags: ["7 DİL", "LOJİSTİK", "SEO", "SOSYAL MEDYA"],
+    portfolioFooterLeft: "SİTE TASARIMI & GELİŞTİRME",
+    portfolioFooterRight: "SOSYAL MEDYA YÖNETİMİ",
+    className: "project-card project-card--full project-card--owned-palmlog",
+  },
+  {
+    index: "46",
+    title: "Platinum Oto Galeri — Instagram & Sosyal Medya Yönetimi",
+    kicker: "Otomotiv / Instagram / Marka İletişimi",
+    description:
+      "Instagram içerik planı, araç vitrinleri, kampanya iletişimi, görsel marka dili ve yayın düzenini kapsayan sosyal medya yönetiminin tamamı Selin Türkmen’e aittir.",
+    href: "https://www.instagram.com/platinumotogaleri/",
+    preview: "owned-platinum",
+    portfolioBrand: "PLATINUM OTO",
+    portfolioMark: "PO",
+    portfolioEyebrow: "PREMIUM AUTOMOTIVE CONTENT",
+    portfolioLine: "Seçkin otomobiller,",
+    portfolioHighlight: "güçlü marka anlatısı.",
+    portfolioTags: ["INSTAGRAM", "OTOMOTİV", "KAMPANYA", "İÇERİK"],
+    portfolioFooterLeft: "İÇERİK & MARKA DİLİ",
+    portfolioFooterRight: "SOSYAL MEDYA YÖNETİMİ",
+    className: "project-card project-card--full project-card--owned-platinum",
+  },
 ];
 
 export default function Home() {
@@ -733,7 +919,7 @@ export default function Home() {
           <a className="hero-work-bridge" href="#isler" aria-label="Yapılan işlere geç">
             <strong>Yapılan işler</strong>
             <span>
-              <b>37</b> seçili proje
+              <b>46</b> seçili proje
               <i aria-hidden="true">↓</i>
             </span>
           </a>
@@ -815,7 +1001,7 @@ export default function Home() {
       <section className="work" id="isler" aria-labelledby="work-title" data-nav-section>
         <div className="section-heading reveal" data-reveal>
           <div>
-            <p className="section-index">37 seçili proje · 02 TÜBİTAK çalışması</p>
+            <p className="section-index">46 seçili proje · 02 TÜBİTAK çalışması</p>
             <h2 id="work-title">Yapılan işler.</h2>
           </div>
           <p>2024 — 2026</p>
@@ -939,6 +1125,40 @@ export default function Home() {
                     <span className="bayemeyc-live-preview__badge" aria-hidden="true">
                       Gerçek proje / canlı arayüz
                     </span>
+                  </div>
+                ) : project.preview?.startsWith("owned-") ? (
+                  <div
+                    className={`ownership-case-preview ownership-case-preview--${project.preview.slice(6)}`}
+                    aria-label={`${project.portfolioBrand} ${project.portfolioFooterLeft} ve ${project.portfolioFooterRight} vaka çalışması önizlemesi`}
+                  >
+                    <div className="ownership-case-preview__header">
+                      <span className="ownership-case-preview__mark" aria-hidden="true">{project.portfolioMark}</span>
+                      <span>
+                        <strong>{project.portfolioBrand}</strong>
+                        <small>SELİN TÜRKMEN PORTFOLYO</small>
+                      </span>
+                      <em>TÜM ÇALIŞMA / SELİN</em>
+                    </div>
+                    <div className="ownership-case-preview__body">
+                      <div className="ownership-case-preview__copy">
+                        <p>{project.portfolioEyebrow}</p>
+                        <h4>{project.portfolioLine}<span>{project.portfolioHighlight}</span></h4>
+                        <div className="ownership-case-preview__tags" aria-hidden="true">
+                          {project.portfolioTags?.map((tag) => <span key={tag}>{tag}</span>)}
+                        </div>
+                      </div>
+                      <div className="ownership-case-preview__seal" aria-hidden="true">
+                        <small>{project.preview === "owned-gulbeauty" || project.preview === "owned-platinum" ? "İÇERİK" : "SİTE"}</small>
+                        <b>+</b>
+                        <small>SOSYAL</small>
+                        <span>TAM KAPSAM</span>
+                      </div>
+                    </div>
+                    <div className="ownership-case-preview__footer" aria-hidden="true">
+                      <span>{project.portfolioFooterLeft}</span>
+                      <i />
+                      <span>{project.portfolioFooterRight}</span>
+                    </div>
                   </div>
                 ) : project.preview === "sanayix" ? (
                   <div
@@ -1109,7 +1329,7 @@ export default function Home() {
 
         <div className="proof-grid reveal" data-reveal aria-label="Portfolyo özeti">
           <article>
-            <strong data-count="37" data-pad="2">37</strong>
+            <strong data-count="46" data-pad="2">46</strong>
             <span>Seçili dijital ve fiziksel proje</span>
           </article>
           <article>
