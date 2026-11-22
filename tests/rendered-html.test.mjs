@@ -74,7 +74,7 @@ test("server-renders the finished portfolio and research projects", async () => 
   assert.match(html, /selinturkmen1184-web\.github\.io\/tas-101\//);
   assert.match(html, /TheDrawnMotion — Collector's Run/);
   assert.match(html, /drawn-motion-console\/\?v=clean-run-20/);
-  assert.match(html, /data-count="35"/);
+  assert.match(html, /data-count="36"/);
   assert.match(html, /02 TÜBİTAK çalışması/);
   assert.doesNotMatch(html, /öğrenci/i);
   assert.doesNotMatch(html, /Altınbaş Üniversitesi/i);
@@ -178,8 +178,11 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
     assert.match(text, /selinturkmen1184-web\.github\.io\/ilteris\//);
     assert.match(text, /RealYerin — Türkiye'nin Emlak Platformu/);
     assert.match(text, /selinturkmen1184-web\.github\.io\/mira-emlak\/\?v=3d4bac5/);
-    assert.match(text, /35 seçili proje/);
-    assert.match(text, /<b>35<\/b> seçili proje/);
+    assert.match(text, /Karam Event Hall — Sosyal Medya (?:&|&amp;) Reklam Yönetimi/);
+    assert.match(text, /instagram\.com\/karameventhall\//);
+    assert.match(text, /36 seçili proje/);
+    assert.match(text, /<b>36<\/b> seçili proje/);
+    assert.doesNotMatch(text, /35 seçili proje/);
     assert.doesNotMatch(text, /34 seçili proje/);
     assert.doesNotMatch(text, /33 seçili proje/);
     assert.doesNotMatch(text, /32 seçili proje/);
@@ -266,6 +269,7 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
   assert.match(staticStyles, /\.external-live-preview--babyachting\s*\{/);
   assert.match(staticStyles, /\.external-live-preview--ilteris\s*\{/);
   assert.match(staticStyles, /\.external-live-preview--realyerin\s*\{/);
+  assert.match(staticStyles, /\.social-case-preview\s*\{/);
   assert.match(staticStyles, /\.external-link-preview\s*\{/);
   assert.match(staticStyles, /\.external-link-preview--coltur\s*\{/);
   assert.match(staticStyles, /@media \(max-width: 700px\)/);
@@ -308,7 +312,7 @@ test("keeps the GitHub Pages version, motion system, and project media in sync",
   assert.match(staticPage, /external-link-preview--signalix/);
   assert.match(staticPage, /external-link-preview--stellgard/);
   assert.doesNotMatch(staticPage, /<iframe[^>]+src="http:\/\/(?:glowroad|signalix|stellgard)/);
-  assert.match(staticPage, /site\.css\?v=realyerin-20260823/);
+  assert.match(staticPage, /site\.css\?v=karamsocial-20261122/);
   assert.match(staticPage, /site\.js\?v=greenfix-20260730/);
   assert.match(staticScript, /setTimeout\(dismissLaunchScreen,\s*2200\)/);
   assert.match(staticScript, /launchScreen\?\.classList\.add\("is-dismissed"\)/);

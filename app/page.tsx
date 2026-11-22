@@ -366,6 +366,16 @@ const projects = [
     preview: "realyerin",
     className: "project-card project-card--full project-card--realyerin",
   },
+  {
+    index: "36",
+    title: "Karam Event Hall — Sosyal Medya & Reklam Yönetimi",
+    kicker: "Sosyal Medya / Meta Ads / Dönüşüm",
+    description:
+      "Instagram içerik stratejisi, Reels seçimi, WhatsApp mesaj hedefli Meta reklam kurulumu, İstanbul kitle planlaması, bütçe ve ödeme takibi ile kampanya durum kontrolünü kapsayan uçtan uca sosyal medya yönetimi.",
+    href: "https://www.instagram.com/karameventhall/",
+    preview: "karamsocial",
+    className: "project-card project-card--full project-card--karamsocial",
+  },
 ];
 
 export default function Home() {
@@ -713,7 +723,7 @@ export default function Home() {
           <a className="hero-work-bridge" href="#isler" aria-label="Yapılan işlere geç">
             <strong>Yapılan işler</strong>
             <span>
-              <b>35</b> seçili proje
+              <b>36</b> seçili proje
               <i aria-hidden="true">↓</i>
             </span>
           </a>
@@ -795,7 +805,7 @@ export default function Home() {
       <section className="work" id="isler" aria-labelledby="work-title" data-nav-section>
         <div className="section-heading reveal" data-reveal>
           <div>
-            <p className="section-index">35 seçili proje · 02 TÜBİTAK çalışması</p>
+            <p className="section-index">36 seçili proje · 02 TÜBİTAK çalışması</p>
             <h2 id="work-title">Yapılan işler.</h2>
           </div>
           <p>2024 — 2026</p>
@@ -920,6 +930,35 @@ export default function Home() {
                       Gerçek proje / canlı arayüz
                     </span>
                   </div>
+                ) : project.preview === "karamsocial" ? (
+                  <div
+                    className="social-case-preview social-case-preview--karam"
+                    aria-label="Karam Event Hall sosyal medya ve reklam yönetimi vaka çalışması önizlemesi"
+                  >
+                    <div className="social-case-preview__header">
+                      <span className="social-case-preview__avatar" aria-hidden="true">K</span>
+                      <span className="social-case-preview__account">
+                        <strong>Karam Event Hall</strong>
+                        <small>@karameventhall</small>
+                      </span>
+                      <em>YÖNETİM / SELİN</em>
+                    </div>
+                    <div className="social-case-preview__body">
+                      <p>SOSYAL MEDYA YÖNETİMİ</p>
+                      <h4>İçerikten <span>rezervasyona.</span></h4>
+                      <div className="social-case-preview__services" aria-hidden="true">
+                        <span>REELS STRATEJİSİ</span>
+                        <span>META ADS</span>
+                        <span>WHATSAPP DÖNÜŞÜMÜ</span>
+                        <span>KAMPANYA TAKİBİ</span>
+                      </div>
+                    </div>
+                    <div className="social-case-preview__footer" aria-hidden="true">
+                      <span>İSTANBUL HEDEFLEME</span>
+                      <i />
+                      <span>UÇTAN UCA YÖNETİM</span>
+                    </div>
+                  </div>
                 ) : project.preview === "marine" ||
                   project.preview === "orkide" ||
                   project.preview === "platinum" ||
@@ -1021,7 +1060,7 @@ export default function Home() {
 
         <div className="proof-grid reveal" data-reveal aria-label="Portfolyo özeti">
           <article>
-            <strong data-count="35" data-pad="2">35</strong>
+            <strong data-count="36" data-pad="2">36</strong>
             <span>Seçili dijital ve fiziksel proje</span>
           </article>
           <article>
