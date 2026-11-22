@@ -376,6 +376,16 @@ const projects = [
     preview: "karamsocial",
     className: "project-card project-card--full project-card--karamsocial",
   },
+  {
+    index: "37",
+    title: "SanayiX — Mobil Uygulama & Sosyal Medya Yönetimi",
+    kicker: "Mobil Ürün / React Native / Sosyal Medya",
+    description:
+      "Müşteri, usta ve satıcı deneyimlerini; araç yönetimi, yakıt takibi, parça pazarı, forum, yakındaki ustalar, harita ve bildirimlerle birleştiren mobil uygulamanın uçtan uca ürün geliştirmesi, mağaza süreçleri ve sosyal medya yönetimi.",
+    href: "https://apps.apple.com/de/app/sanayix/id6782700844",
+    preview: "sanayix",
+    className: "project-card project-card--full project-card--sanayix",
+  },
 ];
 
 export default function Home() {
@@ -723,7 +733,7 @@ export default function Home() {
           <a className="hero-work-bridge" href="#isler" aria-label="Yapılan işlere geç">
             <strong>Yapılan işler</strong>
             <span>
-              <b>36</b> seçili proje
+              <b>37</b> seçili proje
               <i aria-hidden="true">↓</i>
             </span>
           </a>
@@ -805,7 +815,7 @@ export default function Home() {
       <section className="work" id="isler" aria-labelledby="work-title" data-nav-section>
         <div className="section-heading reveal" data-reveal>
           <div>
-            <p className="section-index">36 seçili proje · 02 TÜBİTAK çalışması</p>
+            <p className="section-index">37 seçili proje · 02 TÜBİTAK çalışması</p>
             <h2 id="work-title">Yapılan işler.</h2>
           </div>
           <p>2024 — 2026</p>
@@ -929,6 +939,45 @@ export default function Home() {
                     <span className="bayemeyc-live-preview__badge" aria-hidden="true">
                       Gerçek proje / canlı arayüz
                     </span>
+                  </div>
+                ) : project.preview === "sanayix" ? (
+                  <div
+                    className="sanayix-case-preview"
+                    aria-label="SanayiX mobil uygulama ve sosyal medya yönetimi vaka çalışması önizlemesi"
+                  >
+                    <div className="sanayix-case-preview__header">
+                      <span className="sanayix-case-preview__mark" aria-hidden="true">SX</span>
+                      <span>
+                        <strong>SANAYİX</strong>
+                        <small>MOBİL PLATFORM</small>
+                      </span>
+                      <em>TÜM UYGULAMA + SOSYAL MEDYA / SELİN</em>
+                    </div>
+                    <div className="sanayix-case-preview__body">
+                      <div className="sanayix-case-preview__copy">
+                        <p>UÇTAN UCA MOBİL ÜRÜN</p>
+                        <h4>Aracın için <span>tek ekosistem.</span></h4>
+                        <div className="sanayix-case-preview__services" aria-hidden="true">
+                          <span>MÜŞTERİ</span>
+                          <span>USTA</span>
+                          <span>SATICI</span>
+                          <span>PARÇA PAZARI</span>
+                          <span>YAKIT TAKİBİ</span>
+                          <span>YAKIN USTALAR</span>
+                        </div>
+                      </div>
+                      <div className="sanayix-case-preview__phone" aria-hidden="true">
+                        <div className="sanayix-case-preview__phone-bar"><i /><i /><i /></div>
+                        <div className="sanayix-case-preview__map"><b>+</b><span>YAKIN USTALAR</span></div>
+                        <div className="sanayix-case-preview__phone-card"><i>01</i><span><b>Servis bul</b><small>Konumuna göre</small></span></div>
+                        <div className="sanayix-case-preview__phone-card"><i>02</i><span><b>Parçanı seç</b><small>Akıllı pazar</small></span></div>
+                      </div>
+                    </div>
+                    <div className="sanayix-case-preview__footer" aria-hidden="true">
+                      <span>REACT NATIVE · EXPO · TYPESCRIPT</span>
+                      <i />
+                      <span>SUPABASE · MAPLIBRE</span>
+                    </div>
                   </div>
                 ) : project.preview === "karamsocial" ? (
                   <div
@@ -1060,7 +1109,7 @@ export default function Home() {
 
         <div className="proof-grid reveal" data-reveal aria-label="Portfolyo özeti">
           <article>
-            <strong data-count="36" data-pad="2">36</strong>
+            <strong data-count="37" data-pad="2">37</strong>
             <span>Seçili dijital ve fiziksel proje</span>
           </article>
           <article>
